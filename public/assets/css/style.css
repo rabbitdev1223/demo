@@ -10837,7 +10837,7 @@ strong {
 
 .login-card {
   background-color: rgba(36, 105, 92, 0.1);
-  height: 100vh;
+  /* height: 100vh; */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

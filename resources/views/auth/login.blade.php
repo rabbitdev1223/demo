@@ -22,10 +22,10 @@
                             <label>Email Address</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="icon-email"></i></span>
-                                <input class="form-control" type="email" required="" placeholder="Username or Email" name="username" value="{{ old('username') }}"/>
+                                <input class="form-control" required="" placeholder="Nickname or Email" name="nickname" value="{{ old('nickname') }}"/>
                             </div>
-                            @if ($errors->has('username'))
-                                <span class="text-danger text-left">{{ $errors->first('username') }}</span>
+                            @if ($errors->has('nickname'))
+                                <span class="text-danger text-left">{{ $errors->first('nickname') }}</span>
                             @endif
                         </div>
                         <div class="form-group">

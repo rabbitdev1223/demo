@@ -25,7 +25,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required',
+            'nickname' => 'required',
             'password' => 'required'
         ];
     }
@@ -42,16 +42,16 @@ class LoginRequest extends FormRequest
         // have name of "username", however, in order to support
         // logging users in with both (username and email)
         // we have to check if user has entered one or another
-        $username = $this->get('username');
+        $nickname = $this->get('nickname');
 
-        if ($this->isEmail($username)) {
+        if ($this->isEmail($nickname)) {
             return [
-                'email' => $username,
+                'email' => $nickname,
                 'password' => $this->get('password')
             ];
         }
 
-        return $this->only('username', 'password');
+        return $this->only('nickname', 'password');
     }
 
     /**

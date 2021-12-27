@@ -6,6 +6,8 @@
 
 @push('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/sweetalert2.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mycss.css') }}">
+
 @endpush
 
 @section('content')
@@ -13,8 +15,9 @@
 	    <div class="container-fluid p-0">
 	        <div class="row m-0">
 	            <div class="col-12 p-0">
-	                <div class="login-card">
-	                    <form class="theme-form login-form">
+	                <div class="login-card" >
+	                    <form class="theme-form login-form" method="post" action="{{ route('register.perform') }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 	                        <h4>Create your account</h4>
 	                        <h6>Enter your personal details to create account</h6>
 	                        <div class="form-group">
@@ -22,33 +25,75 @@
 	                            <div class="small-group">
 	                                <div class="input-group">
 	                                    <span class="input-group-text"><i class="icon-user"></i></span>
-	                                    <input class="form-control" type="text" required="" placeholder="Fist Name" />
-	                                </div>
+	                                    <input class="form-control" type="text" name="name" placeholder="Fist Name" />
+                                        
+                                    </div>
+                                    
 	                                <div class="input-group">
 	                                    <span class="input-group-text"><i class="icon-user"></i></span>
-	                                    <input class="form-control" type="email" required="" placeholder="Last Name" />
-	                                </div>
+	                                    <input class="form-control"  type="text"  name="surname" placeholder="Last Name" />
+                                       
+                                    </div>
+                                 
 	                            </div>
+                                @if ($errors->has('name'))
+                                    <div><span class="text-danger text-left">{{ $errors->first('name') }}</span></div>
+                                    @endif
+                                @if ($errors->has('surname'))
+                                    <div><span class="text-danger text-left">{{ $errors->first('surname') }}</span></div>
+                                    @endif
 	                        </div>
 	                        <div class="form-group">
 	                            <label>Email Address</label>
 	                            <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-email"></i></span>
-	                                <input class="form-control" type="email" required="" placeholder="Test@gmail.com" />
+	                                <input class="form-control" type="email" required="" name="email" placeholder="Test@gmail.com" />
+                                 
 	                            </div>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger text-left">{{ $errors->first('email') }}</span>
+                                    @endif
 	                        </div>
 	                        <div class="form-group">
 	                            <label>Password</label>
 	                            <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-lock"></i></span>
-	                                <input class="form-control" type="password" name="login[password]" required="" placeholder="*********" />
-	                                <div class="show-hide"><span class="show"> </span></div>
-	                            </div>
+	                                <input class="form-control" type="password" name="password" required="" placeholder="*********" />
+	                                <!-- <div class="show-hide"><span class="show"> </span></div> -->
+                                       
+                                </div>
+                                @if ($errors->has('password'))
+                                    <span class="text-danger text-left">{{ $errors->first('password') }}</span>
+                                    @endif 
 	                        </div>
+                    
+                            <div class="form-group ">
+                                <label >Confirm Password</label>
+                                <div class="input-group">
+	                                <span class="input-group-text"><i class="icon-lock"></i></span>
+	                                <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm Password" required="required">
+	                                
+	                            </div>
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+	                            <label>Nickname</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="icon-user"></i></span>
+                                    <input class="form-control" type="text" required="" name="nickname" placeholder="Nick Name" />
+                                </div>
+                                @if ($errors->has('nickname'))
+                                    <span class="text-danger text-left">{{ $errors->first('nickname') }}</span>
+                                @endif
+                            </div>
+	                        
 	                        <div class="form-group">
 	                            <div class="checkbox">
-	                                <input id="checkbox1" type="checkbox" />
-	                                <label class="text-muted" for="checkbox1">Agree with <span>Privacy Policy </span></label>
+	                                <input id="public_profile" type="checkbox"  name="public_profile" value="1"/>
+	                                <label class="text-muted" for="public_profile" >Make my profile visible in public?</label>
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
