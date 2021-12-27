@@ -1,7 +1,7 @@
-@extends('auth.master')
+@extends('admin.authentication.master')
 
-@section('title')
-    Sign Up
+@section('title')Sign Up
+ {{ $title }}
 @endsection
 
 @push('css')
@@ -57,7 +57,7 @@
 	                        <div class="login-social-title">
 	                            <h5>signup with</h5>
 	                        </div>
-	                        <!-- <div class="form-group">
+	                        <div class="form-group">
 	                            <ul class="login-social">
 	                                <li>
 	                                    <a href="https://www.linkedin.com/login" target="_blank"><i data-feather="linkedin"></i></a>
@@ -72,8 +72,8 @@
 	                                    <a href="https://www.instagram.com/login" target="_blank"><i data-feather="instagram"> </i></a>
 	                                </li>
 	                            </ul>
-	                        </div> -->
-	                        <p>Already have an account?<a class="ms-2" href="{{ route('login.show') }}">Sign in</a></p>
+	                        </div>
+	                        <p>Already have an account?<a class="ms-2" href="{{ route('login') }}">Sign in</a></p>
 	                    </form>
 	                </div>
 	            </div>

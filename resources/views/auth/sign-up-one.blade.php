@@ -1,7 +1,7 @@
-@extends('auth.master')
+@extends('admin.authentication.master')
 
-@section('title')
-    Sign Up
+@section('title')Sign Up
+ {{ $title }}
 @endsection
 
 @push('css')
@@ -12,7 +12,8 @@
     <section>
 	    <div class="container-fluid p-0">
 	        <div class="row m-0">
-	            <div class="col-12 p-0">
+	            <div class="col-xl-5"><img class="bg-img-cover bg-center" src="{{ asset('assets/images/login/3.jpg') }}" alt="looginpage" /></div>
+	            <div class="col-xl-7 p-0">
 	                <div class="login-card">
 	                    <form class="theme-form login-form">
 	                        <h4>Create your account</h4>
@@ -22,7 +23,7 @@
 	                            <div class="small-group">
 	                                <div class="input-group">
 	                                    <span class="input-group-text"><i class="icon-user"></i></span>
-	                                    <input class="form-control" type="text" required="" placeholder="Fist Name" />
+	                                    <input class="form-control" type="email" required="" placeholder="First Name" />
 	                                </div>
 	                                <div class="input-group">
 	                                    <span class="input-group-text"><i class="icon-user"></i></span>
@@ -55,9 +56,9 @@
 	                            <button class="btn btn-primary btn-block" type="submit">Create Account</button>
 	                        </div>
 	                        <div class="login-social-title">
-	                            <h5>signup with</h5>
+	                            <h5>Sign in with</h5>
 	                        </div>
-	                        <!-- <div class="form-group">
+	                        <div class="form-group">
 	                            <ul class="login-social">
 	                                <li>
 	                                    <a href="https://www.linkedin.com/login" target="_blank"><i data-feather="linkedin"></i></a>
@@ -72,8 +73,8 @@
 	                                    <a href="https://www.instagram.com/login" target="_blank"><i data-feather="instagram"> </i></a>
 	                                </li>
 	                            </ul>
-	                        </div> -->
-	                        <p>Already have an account?<a class="ms-2" href="{{ route('login.show') }}">Sign in</a></p>
+	                        </div>
+	                        <p>Already have an account?<a class="ms-2" href="{{ route('login') }}">Sign in</a></p>
 	                    </form>
 	                </div>
 	            </div>
