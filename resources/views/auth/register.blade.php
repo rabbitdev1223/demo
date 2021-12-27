@@ -1,78 +1,47 @@
-@extends('auth.master')
-
-@section('title')
-    Sign Up 
-@endsection
-
-@push('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/sweetalert2.css') }}">
-@endpush
+@extends('layouts.auth-master')
 
 @section('content')
-        <section>
-	    <div class="container-fluid p-0">
-	        <div class="row m-0">
-	            <div class="col-12 p-0">
-	                <div class="login-card">
-	                    <form class="theme-form login-form" method="POST" action="{{ route('register') }}">
-                            @csrf
-	                        <h4>Create your account</h4>
-	                        <h6>Enter your personal details to create account</h6>
-													<x-jet-validation-errors class="mb-4" />
-	                        <div class="form-group">
-	                            <label>Your Name</label>
-	                            <div class="small-group">
-	                                <div class="input-group">
-	                                    <span class="input-group-text"><i class="icon-user"></i></span>
-	                                    <input class="form-control" type="text" required="" id="name" name="name" placeholder="Name" />
-	                                </div>
-	                                <div class="input-group">
-	                                    <span class="input-group-text"><i class="icon-user"></i></span>
-	                                    <input class="form-control" type="text" required="" id="surname" name="surname" placeholder="Surame" />
-	                                </div>
-	                            </div>
-	                        </div>
-                            
-	                        <div class="form-group">
-	                            <label>Email Address</label>
-	                            <div class="input-group">
-	                                <span class="input-group-text"><i class="icon-email"></i></span>
-	                                <input class="form-control" type="email" required="" id="email" name="email" placeholder="Test@gmail.com" />
-	                            </div>
-	                        </div>
-	                        <div class="form-group">
-	                            <label>Password</label>
-	                            <div class="input-group">
-	                                <span class="input-group-text"><i class="icon-lock"></i></span>
-	                                <input class="form-control" type="password"  id="password" name="password" required="" placeholder="*********" />
-	                                <div class="show-hide"><span class="show"> </span></div>
-	                            </div>
-	                        </div>
-                            <div class="form-group">
-	                            <label>Confirm Password</label>
-	                            <div class="input-group">
-	                                <span class="input-group-text"><i class="icon-lock"></i></span>
-	                                <input class="form-control" type="password"  id="password_confirmation" name="password_confirmation" required="" placeholder="*********" />
-	                            </div>
-	                        </div>
-                            <div class="form-group">
-	                            <label>Nickname</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="icon-user"></i></span>
-                                    <input class="form-control" type="text" required="" id="nickname" name="nickname" placeholder="Nickname" />
-                                </div>
-	                        </div>
-	                        <div class="form-group">
-	                            <button class="btn btn-primary btn-block" type="submit">Create Account</button>
-	                        </div>
-	                        <p>Already have an account?<a class="ms-2" href="{{ route('login') }}">Sign in</a></p>
-	                    </form>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</section>
-    @push('scripts')
-        <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
-    @endpush
+    <form method="post" action="{{ route('register.perform') }}">
+
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        <img class="mb-4" src="{!! url('images/bootstrap-logo.svg') !!}" alt="" width="72" height="57">
+        
+        <h1 class="h3 mb-3 fw-normal">Register</h1>
+
+        <div class="form-group form-floating mb-3">
+            <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="name@example.com" required="required" autofocus>
+            <label for="floatingEmail">Email address</label>
+            @if ($errors->has('email'))
+                <span class="text-danger text-left">{{ $errors->first('email') }}</span>
+            @endif
+        </div>
+
+        <div class="form-group form-floating mb-3">
+            <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username" required="required" autofocus>
+            <label for="floatingName">Username</label>
+            @if ($errors->has('username'))
+                <span class="text-danger text-left">{{ $errors->first('username') }}</span>
+            @endif
+        </div>
+        
+        <div class="form-group form-floating mb-3">
+            <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password" required="required">
+            <label for="floatingPassword">Password</label>
+            @if ($errors->has('password'))
+                <span class="text-danger text-left">{{ $errors->first('password') }}</span>
+            @endif
+        </div>
+
+        <div class="form-group form-floating mb-3">
+            <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm Password" required="required">
+            <label for="floatingConfirmPassword">Confirm Password</label>
+            @if ($errors->has('password_confirmation'))
+                <span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span>
+            @endif
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+        
+        @include('auth.partials.copy')
+    </form>
 @endsection
