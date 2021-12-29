@@ -92,8 +92,8 @@
 	                        
 	                        <div class="form-group">
 	                            <div class="checkbox">
-	                                <input id="public_profile" type="checkbox"  name="public_profile" value="1"/>
-	                                <label class="text-muted" for="public_profile" >Make my profile visible in public?</label>
+	                                <input id="public_profile" type="checkbox"  name="policy" value="1"/>
+	                                <label class="text-muted" for="public_profile" ></label>
 	                            </div>
 	                        </div>
 	                        <div class="form-group">

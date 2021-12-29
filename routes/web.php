@@ -40,7 +40,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          * Logout Routes
          */
 
-        Route::get('/', 'HomeController@index')->name('home.index');
+        Route::get('/', 'HomeController@index')->name('index');
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
 
         /**
@@ -49,6 +49,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/email/verify', 'VerificationController@show')->name('verification.notice');
         Route::get('/email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify')->middleware(['signed']);
         Route::post('/email/resend', 'VerificationController@resend')->name('verification.resend');
+        
+        //edit profile
+        Route::get('/edit_profile', 'HomeController@EditProfile');
     });
 
     Route::group(['middleware' => ['auth','verified']], function() {

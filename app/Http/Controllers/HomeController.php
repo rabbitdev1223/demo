@@ -10,4 +10,7 @@ class HomeController extends Controller
     {
         return view('home.index');
     }
+    public function EditProfile(){
+        return view('auth.edit-profile');
+    }
 }
