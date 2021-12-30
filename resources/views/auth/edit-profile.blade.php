@@ -5,8 +5,15 @@
 @endsection
 
 @push('css')
-@endpush
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mycss.css') }}">
 
+@endpush
+<script>
+	function onErrorImage(e){
+		e.onerror=null;
+		e.src="{{asset('assets/images/user/7.jpg')}}";
+  }
+</script>
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
@@ -19,6 +26,16 @@
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">
+			@if(session('success'))	
+				<div class="alert alert-primary dark alert-dismissible fade show" role="alert"> Update Profile successfully!
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
+				</div>
+			@endif
+			@if ($errors->any())
+			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">Failed to update profile!
+                      <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
+                    </div>
+			@endif
 	            <div class="col-xl-4">
 	                <div class="card">
 	                    <div class="card-header pb-0">
@@ -28,65 +45,125 @@
 	                        </div>
 	                    </div>
 	                    <div class="card-body">
-	                        <form>
-	                            <div class="row mb-2">
+	                        <form class="theme-form profile-form" method="post" enctype="multipart/form-data" action="{{ route('profile.update') }}">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}" />    
+							<div class="row mb-2">
 	                                <div class="profile-title">
 	                                    <div class="media">
-	                                        <img class="img-70 rounded-circle" alt="" src="{{asset('assets/images/user/7.jpg')}}" />
-	                                        <div class="media-body">
-	                                            <h3 class="mb-1 f-20 txt-primary">MARK JECNO</h3>
-	                                            <p class="f-12">DESIGNER</p>
+											<img class="img-70 rounded-circle" alt="" 
+												src="{{asset('uploads/' . Auth::user()->profile) }}" 
+												onerror="onErrorImage(this)"
+												id="profileDisplay" onClick="triggerClick()" />
+											@if ($errors->has('profile'))
+                                    			<div><span class="text-danger text-left">{{ $errors->first('profile') }}</span></div>
+                                    		@endif
+												<input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;">
+											<div class="media-body">
+	                                            <h3 class="mb-1 f-20 txt-primary">{{Auth::user()->name}}</h3>
+	                                            <p class="f-12">
+													@if(Auth::user()->type ==1)
+														allevatore
+													@elseif(Auth::user()->type ==2)
+														appassionato
+													@endif
 	                                        </div>
 	                                    </div>
 	                                </div>
 	                            </div>
+								<div class="mb-3">
+	                                <label class="form-label">Email-Address</label>
+	                                <input class="form-control" name="email" disabled  value={{Auth::user()->email}} />
+									<!-- @if ($errors->has('email'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('email') }}</span></div>
+                                    @endif -->
+								</div>
+						
 	                            <div class="mb-3">
 	                                <label class="form-label">NickName</label>
-	                                <input class="form-control" name="nickname" placeholder="Nickname" />
-	                            </div>
+	                                <input class="form-control" name="nickname" placeholder="Nickname"  value={{old('nickname',Auth::user()->nickname)}}>
+	                            	@if ($errors->has('nickname'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('nickname') }}</span></div>
+                                    @endif
+								</div>
 								<div class="mb-3">
 	                                <label class="form-label">Name</label>
-	                                <input class="form-control" name="name" placeholder="name" />
-	                            </div>
+	                                <input class="form-control" name="name" placeholder="name"  value={{old('name',Auth::user()->name)}}>
+	                            	@if ($errors->has('name'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('name') }}</span></div>
+                                    @endif
+								</div>
 								<div class="mb-3">
 	                                <label class="form-label">Surname</label>
-	                                <input class="form-control" name="Surname" placeholder="surname" />
-	                            </div>
+	                                <input class="form-control" name="surname" placeholder="surname"  value={{old('surname',Auth::user()->surname)}}>
+	                            	@if ($errors->has('Surname'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('surname') }}</span></div>
+                                    @endif
+								</div>
 								<div class="mb-3">
 	                                <label class="form-label">Age</label>
-	                                <input class="form-control" name="age" placeholder="age" />
-	                            </div>
-
-	                            <div class="mb-3">
-	                                <label class="form-label">Email-Address</label>
-	                                <input class="form-control" placeholder="your-email@domain.com" />
-	                            </div>
-	                            <div class="mb-3">
-	                                <label class="form-label">Password</label>
-	                                <input class="form-control" type="password" value="password" />
-	                            </div>
+	                                <input class="form-control" name="age" type="number" placeholder="age"  value={{old('age',Auth::user()->age)}}>
+	                            	@if ($errors->has('age'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('age') }}</span></div>
+                                    @endif
+								</div>
+								<div class="mb-3">
+									<label class="form-label">I'm a </label>
+									<select class="form-control btn-square" name="type">
+										<option value="1" @if (Auth::user()->type == 1) {{ 'selected' }} @endif>allevatore</option>
+										<option value="2" @if (Auth::user()->type == 2) {{ 'selected' }} @endif>appassionato</option>
+										
+									</select>
+								</div>
+	                          
+								<div class="mb-3">
+	                                <label class="form-label">My Farm address</label>
+	                                <input class="form-control" name="farm_address" placeholder="Farm address"  value={{Auth::user()->farm_address}}>
+	                            	@if ($errors->has('farm_address'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('farm_address') }}</span></div>
+                                    @endif
+								</div>
+								<div class="mb-3">
+	                                <label class="form-label">My City</label>
+	                                <input class="form-control" name="city" placeholder="My City"  value={{Auth::user()->city}}>
+	                            	@if ($errors->has('city'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('city') }}</span></div>
+                                    @endif
+								</div>
 								<div class="col-sm-6 col-md-3">
 	                                <div class="mb-3">
-	                                    <label class="form-label">Postal Code</label>
-	                                    <input class="form-control" type="number" placeholder="ZIP Code" />
-	                                </div>
+	                                    <label class="form-label">My Cap</label>
+	                                    <input class="form-control" type="number" name="zipcode" placeholder="ZIP Code"  value={{Auth::user()->zipcode}}>
+	                                	@if ($errors->has('zipcode'))
+                                    		<div><span class="text-danger text-left">{{ $errors->first('zipcode') }}</span></div>
+                                    	@endif
+									</div>
 	                            </div>
-	                            <div class="col-md-5">
-	                                <div class="mb-3">
-	                                    <label class="form-label">Country</label>
-	                                    <select class="form-control btn-square">
-	                                        <option value="0">--Select--</option>
-	                                        <option value="1">Germany</option>
-	                                        <option value="2">Canada</option>
-	                                        <option value="3">Usa</option>
-	                                        <option value="4">Aus</option>
-	                                    </select>
-	                                </div>
-	                            </div>
-	                            <div class="mb-3">
-	                                <label class="form-label">Website</label>
-	                                <input class="form-control" placeholder="http://Uplor .com" />
-	                            </div>
+								<div class="mb-3">
+	                                <label class="form-label">Current Password</label>
+	                                <input class="form-control" type="password" name="current_password"  >
+	                            	@if ($errors->has('current_password'))
+                                    		<div><span class="text-danger text-left">{{ $errors->first('current_password') }}</span></div>
+                                    	@endif
+								</div>
+								<div class="mb-3">
+	                                <label class="form-label">Password</label>
+	                                <input class="form-control" type="password" name="password"  >
+	                            	@if ($errors->has('password'))
+                                    		<div><span class="text-danger text-left">{{ $errors->first('password') }}</span></div>
+                                    	@endif
+								</div>
+								<div class="mb-3">
+	                                <label class="form-label">Password Confirmation</label>
+	                                <input class="form-control" type="password" name="password_confirmation">
+	                            	@if ($errors->has('password_confirmation'))
+                                    		<div><span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span></div>
+                                    	@endif
+								</div>
+								<div class="mb-3">	
+									<input id="public_profile" type="checkbox"  name="public_profile" value="1" @if (Auth::user()->public_profile == 1) {{ 'checked' }} @endif>
+									<label class="text-muted" for="public_profile" >Make my profile visible in public?</label>
+								</div>	
+	                           
 	                            <div class="form-footer">
 	                                <button class="btn btn-primary btn-block">Save</button>
 	                            </div>
@@ -94,95 +171,13 @@
 	                    </div>
 	                </div>
 	            </div>
-	            <div class="col-xl-8">
-	                <form class="card">
-	                    <div class="card-header pb-0">
-	                        <h4 class="card-title mb-0">Edit Profile</h4>
-	                        <div class="card-options">
-	                            <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
-	                        </div>
-	                    </div>
-	                    <div class="card-body">
-	                        <div class="row">
-	                            <div class="col-md-5">
-	                                <div class="mb-3">
-	                                    <label class="form-label">Company</label>
-	                                    <input class="form-control" type="text" placeholder="Company" />
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6 col-md-3">
-	                                <div class="mb-3">
-	                                    <label class="form-label">Username</label>
-	                                    <input class="form-control" type="text" placeholder="Username" />
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6 col-md-4">
-	                                <div class="mb-3">
-	                                    <label class="form-label">Email address</label>
-	                                    <input class="form-control" type="email" placeholder="Email" />
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6 col-md-6">
-	                                <div class="mb-3">
-	                                    <label class="form-label">First Name</label>
-	                                    <input class="form-control" type="text" placeholder="Company" />
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6 col-md-6">
-	                                <div class="mb-3">
-	                                    <label class="form-label">Last Name</label>
-	                                    <input class="form-control" type="text" placeholder="Last Name" />
-	                                </div>
-	                            </div>
-	                            <div class="col-md-12">
-	                                <div class="mb-3">
-	                                    <label class="form-label">Address</label>
-	                                    <input class="form-control" type="text" placeholder="Home Address" />
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6 col-md-4">
-	                                <div class="mb-3">
-	                                    <label class="form-label">City</label>
-	                                    <input class="form-control" type="text" placeholder="City" />
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6 col-md-3">
-	                                <div class="mb-3">
-	                                    <label class="form-label">Postal Code</label>
-	                                    <input class="form-control" type="number" placeholder="ZIP Code" />
-	                                </div>
-	                            </div>
-	                            <div class="col-md-5">
-	                                <div class="mb-3">
-	                                    <label class="form-label">Country</label>
-	                                    <select class="form-control btn-square">
-	                                        <option value="0">--Select--</option>
-	                                        <option value="1">Germany</option>
-	                                        <option value="2">Canada</option>
-	                                        <option value="3">Usa</option>
-	                                        <option value="4">Aus</option>
-	                                    </select>
-	                                </div>
-	                            </div>
-	                            <div class="col-md-12">
-	                                <div>
-	                                    <label class="form-label">About Me</label>
-	                                    <textarea class="form-control" rows="5" placeholder="Enter About your description"></textarea>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="card-footer text-end">
-	                        <button class="btn btn-primary" type="submit">Update Profile</button>
-	                    </div>
-	                </form>
-	            </div>
+	           
 	        </div>
 	    </div>
 	</div>
-
 	
 	@push('scripts')
+	<script src="{{ asset('assets/js/parots/profile.js') }}"></script>
 	@endpush
 
 @endsection

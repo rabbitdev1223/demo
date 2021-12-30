@@ -92,8 +92,8 @@
 	                        
 	                        <div class="form-group">
 	                            <div class="checkbox">
-	                                <input id="public_profile" type="checkbox"  name="policy" value="1"/>
-	                                <label class="text-muted" for="public_profile" ></label>
+	                                <input id="acceptPolicy" type="checkbox"  name="acceptPolicy" value="1"/>
+	                                <label class="text-muted" for="acceptPolicy" ></label>
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
