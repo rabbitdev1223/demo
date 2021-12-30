@@ -27,12 +27,12 @@
     <!-- page-wrapper Start-->
     <div class="page-wrapper compact-sidebar" id="pageWrapper">
       <!-- Page Header Start-->
-      @includeIf('layouts.admin.partials.header')
+      <!-- @includeIf('layouts.admin.partials.header') -->
       <!-- Page Header Ends -->
       <!-- Page Body Start-->
       <div class="page-body-wrapper sidebar-icon">
         <!-- Page Sidebar Start-->
-        @includeIf('layouts.admin.partials.sidebar')
+        <!-- @includeIf('layouts.admin.partials.sidebar') -->
         <!-- Page Sidebar Ends-->
         <div class="page-body">
           <!-- Container-fluid starts-->

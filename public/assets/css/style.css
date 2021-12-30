@@ -4313,7 +4313,7 @@ table tbody .border-bottom-warning td {
   background-color: #f5f7fb; }
   .page-wrapper .page-body-wrapper .page-body {
     min-height: calc(100vh - 76px);
-    margin-top: 76px;
+    /* margin-top: 76px; */
     padding: 0 15px 0 15px;
     position: relative;
     -webkit-transition: 0.5s;
@@ -5449,7 +5449,7 @@ table tbody .border-bottom-warning td {
       text-transform: uppercase; }
   .page-wrapper.compact-wrapper .page-body-wrapper .page-body {
     padding-top: 30px;
-    margin-left: 290px; }
+    /* margin-left: 290px; */} 
   .page-wrapper.compact-sidebar.compact-wrapper .page-body-wrapper .according-menu {
     display: none !important; }
   .page-wrapper.compact-sidebar.compact-wrapper .page-body-wrapper header.main-nav {
@@ -16335,7 +16335,7 @@ footer {
   padding: 15px;
   bottom: 0;
   left: 0;
-  margin-left: 275px; }
+  /* margin-left: 275px;*/ } 
   footer a {
     font-weight: 600; }
   footer.footer-starter-kit {

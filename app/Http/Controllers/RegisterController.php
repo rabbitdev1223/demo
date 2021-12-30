@@ -31,7 +31,7 @@ class RegisterController extends Controller
         
         $user = User::create($request->all());
         
-        //event(new Registered($user));
+        event(new Registered($user));
 
         auth()->login($user);
 
