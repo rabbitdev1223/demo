@@ -53,6 +53,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         //edit profile
         Route::get('/edit_profile', 'HomeController@editProfile')->name('profile.show');
         Route::post('/update_profile', 'HomeController@updateProfile')->name('profile.update');
+
+        Route::get('/users', 'UserController@index')->name('user.index');
+        
     });
 
     Route::group(['middleware' => ['auth','verified']], function() {
