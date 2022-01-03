@@ -11,8 +11,5 @@ class UserController extends Controller
     {
         return view('users.userlist');
     }
-    public function getUsers(){
-        $users = User::all();
-        return $users->toJson();
-    }
+ 
 }
