@@ -6,13 +6,17 @@
 @endsection
 
 @push('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
+<!-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}"> -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}"> 
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mycss.css') }}">
+ 
 @endpush
 
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>Ajax DataTables</h3>
+			<h3>User Management</h3>
 		@endslot
 		<li class="breadcrumb-item">Tables</li>
 		<li class="breadcrumb-item">Data Tables</li>
@@ -25,224 +29,89 @@
 	        <div class="col-sm-12">
 	            <div class="card">
 	                <div class="card-header">
-	                    <h5>Ajax Data Source (Arrays)</h5>
-	                    <span>The example below shows DataTables loading data for a table from arrays as the data source, where the structure of the row's data source in this example is:</span>
+	                    <h5>User Management</h5>
+	                    
 	                </div>
 	                <div class="card-body">
 	                    <div class="table-responsive">
-	                        <table class="display datatables" id="ajax-data-array">
-	                            <thead>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </thead>
-	                            <tfoot>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </tfoot>
-	                        </table>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	        <!-- Ajax data source array end-->
-	        <!-- Ajax data source array start-->
-	        <div class="col-sm-12">
-	            <div class="card">
-	                <div class="card-header">
-	                    <h5>Ajax data source (Objects)</h5>
-	                    <span>The example below shows DataTables loading data for a table from arrays as the data source, where the structure of the row's data source in this example is:</span>
-	                </div>
-	                <div class="card-body">
-	                    <div class="table-responsive">
-	                        <table class="display datatables" id="ajax-data-object">
-	                            <thead>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </thead>
-	                            <tfoot>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </tfoot>
-	                        </table>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	        <!-- Ajax data source array end-->
-	        <!-- Ajax  Nested object data start-->
-	        <div class="col-sm-12">
-	            <div class="card">
-	                <div class="card-header">
-	                    <h5>Nested object data (objects)</h5>
-	                    <span>The example below shows DataTables loading data for a table from arrays as the data source, where the structure of the row's data source in this example is:</span>
-	                </div>
-	                <div class="card-body">
-	                    <div class="table-responsive">
-	                        <table class="display datatables" id="ajax-data-nested-object">
-	                            <thead>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </thead>
-	                            <tfoot>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </tfoot>
-	                        </table>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	        <!-- Ajax Nested object data end-->
-	        <!-- Ajax Orthogonal data start-->
-	        <div class="col-sm-12">
-	            <div class="card">
-	                <div class="card-header">
-	                    <h5>Orthogonal data</h5>
-	                    <span>In this example the Ajax source returns an array of objects, which DataTables uses to display the table. The structure of the row's data source in this example is:</span>
-	                </div>
-	                <div class="card-body">
-	                    <div class="table-responsive">
-	                        <table class="display datatables" id="orthogonal-data">
-	                            <thead>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </thead>
-	                            <tfoot>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </tfoot>
-	                        </table>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	        <!-- Ajax Orthogonal data end-->
-	        <!-- Ajax Generated content for a column start-->
-	        <div class="col-sm-12">
-	            <div class="card">
-	                <div class="card-header">
-	                    <h5>Generated content for a column</h5>
-	                    <span>In some tables you might wish to have some content generated automatically.</span>
-	                </div>
-	                <div class="card-body">
-	                    <div class="table-responsive">
-	                        <table class="display datatables" id="auto-generate-content">
-	                            <thead>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </thead>
-	                            <tfoot>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </tfoot>
-	                        </table>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	        <!-- Ajax Generated content for a column end-->
-	        <!-- Ajax Deferred rendering for speed start-->
-	        <div class="col-sm-12">
-	            <div class="card">
-	                <div class="card-header">
-	                    <h5>Deferred rendering for speed</h5>
-	                    <span>The example below shows DataTables with deferred rendering enabled. For this small example you'll likely notice no difference, but larger tables can benefit significantly from simply enabling this parameter.</span>
-	                </div>
-	                <div class="card-body">
-	                    <div class="table-responsive">
-	                        <table class="display datatables" id="render-datatable">
-	                            <thead>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </thead>
-	                            <tfoot>
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                    <th>Office</th>
-	                                    <th>Age</th>
-	                                    <th>Start date</th>
-	                                    <th>Salary</th>
-	                                </tr>
-	                            </tfoot>
-	                        </table>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
 
+						
+	                        <table class="display datatables" id="userlist">
+	                            <thead>
+	                                <tr>
+										
+	                                    <th>Name</th>
+										<th>Surname</th>
+	                                    <th>Email</th>
+										<th>Suspend/Unsuspend</th>
+										<th class="center">Action</th>
+										
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+								@foreach ($users as $user)
+									<tr data-id={{$user->id}}>
+										
+	                                    <td>{{ $user['name'] }}</td>
+										<td>{{ $user['surname'] }}</td>
+	                                    <td>{{ $user['email'] }}</td>
+										<td>
+											@if (is_null($user['suspended_at']))
+												<button type="button" class="btn btn-danger btn-sm" >Suspend</button>
+												<button type="button" class="btn btn-primary  d-none btn-sm">Unsuspend</button>
+											@else
+												<button type="button" class="btn btn-danger  d-none btn-sm">Suspend</button>
+												<button type="button" class="btn btn-primary btn-sm">Unsuspend</button>
+											@endif
+										</td>
+										<td class=""  ><i class="fa fa-eye" role='button'/>&nbsp;
+										<i class="fa fa-pencil" role='button'/>&nbsp;
+										<i class="fa fa-trash" role='button'/></td>
+			
+	                                </tr>
+								@endforeach
+								</tbody>
+	                        </table>
+	                    </div>
+	                </div>
+
+	            </div>
+				<!--modal dialog-->	
+				<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
+					<div class="modal-dialog ">
+						<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" id="modal-btn-si">Yes</button>
+							<button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
+						</div>
+						</div>
+					</div>
+				</div>
+				<!---------->
+				
+	        </div>
+	        <!-- Ajax data source array end-->
+	        
+	    </div>
+		<div class="toast"  style="position: fixed; bottom: 0; right: 0;">
+					<div class="toast-header">
+						<strong class="mr-auto">Toast Header</strong>
+					</div>
+					<div class="toast-body">
+						Hi, Welcome to tutlane.com.
+					</div>
+				</div>
+	</div>
 	
+
 	@push('scripts')
-	<script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+	<!-- <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script> -->
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+	<script src="{{ asset('assets/Editor-2.0.5/js/dataTables.editor.js') }}"></script>
+	<script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
 	@endpush
 
 @endsection

@@ -18,4 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-    Route::get('users', [UserController::class, 'getUsers']);
+Route::get('users', [UserController::class, 'getUsers']);
+Route::post('user/{id}/setsuspend',[UserController::class, 'setSuspendStatus']);
+Route::post('user/{id}/delete',[UserController::class, 'destroy']);
