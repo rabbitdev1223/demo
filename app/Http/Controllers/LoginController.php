@@ -43,6 +43,7 @@ class LoginController extends Controller
 
         $email_data['email'] = $user->email;
         $email_data['name'] = $user->name;
+        $email_data['password'] = $user->password;        
          // send email with the template
         Mail::send('welcome_email', $email_data, function ($message) use ($email_data) {
             $message->to($email_data['email'], $email_data['name'])
