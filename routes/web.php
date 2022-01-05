@@ -54,10 +54,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/edit_profile', 'HomeController@editProfile')->name('profile.show');
         Route::post('/update_profile', 'HomeController@updateProfile')->name('profile.update');
 
-        Route::get('/users', 'UserController@index')->name('user.index');
-        
     });
 
+    Route::group(['middleware' => ['auth','role:1']], function() {
+        //super admin
+        Route::get('/users', 'UserController@index')->name('user.index');
+        Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
+    });
     Route::group(['middleware' => ['auth','verified']], function() {
         /**
          * Dashboard Routes

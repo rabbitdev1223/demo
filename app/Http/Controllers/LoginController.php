@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Login\RememberMeExpiration;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -32,6 +33,7 @@ class LoginController extends Controller
     {
         $credentials = $request->getCredentials();
 
+        
         if(!Auth::validate($credentials)):
             return redirect()->to('login')
                 ->withErrors(trans('auth.failed'));
@@ -39,6 +41,21 @@ class LoginController extends Controller
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
+        $email_data['email'] = $user->email;
+        $email_data['name'] = $user->name;
+         // send email with the template
+        Mail::send('welcome_email', $email_data, function ($message) use ($email_data) {
+            $message->to($email_data['email'], $email_data['name'])
+                ->subject('Welcome to MyNotePaper')
+                ->from('info@parots.it', 'MyNotePaper');
+        });
+        //added
+        if ($user->suspended_at != null){
+            return redirect()->to('login')
+                ->withErrors(trans('auth.suspended'));
+        }
+
+        //===============
         Auth::login($user, $request->get('remember'));
 
         if($request->get('remember')):

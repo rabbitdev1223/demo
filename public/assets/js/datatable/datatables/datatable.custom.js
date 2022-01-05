@@ -70,10 +70,18 @@ var modalConfirm = function(callback){
                 function(data, status){
                 //    alert("Data: " + data + "\nStatus: " + status);
                     if(data=="ok" && status=="success"){
+                        $("#successToast .toast-body").html("success to delete");
+                        new bootstrap.Toast(document.querySelector('#successToast')).show();
+                     
                         usertable
                         .row( target )
                         .remove()
                         .draw();                        
+                    }
+                    else{
+                        $("#failedToast .toast-body").html("failed to delete");
+                        new bootstrap.Toast(document.querySelector('#failedToast')).show();
+                     
                     }
                 });
 
@@ -88,8 +96,16 @@ var modalConfirm = function(callback){
                 function(data, status){
                 //    alert("Data: " + data + "\nStatus: " + status);
                     if(data=="ok" && status=="success"){
+                        $("#successToast .toast-body").html("Updated successfully!");
+                        new bootstrap.Toast(document.querySelector('#successToast')).show();
+                     
                         target.addClass('d-none');
                         target.next().removeClass('d-none');                        
+                    }
+                    else{
+                        $("#successToast .toast-body").html("Failed to udpated");
+                        new bootstrap.Toast(document.querySelector('#successToast')).show();
+                     
                     }
                 });
     
@@ -103,8 +119,14 @@ var modalConfirm = function(callback){
                 function(data, status){
                 //    alert("Data: " + data + "\nStatus: " + status);
                     if(data=="ok" && status=="success"){
+                        $("#successToast .toast-body").html("Updated successfully!");
+                        new bootstrap.Toast(document.querySelector('#successToast')).show();
                         target.addClass('d-none');
                         target.prev().removeClass('d-none');                        
+                    }
+                    else{
+                        $("#successToast .toast-body").html("Failed to udpated");
+                        new bootstrap.Toast(document.querySelector('#successToast')).show();
                     }
                 });
     
@@ -118,10 +140,9 @@ var modalConfirm = function(callback){
     }
   });
 
-  
+   
 $(document).ready(function() {
-    $('.toast').toast('show');
-    
+
     //seach API regular expression start
     //Ajax Data Source (Arrays) start 
     // $('#ajax-data-array').DataTable({

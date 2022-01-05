@@ -14,13 +14,13 @@ class HomeController extends Controller
         return view('home.index');
     }
     public function editProfile(){
-        return view('auth.edit-profile');
+        return view('auth.edit-profile')->with('current_user',Auth::user());
     }
     public function updateProfile(Request $request){
 
-        $auth_id = Auth::id();
+        $auth_id = $request->id ;
 
-        $user = User::find($auth_id);
+        $user = User::findOrFail($auth_id);
         $request->validate([
                 
             'nickname' => 'required|unique:users,nickname,'. $auth_id, 
@@ -32,7 +32,20 @@ class HomeController extends Controller
         ]);
 
         // dd(Hash::check( $request->current_password,$user->password),$user->password,$request->current_password);
-        if (Hash::check($request->current_password, $user->password)){
+        
+        if (Auth::user()->role == 1) {//super admin
+            
+            // $request->validate([
+            //     'password' => 'required|min:8',
+            //     'password_confirmation' => 'same:password',
+
+            // ]);
+            if ($request->password!="")
+                $user->password = $request->password;
+            
+        }
+        
+        else if (Hash::check($request->current_password, $user->password)){
             $request->validate([
                 'password' => 'required|min:8',
                 'password_confirmation' => 'same:password',

@@ -18,9 +18,9 @@
 		@slot('breadcrumb_title')
 			<h3>User Management</h3>
 		@endslot
-		<li class="breadcrumb-item">Tables</li>
+		<!-- <li class="breadcrumb-item">Tables</li>
 		<li class="breadcrumb-item">Data Tables</li>
-		<li class="breadcrumb-item active">AJAX</li>
+		<li class="breadcrumb-item active">AJAX</li> -->
 	@endcomponent
 	
 	<div class="container-fluid">
@@ -29,7 +29,7 @@
 	        <div class="col-sm-12">
 	            <div class="card">
 	                <div class="card-header">
-	                    <h5>User Management</h5>
+	                    <h5>User List</h5>
 	                    
 	                </div>
 	                <div class="card-body">
@@ -64,9 +64,9 @@
 												<button type="button" class="btn btn-primary btn-sm">Unsuspend</button>
 											@endif
 										</td>
-										<td class=""  ><i class="fa fa-eye" role='button'/>&nbsp;
-										<i class="fa fa-pencil" role='button'/>&nbsp;
-										<i class="fa fa-trash" role='button'/></td>
+										<td class=""  ><a href="{{route('user.edit',$user->id)}}"><i class="fa fa-eye" ></i></a>&nbsp;
+											 <a href="{{route('user.edit',$user->id)}}"><i class="fa fa-pencil"></i></a>&nbsp;
+											 <a href="#"><i class="fa fa-trash" role='button'></i></a></td>
 			
 	                                </tr>
 								@endforeach
@@ -96,21 +96,17 @@
 	        <!-- Ajax data source array end-->
 	        
 	    </div>
-		<div class="toast"  style="position: fixed; bottom: 0; right: 0;">
-					<div class="toast-header">
-						<strong class="mr-auto">Toast Header</strong>
-					</div>
-					<div class="toast-body">
-						Hi, Welcome to tutlane.com.
-					</div>
-				</div>
+		<!--Toast-->
+		@component('components.toast')	
+		@endcomponent
+	
+		<!----------->
 	</div>
 	
 
 	@push('scripts')
 	<!-- <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script> -->
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-	<script src="{{ asset('assets/Editor-2.0.5/js/dataTables.editor.js') }}"></script>
 	<script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
 	@endpush
 
