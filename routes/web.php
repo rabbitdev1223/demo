@@ -60,6 +60,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         //super admin
         Route::get('/users', 'UserController@index')->name('user.index');
         Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
+        Route::get('/user/{id}/show', 'UserController@show')->name('user.show');
     });
     Route::group(['middleware' => ['auth','verified']], function() {
         /**

@@ -64,7 +64,7 @@
 												<button type="button" class="btn btn-primary btn-sm">Unsuspend</button>
 											@endif
 										</td>
-										<td class=""  ><a href="{{route('user.edit',$user->id)}}"><i class="fa fa-eye" ></i></a>&nbsp;
+										<td class=""  ><a href="{{route('user.show',$user->id)}}"><i class="fa fa-eye" ></i></a>&nbsp;
 											 <a href="{{route('user.edit',$user->id)}}"><i class="fa fa-pencil"></i></a>&nbsp;
 											 <a href="#"><i class="fa fa-trash" role='button'></i></a></td>
 			
@@ -107,7 +107,10 @@
 	@push('scripts')
 	<!-- <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script> -->
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+	<script src="{{ asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
+	<script src="{{ asset('assets/js/notify/notify-script.js')}}"></script>
 	<script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+
 	@endpush
 
 @endsection

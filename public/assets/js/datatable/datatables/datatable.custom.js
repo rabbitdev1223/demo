@@ -99,6 +99,33 @@ var modalConfirm = function(callback){
                         $("#successToast .toast-body").html("Updated successfully!");
                         new bootstrap.Toast(document.querySelector('#successToast')).show();
                      
+                        // $.notify({
+                        //     title:'Success to update',
+                        //     message:'Updated Succesfully'
+                        //  },
+                        //  {
+                        //     type:'primary',
+                        //     allow_dismiss:false,
+                        //     newest_on_top:false ,
+                        //     mouse_over:false,
+                        //     showProgressbar:false,
+                        //     spacing:10,
+                        //     timer:2000,
+                        //     placement:{
+                        //       from:'top',
+                        //       align:'right'
+                        //     },
+                        //     offset:{
+                        //       x:30,
+                        //       y:30
+                        //     },
+                        //     delay:1000 ,
+                        //     z_index:10000,
+                        //     animate:{
+                        //       enter:'animated bounce',
+                        //       exit:'animated bounce'
+                        //   }
+                        // });
                         target.addClass('d-none');
                         target.next().removeClass('d-none');                        
                     }

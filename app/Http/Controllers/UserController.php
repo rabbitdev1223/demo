@@ -20,4 +20,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         return view('auth.edit-profile')->with('current_user',$user);
     }
+
+    public function show($id){
+        $user = User::findOrFail($id);
+        return view('users.show')->with('current_user',$user);
+    }
 }

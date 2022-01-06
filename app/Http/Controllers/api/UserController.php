@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
 class UserController extends Controller
 {
     //
@@ -29,6 +30,8 @@ class UserController extends Controller
         return "ok";
     }
     public function destroy($id){
+       
+      
         $user = User::find($id);
         $user->delete();
         return "ok";
