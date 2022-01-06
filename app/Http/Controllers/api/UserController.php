@@ -29,6 +29,16 @@ class UserController extends Controller
         $user->save();
         return "ok";
     }
+
+    //status : 1 =>super admin 2=>user
+    public function setSuperadmin($id,Request $request){
+        $user = User::find($id);
+        
+        $user->role = $request->role;
+        $user->save();
+        
+        return json_encode(array('role' => $user->role));
+    }
     public function destroy($id){
        
       

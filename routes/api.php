@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('users', [UserController::class, 'getUsers']);
 Route::post('user/{id}/setsuspend',[UserController::class, 'setSuspendStatus']);
 Route::post('user/{id}/delete',[UserController::class, 'destroy']);
+Route::post('user/{id}/setSuperadmin',[UserController::class, 'setSuperadmin']);

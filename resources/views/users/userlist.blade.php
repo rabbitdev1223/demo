@@ -43,6 +43,7 @@
 	                                    <th>Name</th>
 										<th>Surname</th>
 	                                    <th>Email</th>
+										<th>Role</th>
 										<th>Suspend/Unsuspend</th>
 										<th class="center">Action</th>
 										
@@ -56,17 +57,33 @@
 										<td>{{ $user['surname'] }}</td>
 	                                    <td>{{ $user['email'] }}</td>
 										<td>
+											<div class="btn ">
+												<div class="checkbox checkbox-primary">
+												@if ($user->role == 1)
+													<input id="{{'checkbox-role' . $user->id}}" type="checkbox" style="display:none" checked @if(Auth::user()->id == $user->id) disabled @endif >
+												@else
+												<input id="{{'checkbox-role' . $user->id}}" type="checkbox" style="display:none" >
+												@endif
+												<label for="{{'checkbox-role' . $user->id}}">SuperAdmin</label>
+												</div>
+											</div>
+										</td>
+										<td>
 											@if (is_null($user['suspended_at']))
-												<button type="button" class="btn btn-danger btn-sm" >Suspend</button>
-												<button type="button" class="btn btn-primary  d-none btn-sm">Unsuspend</button>
+												<button type="button" class="btn btn-danger btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>Suspend</button>
+												<button type="button" class="btn btn-primary  d-none btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>Unsuspend</button>
 											@else
-												<button type="button" class="btn btn-danger  d-none btn-sm">Suspend</button>
-												<button type="button" class="btn btn-primary btn-sm">Unsuspend</button>
+												<button type="button" class="btn btn-danger  d-none btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>Suspend</button>
+												<button type="button" class="btn btn-primary btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>Unsuspend</button>
 											@endif
 										</td>
-										<td class=""  ><a href="{{route('user.show',$user->id)}}"><i class="fa fa-eye" ></i></a>&nbsp;
+										<td class=""  >
+											@if(Auth::user()->id != $user->id)
+											<a href="{{route('user.show',$user->id)}}"><i class="fa fa-eye" ></i></a>&nbsp;
 											 <a href="{{route('user.edit',$user->id)}}"><i class="fa fa-pencil"></i></a>&nbsp;
-											 <a href="#"><i class="fa fa-trash" role='button'></i></a></td>
+											 <a href="#"><i class="fa fa-trash" role='button'></i></a>
+											@endif
+											</td>
 			
 	                                </tr>
 								@endforeach

@@ -44,7 +44,7 @@
 											<img class="img-70 rounded-circle" alt="" 
 												src="{{asset('uploads/' . $current_user->profile) }}" 
 												onerror="onErrorImage(this)"
-												id="profileDisplay" onClick="triggerClick()" />
+												id="profileDisplay"  />
 											@if ($errors->has('profile'))
                                     			<div><span class="text-danger text-left">{{ $errors->first('profile') }}</span></div>
                                     		@endif
