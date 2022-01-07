@@ -98,7 +98,7 @@
 								<div class="mb-3">
 	                                <label class="form-label">Surname</label>
 	                                <input class="form-control" name="surname" placeholder="surname"  value="{{old('surname',$current_user->surname)}}">
-	                            	@if ($errors->has('Surname'))
+	                            	@if ($errors->has('surname'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('surname') }}</span></div>
                                     @endif
 								</div>

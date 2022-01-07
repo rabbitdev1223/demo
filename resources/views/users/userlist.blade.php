@@ -33,7 +33,10 @@
 	                    
 	                </div>
 	                <div class="card-body">
-	                    <div class="table-responsive">
+						<div >
+							<a href="{{route('user.create')}}"><button class="btn btn-square btn-primary btn-sm" type="button" >New User</button></a>
+						</div>
+	                    <div class="table-responsive" style="margin-top:20px">
 
 						
 	                        <table class="display datatables" id="userlist">

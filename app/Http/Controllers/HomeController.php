@@ -7,6 +7,8 @@ use App\Models\User;
 use Auth;
 use Hash;
 use Redirect;
+use Illuminate\Support\Facades\Mail;
+
 class HomeController extends Controller
 {
     public function index() 
@@ -18,18 +20,35 @@ class HomeController extends Controller
     }
     public function updateProfile(Request $request){
 
-        $auth_id = $request->id ;
-
-        $user = User::findOrFail($auth_id);
-        $request->validate([
+        if (!isset($request->id)){ //create new user
+            $user = new User();
+            $request->validate([
+                'email'=>'required|unique:users',
+                'nickname' => 'required|unique:users', 
+                'name' => 'required',
                 
-            'nickname' => 'required|unique:users,nickname,'. $auth_id, 
-            'name' => 'required',
-            'surname' => 'required',
-            'type' => 'gt:0',
-            'password_confirmation' => 'same:password',
+                'surname' => 'required',
+                'type' => 'gt:0',
+                'password_confirmation' => 'same:password',
+                'password'=>'required']);
+            $user->email = $request->email;
+        }
+        else{
+            $auth_id = $request->id ;
 
-        ]);
+            $user = User::findOrFail($auth_id);
+            $request->validate([
+                    
+                'nickname' => 'required|unique:users,nickname,'. $auth_id, 
+                'name' => 'required',
+                
+                'surname' => 'required',
+                'type' => 'gt:0',
+                'password_confirmation' => 'same:password',
+
+            ]);
+        }
+            
 
         // dd(Hash::check( $request->current_password,$user->password),$user->password,$request->current_password);
         
@@ -108,6 +127,19 @@ class HomeController extends Controller
        
             
         $user->save();
+        if (!isset($request->id)){
+            //send welcome email with password
+              $email_data['email'] = $user->email;
+                $email_data['name'] = $user->name;
+                $email_data['password'] = $user->password;        
+                // send email with the template
+                Mail::send('welcome_email', $email_data, function ($message) use ($email_data) {
+                    $message->to($email_data['email'], $email_data['name'])
+                        ->subject('Welcome to Parots')
+                        ->from('info@parots.it', 'Welcom');
+                });
+            return redirect()->route('user.index');
+        }
         return redirect()->back()->withSuccess('Updated successfully!');
     }
     

@@ -61,6 +61,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/users', 'UserController@index')->name('user.index');
         Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
         Route::get('/user/{id}/show', 'UserController@show')->name('user.show');
+        Route::get('/user/create', 'UserController@create')->name('user.create');
     });
     Route::group(['middleware' => ['auth','verified']], function() {
         /**
