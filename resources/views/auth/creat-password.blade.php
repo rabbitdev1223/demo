@@ -1,7 +1,7 @@
-@extends('admin.authentication.master')
+@extends('auth.master')
 
-@section('title')Create Password
- {{ $title }}
+@section('title')
+	Create Password
 @endsection
 
 @push('css')
@@ -14,33 +14,33 @@
 	        <div class="row m-0">
 	            <div class="col-12 p-0">
 	                <div class="login-card">
-	                    <form class="theme-form login-form">
-	                        <h4 class="mb-3">Create Your Password</h4>
+	                    <form class="theme-form login-form" method="post"  action="{{ route('password.init') }}">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+							<h4 class="mb-3">Create Your Password</h4>
 	                        <div class="form-group">
 	                            <label>New Password</label>
 	                            <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-lock"></i></span>
-	                                <input class="form-control" type="password" name="login[password]" required="" placeholder="*********" />
+	                                <input class="form-control" type="password" name="password" required=""  />
 	                                <div class="show-hide"><span class="show"></span></div>
 	                            </div>
+								@if ($errors->has('password'))
+                                    		<div><span class="text-danger text-left">{{ $errors->first('password') }}</span></div>
+                                    	@endif
 	                        </div>
 	                        <div class="form-group">
-	                            <label>Password</label>
+	                            <label>Password Confirm</label>
 	                            <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-lock"></i></span>
-	                                <input class="form-control" type="password" name="login[password]" required="" placeholder="*********" />
+	                                <input class="form-control" type="password" name="password_confirmation" required="" placeholder="" />
 	                            </div>
-	                        </div>
-	                        <div class="form-group">
-	                            <div class="checkbox">
-	                                <input id="checkbox1" type="checkbox" />
-	                                <label class="text-muted" for="checkbox1">Remember password</label>
-	                            </div>
+								@if ($errors->has('password_confirmation'))
+                                    		<div><span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span></div>
+                                    	@endif
 	                        </div>
 	                        <div class="form-group">
 	                            <button class="btn btn-primary btn-block" type="submit">Done</button>
 	                        </div>
-	                        <p>Don't have account?<a class="ps-2" href="{{ route('sign-up') }}">Create Account</a></p>
 	                    </form>
 	                </div>
 	            </div>

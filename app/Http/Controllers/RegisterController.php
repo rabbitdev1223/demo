@@ -28,12 +28,16 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request) 
     {
+        $data = $request->all();
+        $data['login_ip'] = $request->ip();
+        $data['login_date'] = now();
         
-        $user = User::create($request->all());
+        $user = User::create($data);
         
-        event(new Registered($user));
-
+        //event(new Registered($user));
+        
         auth()->login($user);
+        
 
         return redirect('/')->with('success', "Account successfully registered.");
     }

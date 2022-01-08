@@ -34,15 +34,22 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/login', 'LoginController@login')->name('login.perform');
 
     });
-
+    Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+   
     Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create_password', 'UserController@create_password')->name('create_password');
+        Route::post('/password_init', 'UserController@password_init')->name('password.init');
+ 
+    });
+    
+
+    Route::group(['middleware' => ['auth','password.init']], function() {
         /**
          * Logout Routes
          */
 
         Route::get('/', 'HomeController@index')->name('index');
-        Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
-
+       
         /**
          * Verification Routes
          */
@@ -54,15 +61,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/edit_profile', 'HomeController@editProfile')->name('profile.show');
         Route::post('/update_profile', 'HomeController@updateProfile')->name('profile.update');
 
+        Route::group(['middleware' => ['role:1']], function() {
+            //super admin
+            Route::get('/users', 'UserController@index')->name('user.index');
+            Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
+            Route::get('/user/{id}/show', 'UserController@show')->name('user.show');
+            Route::get('/user/create', 'UserController@create')->name('user.create');
+        });
     });
 
-    Route::group(['middleware' => ['auth','role:1']], function() {
-        //super admin
-        Route::get('/users', 'UserController@index')->name('user.index');
-        Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
-        Route::get('/user/{id}/show', 'UserController@show')->name('user.show');
-        Route::get('/user/create', 'UserController@create')->name('user.create');
-    });
+   
     Route::group(['middleware' => ['auth','verified']], function() {
         /**
          * Dashboard Routes

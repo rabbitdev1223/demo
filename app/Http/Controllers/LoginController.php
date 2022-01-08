@@ -41,16 +41,6 @@ class LoginController extends Controller
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
-        // $email_data['email'] = $user->email;
-        // $email_data['name'] = $user->name;
-        // $email_data['password'] = $user->password;        
-        //  // send email with the template
-        // Mail::send('welcome_email', $email_data, function ($message) use ($email_data) {
-        //     $message->to($email_data['email'], $email_data['name'])
-        //         ->subject('Welcome to Parots')
-        //         ->from('info@parots.it', 'MyNotePaper');
-        // });
-        //added
         if ($user->suspended_at != null){
             return redirect()->to('login')
                 ->withErrors(trans('auth.suspended'));
@@ -61,9 +51,12 @@ class LoginController extends Controller
         $clientIP = request()->ip();   
 
         Auth::login($user, $request->get('remember'));
-        $user->login_date = now();
-        $user->login_ip = $clientIP;
-        $user->save();
+
+        if (!is_null($user->login_ip)){
+            $user->login_date = now();
+            $user->login_ip = $clientIP;
+            $user->save();
+        }
         if($request->get('remember')):
             $this->setRememberMeExpiration($user);
         endif;

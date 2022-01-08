@@ -31,6 +31,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'nickname',
         'password',
         "public_profile",
+        "login_ip",
+        "login_date"
     ];
 
     /**
