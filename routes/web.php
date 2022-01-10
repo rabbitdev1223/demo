@@ -61,6 +61,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/edit_profile', 'HomeController@editProfile')->name('profile.show');
         Route::post('/update_profile', 'HomeController@updateProfile')->name('profile.update');
 
+        //for parots functionalities
+        Route::get('/parot/create', 'ParotController@create')->name('parot.create');
+        Route::post('/parot', 'ParotController@store')->name('parot.save');
+
         Route::group(['middleware' => ['role:1']], function() {
             //super admin
             Route::get('/users', 'UserController@index')->name('user.index');

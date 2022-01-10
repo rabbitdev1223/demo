@@ -133,11 +133,11 @@ class HomeController extends Controller
                 $email_data['name'] = $user->name;
                 $email_data['password'] = $request->password;        
                 // send email with the template
-                Mail::send('welcome_email', $email_data, function ($message) use ($email_data) {
-                    $message->to($email_data['email'], $email_data['name'])
-                        ->subject('Welcome to Parots')
-                        ->from('info@parots.it', 'Welcom');
-                });
+                // Mail::send('welcome_email', $email_data, function ($message) use ($email_data) {
+                //     $message->to($email_data['email'], $email_data['name'])
+                //         ->subject('Welcome to Parots')
+                //         ->from('info@parots.it', 'Welcom');
+                // });
             return redirect()->route('user.index');
         }
         return redirect()->back()->withSuccess('Updated successfully!');
