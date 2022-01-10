@@ -23,7 +23,7 @@ class ParotController extends Controller
                 'name'=>'required',
                 'color' => 'required', 
                 'date_of_birth' => 'required',
-                "profileImage"=>'required',
+                
                 ]);
         
         if($request->hasFile('profileImage'))
@@ -42,7 +42,7 @@ class ParotController extends Controller
             
             if(in_array($fileActualExt,$allowed)){
                 if($_FILES['profileImage']['error'] ===  0){
-                    if($_FILES['profileImage']['size'] < 200000){
+                    if($_FILES['profileImage']['size'] < 2000000){
                                    
                         $fileNameNew = time() .".".$fileActualExt;
                         @mkdir("uploads/parots",0777);
@@ -51,7 +51,7 @@ class ParotController extends Controller
                         move_uploaded_file($_FILES['profileImage']['tmp_name'],$fileDestination);
                       
                     }else{
-                        return redirect()->back()->withErrors(['profileImage' => ['Size is limited to 200KB !']]);
+                        return redirect()->back()->withErrors(['profileImage' => ['Size is limited to 2MB !']]);
                     }
                 }else{
                     echo "You have an error uploading photo file!";
