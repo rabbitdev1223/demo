@@ -22,7 +22,7 @@ class CreateParotsTable extends Migration
                     ->constrained("breeds")
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('color');
             $table->foreignId('registered_by')
                     ->constrained("users")
