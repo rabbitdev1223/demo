@@ -63,7 +63,7 @@ class ParotController extends Controller
         
         $parot->name = $request->name;
         $parot->date_of_birth = $request->date_of_birth;
-        $parot->parot_id = uniqid() . date('y');
+        $parot->parot_id = strtoupper(uniqid()) . date('y');
         $parot->color = $request->color;
         $parot->breed_id = $request->breed;
         $parot->registered_by = Auth::user()->id;

@@ -38,7 +38,7 @@
                       <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
                     </div>
 			@endif
-	            <div class="col-xl-4">
+	            <div class="">
 	                <div class="card">
 	                    <div class="card-header pb-0">
 	                        <h4 class="card-title mb-0">New Parot</h4>
@@ -80,12 +80,12 @@
 								</div>
 								<div class="mb-3">
 									<label class="form-label">Razza </label>
-									<select class="form-control btn-square" name="breed">
+									<select class="form-control btn-square" name="breed" style="display:block">
                                         @foreach($breeds as $breed)
                                         <option value='{{ $breed->id }}'>{{ $breed->name }}</option>
                                         @endforeach
                                     </select>
-                                    <small class="form-text text-muted" >Is your breed not on the list? Contact us at info@parots.it</small>
+                                    <small class="form-text text-muted" style="display:block" >Is your breed not on the list? Contact us at info@parots.it</small>
 								</div>
 
                                 <div class="mb-3">
