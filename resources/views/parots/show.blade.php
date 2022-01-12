@@ -28,7 +28,7 @@ Parot Details
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">
-				@if(!session('success'))	
+				@if(session('success'))	
 					<div class="alert alert-primary dark alert-dismissible fade show" role="alert"> Success!
 						Your parrot has been added to your Dashboard!
 						<!-- <button class="btn btn-primary" type="button" title="">Add another parot!</button> -->
