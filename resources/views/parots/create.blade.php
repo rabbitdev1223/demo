@@ -28,15 +28,7 @@
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">
-			@if(session('success'))	
-				<div class="alert alert-primary dark alert-dismissible fade show" role="alert"> Success!
-					Your parrot has been added to your Dashboard!
-					<!-- <button class="btn btn-primary" type="button" title="">Add another parot!</button> -->
-					<!-- <button class="btn btn-info" type="button"></button> -->
-					<a href="javascript:void(0)" class="btn btn-warning " style="position:absolute;right:50px;top:10px">Go to my parot list!</a>
-					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
-				</div>
-			@endif
+			
 			@if ($errors->any())
 			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">Failed to create new parot!
                       <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>

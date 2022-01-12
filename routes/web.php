@@ -63,6 +63,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         //for parots functionalities
         Route::get('/parot/create', 'ParotController@create')->name('parot.create');
+        Route::get('/parot/{id}', 'ParotController@show')->name('parot.show');
+        
         Route::post('/parot', 'ParotController@store')->name('parot.save');
 
         Route::group(['middleware' => ['role:1']], function() {

@@ -16,6 +16,13 @@ class ParotController extends Controller
         $breeds = Breed::all();
         return view('parots.create')->with('breeds',$breeds);
     }
+    //
+    public function show($id){
+        $breeds = Breed::all();
+        $parot = Parot::findOrFail($id);
+        return view('parots.show')->with('current_parot',$parot)
+                                    ->with('breeds',$breeds);    
+    }
     public function store(Request $request){
         
             $parot = new Parot();
@@ -69,6 +76,6 @@ class ParotController extends Controller
         $parot->registered_by = Auth::user()->id;
         $parot->save();
      
-        return redirect()->back()->withSuccess('Created successfully!');
+        return redirect()->route('parot.show',$parot->id)->withSuccess('Created successfully!');
     }
 }
