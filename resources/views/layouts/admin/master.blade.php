@@ -17,6 +17,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
     <!-- Font Awesome-->
     @includeIf('layouts.admin.partials.css')
+    <script>
+    function onErrorImage(e){
+      e.onerror=null;
+      e.src="{{asset('assets/images/user/7.jpg')}}";
+    }
+  </script>
   </head>
   <body>
     <!-- Loader starts-->
@@ -27,12 +33,12 @@
     <!-- page-wrapper Start-->
     <div class="page-wrapper compact-sidebar" id="pageWrapper">
       <!-- Page Header Start-->
-      <!-- @includeIf('layouts.admin.partials.header') -->
+      @includeIf('layouts.admin.partials.header')
       <!-- Page Header Ends -->
       <!-- Page Body Start-->
       <div class="page-body-wrapper sidebar-icon">
         <!-- Page Sidebar Start-->
-        <!-- @includeIf('layouts.admin.partials.sidebar') -->
+        @includeIf('layouts.admin.partials.sidebar')
         <!-- Page Sidebar Ends-->
         <div class="page-body">
           <!-- Container-fluid starts-->
@@ -43,12 +49,12 @@
         <footer class="footer">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-6 footer-copyright">
-                <p class="mb-0">Copyright {{date('Y')}}-{{date('y', strtotime('+1 year'))}} © viho All rights reserved.</p>
+              <div class="col-md-12 footer-copyright">
+                <p class="mb-0">Copyright {{date('Y')}} - Tutti i diritti riservati parots.it- [link 1] T & C[/link 1] - [link 2] Privacy Policy [/link 2] [link 3] Contatti[/link 3]</p>
               </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i></p>
-              </div>
+              </div> -->
             </div>
           </div>
         </footer>

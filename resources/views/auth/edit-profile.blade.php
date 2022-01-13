@@ -8,12 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mycss.css') }}">
 
 @endpush
-<script>
-	function onErrorImage(e){
-		e.onerror=null;
-		e.src="{{asset('assets/images/user/7.jpg')}}";
-  }
-</script>
+
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')

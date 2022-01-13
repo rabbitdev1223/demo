@@ -16,6 +16,7 @@ class HomeController extends Controller
         return view('home.index');
     }
     public function editProfile(){
+        
         return view('auth.edit-profile')->with('current_user',Auth::user());
     }
     public function updateProfile(Request $request){

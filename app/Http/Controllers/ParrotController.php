@@ -4,28 +4,45 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Breed;
-use App\Models\Parot;
+use App\Models\parrot;
 use Auth;
-class ParotController extends Controller
+class parrotController extends Controller
 {
     //
     public function index(){
 
     }
     public function create(){
+
+        // $str = 'GTCAG';
+        // //check length
+        // if (!(1 <= strlen($str) && (strlen($str)<=1000)))
+        //     return;
+        // //check valid characters
+        // $complement_map = ['G'=>'C','C'=>'G','T'=>'A','A'=>'T'];
+        
+        // $rev_str = strrev($str);
+        // $arr_char = str_split($rev_str);
+        // $ret_val = "";
+        // foreach ($arr_char as $key => $val) {
+        //     $ret_val = $ret_val . $complement_map[$val];
+        // }
+        // dd($ret_val);
+        // dd(request()->route()->getPrefix());
+       
         $breeds = Breed::all();
-        return view('parots.create')->with('breeds',$breeds);
+        return view('parrot.create')->with('breeds',$breeds);
     }
     //
     public function show($id){
         $breeds = Breed::all();
-        $parot = Parot::findOrFail($id);
-        return view('parots.show')->with('current_parot',$parot)
+        $parrot = parrot::findOrFail($id);
+        return view('parrot.show')->with('current_parrot',$parrot)
                                     ->with('breeds',$breeds);    
     }
     public function store(Request $request){
         
-            $parot = new Parot();
+            $parrot = new parrot();
             $request->validate([
                 'name'=>'required',
                 'color' => 'required', 
@@ -52,9 +69,9 @@ class ParotController extends Controller
                     if($_FILES['profileImage']['size'] < 2000000){
                                    
                         $fileNameNew = time() .".".$fileActualExt;
-                        @mkdir("uploads/parots",0777);
-                        $fileDestination = 'uploads/parots/'.$fileNameNew;
-                        $parot->photo = $fileNameNew;
+                        @mkdir("uploads/parrots",0777);
+                        $fileDestination = 'uploads/parrots/'.$fileNameNew;
+                        $parrot->photo = $fileNameNew;
                         move_uploaded_file($_FILES['profileImage']['tmp_name'],$fileDestination);
                       
                     }else{
@@ -68,14 +85,14 @@ class ParotController extends Controller
             }
         }
         
-        $parot->name = $request->name;
-        $parot->date_of_birth = $request->date_of_birth;
-        $parot->parot_id = strtoupper(uniqid()) . date('y');
-        $parot->color = $request->color;
-        $parot->breed_id = $request->breed;
-        $parot->registered_by = Auth::user()->id;
-        $parot->save();
+        $parrot->name = $request->name;
+        $parrot->date_of_birth = $request->date_of_birth;
+        $parrot->parrot_id = strtoupper(uniqid()) . date('y');
+        $parrot->color = $request->color;
+        $parrot->breed_id = $request->breed;
+        $parrot->registered_by = Auth::user()->id;
+        $parrot->save();
      
-        return redirect()->route('parot.show',$parot->id)->withSuccess('Created successfully!');
+        return redirect()->route('parrot.show',$parrot->id)->withSuccess('Created successfully!');
     }
 }

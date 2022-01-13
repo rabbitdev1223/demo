@@ -11,6 +11,7 @@ class UserController extends Controller
     //
     public function index()
     {
+        // dd(request()->route()->getPrefix());
         $users = User::all();
        
         return view('users.userlist')->with('users',$users);

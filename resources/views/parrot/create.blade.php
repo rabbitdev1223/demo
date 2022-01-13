@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-	New Parot
+	New parrot
 @endsection
 
 @push('css')
@@ -19,10 +19,10 @@
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>New Parot</h3>
+			<h3>New Parrot</h3>
 		@endslot
-		<li class="breadcrumb-item">Parots</li>
-		<li class="breadcrumb-item active">New Parot</li>
+		<li class="breadcrumb-item">Parrots</li>
+		<li class="breadcrumb-item active">New Parrot</li>
 	@endcomponent
 	
 	<div class="container-fluid">
@@ -30,20 +30,20 @@
 	        <div class="row">
 			
 			@if ($errors->any())
-			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">Failed to create new parot!
+			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">Failed to create new parrot!
                       <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
                     </div>
 			@endif
 	            <div class="">
 	                <div class="card">
 	                    <div class="card-header pb-0">
-	                        <h4 class="card-title mb-0">New Parot</h4>
+	                        <h4 class="card-title mb-0">New parrot</h4>
 	                        <div class="card-options">
 	                            <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
 	                        </div>
 	                    </div>
 	                    <div class="card-body">
-	                        <form class="theme-form profile-form" method="post" enctype="multipart/form-data" action="{{ route('parot.save') }}">
+	                        <form class="theme-form profile-form" method="post" enctype="multipart/form-data" action="{{ route('parrot.save') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />    
 							<div class="row mb-2">
 	                                <div class="profile-title">
@@ -81,7 +81,7 @@
                                         <option value='{{ $breed->id }}'>{{ $breed->name }}</option>
                                         @endforeach
                                     </select>
-                                    <small class="form-text text-muted" style="display:block" >Is your breed not on the list? Contact us at info@parots.it</small>
+                                    <small class="form-text text-muted" style="display:block" >Is your breed not on the list? Contact us at info@parrots.it</small>
 								</div>
 
                                 <div class="mb-3">
@@ -102,7 +102,7 @@
 	</div>
 	
 	@push('scripts')
-	<script src="{{ asset('assets/js/parots/profile.js') }}"></script>
+	<script src="{{ asset('assets/js/parrots/profile.js') }}"></script>
     <!-- Plugins JS start-->
     <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
     <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>

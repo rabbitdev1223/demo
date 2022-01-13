@@ -5,7 +5,7 @@
       <div class="dark-logo-wrapper"><a href="{{ route('index') }}"><img class="img-fluid" src="{{asset('assets/images/logo/dark-logo.png')}}" alt=""></a></div>
       <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle">    </i></div>
     </div>
-    <div class="left-menu-header col">
+    <!-- <div class="left-menu-header col">
       <ul>
         <li>
           <form class="form-inline search-form">
@@ -16,10 +16,10 @@
           <span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
         </li>
       </ul>
-    </div>
+    </div> -->
     <div class="nav-right col pull-right right-menu p-0">
       <ul class="nav-menus">
-        <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
+        <!-- <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
         <li class="onhover-dropdown">
           <div class="bookmark-box"><i data-feather="star"></i></div>
           <div class="bookmark-dropdown onhover-show-div">
@@ -119,9 +119,9 @@
             </li>
             <li class="text-center"> <a class="f-w-700" href="javascript:void(0)">See All     </a></li>
           </ul>
-        </li>
+        </li> -->
         <li class="onhover-dropdown p-0">
-          <button class="btn btn-primary-light" type="button"><i data-feather="log-out"></i>Log out</button>
+          <a href="{{route('logout.perform')}}"><button class="btn btn-primary-light" type="button"><i data-feather="log-out"></i>Log out</button></a>
         </li>
       </ul>
     </div>

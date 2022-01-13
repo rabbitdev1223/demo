@@ -62,17 +62,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/update_profile', 'HomeController@updateProfile')->name('profile.update');
 
         //for parots functionalities
-        Route::get('/parot/create', 'ParotController@create')->name('parot.create');
-        Route::get('/parot/{id}', 'ParotController@show')->name('parot.show');
+        Route::prefix('parrot')->group(function (){
+            Route::get('create', 'ParrotController@create')->name('parrot.create');
+            Route::get('{id}', 'ParrotController@show')->name('parrot.show');
+            Route::post('', 'ParrotController@store')->name('parrot.save');
+        });
         
-        Route::post('/parot', 'ParotController@store')->name('parot.save');
-
-        Route::group(['middleware' => ['role:1']], function() {
+        Route::group(['prefix'=>'user', 'middleware' => ['role:1']], function() {
             //super admin
-            Route::get('/users', 'UserController@index')->name('user.index');
-            Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
-            Route::get('/user/{id}/show', 'UserController@show')->name('user.show');
-            Route::get('/user/create', 'UserController@create')->name('user.create');
+            Route::get('', 'UserController@index')->name('user.index');
+            Route::get('{id}/edit', 'UserController@edit')->name('user.edit');
+            Route::get('{id}/show', 'UserController@show')->name('user.show');
+            Route::get('create', 'UserController@create')->name('user.create');
         });
     });
 

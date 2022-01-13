@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Parot extends Model
+class Parrot extends Model
 {
     use HasFactory;
     
@@ -14,5 +14,5 @@ class Parot extends Model
      *
      * @var string
      */
-    protected $table = 'parots';
+    protected $table = 'parrots';
 }

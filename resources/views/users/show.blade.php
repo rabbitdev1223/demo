@@ -102,6 +102,7 @@
 								<div class="mb-3">
 									<label class="form-label">I'm a </label>
 									<select class="form-control btn-square" name="type" disabled>
+										<option value="0"@if ($current_user->type == 0) {{ 'selected' }} @endif></option>
 										<option value="1" @if ($current_user->type == 1) {{ 'selected' }} @endif>allevatore</option>
 										<option value="2" @if ($current_user->type == 2) {{ 'selected' }} @endif>appassionato</option>
 										

@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('surname');
             $table->integer('age')->nullable();
             $table->string('profile')->nullable();
-            $table->tinyInteger('type')->default(0); //0:allevatore  1:appassionato
+            $table->tinyInteger('type')->default(0); //0:none;1:allevatore  2:appassionato
             $table->string('farm_address')->nullable();
             $table->string('city')->nullable();
             $table->string('zipcode',30)->nullable();

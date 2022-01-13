@@ -13,9 +13,9 @@ class CreateParotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parots', function (Blueprint $table) {
+        Schema::create('parrots', function (Blueprint $table) {
             $table->id();
-            $table->string('parot_id')->unique();
+            $table->string('parrot_id')->unique();
             $table->string('name');
             $table->string('date_of_birth');
             $table->foreignId('breed_id')
@@ -39,6 +39,6 @@ class CreateParotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parots');
+        Schema::dropIfExists('parrots');
     }
 }
