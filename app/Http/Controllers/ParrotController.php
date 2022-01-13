@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Breed;
-use App\Models\parrot;
+use App\Models\Parrot;
 use Auth;
 class parrotController extends Controller
 {
@@ -36,13 +36,13 @@ class parrotController extends Controller
     //
     public function show($id){
         $breeds = Breed::all();
-        $parrot = parrot::findOrFail($id);
+        $parrot = Parrot::findOrFail($id);
         return view('parrot.show')->with('current_parrot',$parrot)
                                     ->with('breeds',$breeds);    
     }
     public function store(Request $request){
         
-            $parrot = new parrot();
+            $parrot = new Parrot();
             $request->validate([
                 'name'=>'required',
                 'color' => 'required', 
