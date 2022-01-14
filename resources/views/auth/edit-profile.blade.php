@@ -31,7 +31,7 @@
                       <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
                     </div>
 			@endif
-	            <div class="col-xl-4">
+	            <div class="">
 	                <div class="card">
 	                    <div class="card-header pb-0">
 	                        <h4 class="card-title mb-0">User Profile</h4>
