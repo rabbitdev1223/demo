@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'nickname' => 'supadmin',
             'surname' => 'sup',
             'role' => '1',
+            'email_verified_at' => now(),
             'password' => Hash::make('11111111'),
         ]);
     }

@@ -25,13 +25,13 @@
 	                            <div class="small-group">
 	                                <div class="input-group">
 	                                    <span class="input-group-text"><i class="icon-user"></i></span>
-	                                    <input class="form-control" type="text" name="name" placeholder="Fist Name" value="sdf" />
+	                                    <input class="form-control" type="text" name="name" placeholder="Fist Name" value="{{ old('name')}}" />
                                         
                                     </div>
                                     
 	                                <div class="input-group">
 	                                    <span class="input-group-text"><i class="icon-user"></i></span>
-	                                    <input class="form-control"  type="text"  name="surname" placeholder="Last Name" value="sdf"/>
+	                                    <input class="form-control"  type="text"  name="surname" placeholder="Last Name" value="{{ old('surname')}}"/>
                                        
                                     </div>
                                  
@@ -47,7 +47,7 @@
 	                            <label>Email Address</label>
 	                            <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-email"></i></span>
-	                                <input class="form-control" type="email" required="" name="email" value="demo@gmail.com" placeholder="Test@gmail.com" />
+	                                <input class="form-control" type="email" required="" name="email"  value="{{ old('email')}}" />
                                  
 	                            </div>
                                 @if ($errors->has('email'))
@@ -58,7 +58,7 @@
 	                            <label>Password</label>
 	                            <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-lock"></i></span>
-	                                <input class="form-control" type="password" name="password" required="" value="11111111" placeholder="*********" />
+	                                <input class="form-control" type="password" name="password" required=""  placeholder="*********" value="{{ old('password')}}" />
 	                                <!-- <div class="show-hide"><span class="show"> </span></div> -->
                                        
                                 </div>
@@ -83,7 +83,7 @@
 	                            <label>Nickname</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="icon-user"></i></span>
-                                    <input class="form-control" type="text" required="" name="nickname" placeholder="Nick Name" value="aa" />
+                                    <input class="form-control" type="text" required="" name="nickname" placeholder="Nick Name" value="{{ old('nickname')}}" />
                                 </div>
                                 @if ($errors->has('nickname'))
                                     <span class="text-danger text-left">{{ $errors->first('nickname') }}</span>

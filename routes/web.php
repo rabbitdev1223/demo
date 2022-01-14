@@ -48,8 +48,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          * Logout Routes
          */
 
-        Route::get('/', 'HomeController@index')->name('index');
-       
+        
         /**
          * Verification Routes
          */
@@ -84,6 +83,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * Dashboard Routes
          */
+        Route::get('/', 'HomeController@index')->name('index');
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
     });
 });
