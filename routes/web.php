@@ -48,7 +48,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          * Logout Routes
          */
 
-        
         /**
          * Verification Routes
          */
@@ -57,6 +56,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/email/resend', 'VerificationController@resend')->name('verification.resend');
         
         Route::group(['middleware' => ['verified','password.init']], function() {
+
+            Route::get('/', 'HomeController@index')->name('index');
+            Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+            Route::view('verification/success', 'verification.success');
+
             //edit profile
             Route::get('/edit_profile', 'HomeController@editProfile')->name('profile.show');
             Route::post('/update_profile', 'HomeController@updateProfile')->name('profile.update');
@@ -79,11 +83,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     });
 
    
-    Route::group(['middleware' => ['auth','verified']], function() {
-        /**
-         * Dashboard Routes
-         */
-        Route::get('/', 'HomeController@index')->name('index');
-        Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
-    });
+    // Route::group(['middleware' => ['auth','verified']], function() {
+    //     /**
+    //      * Dashboard Routes
+    //      */
+       
+    // });
 });
