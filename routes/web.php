@@ -43,7 +43,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     });
     
 
-    Route::group(['middleware' => ['auth','password.init']], function() {
+    Route::group(['middleware' => ['auth']], function() {
         /**
          * Logout Routes
          */
@@ -57,23 +57,25 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify')->middleware(['signed']);
         Route::post('/email/resend', 'VerificationController@resend')->name('verification.resend');
         
-        //edit profile
-        Route::get('/edit_profile', 'HomeController@editProfile')->name('profile.show');
-        Route::post('/update_profile', 'HomeController@updateProfile')->name('profile.update');
+        Route::group(['middleware' => ['verified','password.init']], function() {
+            //edit profile
+            Route::get('/edit_profile', 'HomeController@editProfile')->name('profile.show');
+            Route::post('/update_profile', 'HomeController@updateProfile')->name('profile.update');
 
-        //for parots functionalities
-        Route::prefix('parrot')->group(function (){
-            Route::get('create', 'ParrotController@create')->name('parrot.create');
-            Route::get('{id}', 'ParrotController@show')->name('parrot.show');
-            Route::post('', 'ParrotController@store')->name('parrot.save');
-        });
-        
-        Route::group(['prefix'=>'user', 'middleware' => ['role:1']], function() {
-            //super admin
-            Route::get('', 'UserController@index')->name('user.index');
-            Route::get('{id}/edit', 'UserController@edit')->name('user.edit');
-            Route::get('{id}/show', 'UserController@show')->name('user.show');
-            Route::get('create', 'UserController@create')->name('user.create');
+            //for parots functionalities
+            Route::prefix('parrot')->group(function (){
+                Route::get('create', 'ParrotController@create')->name('parrot.create');
+                Route::get('{id}', 'ParrotController@show')->name('parrot.show');
+                Route::post('', 'ParrotController@store')->name('parrot.save');
+            });
+            
+            Route::group(['prefix'=>'user', 'middleware' => ['role:1']], function() {
+                //super admin
+                Route::get('', 'UserController@index')->name('user.index');
+                Route::get('{id}/edit', 'UserController@edit')->name('user.edit');
+                Route::get('{id}/show', 'UserController@show')->name('user.show');
+                Route::get('create', 'UserController@create')->name('user.create');
+            });
         });
     });
 

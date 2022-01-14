@@ -128,17 +128,20 @@ class HomeController extends Controller
        
             
         $user->save();
+
         if (!isset($request->id)){
             //send welcome email with password
+            $user->email_verified_at = now(); //made email verified
+            $user->save();
               $email_data['email'] = $user->email;
                 $email_data['name'] = $user->name;
                 $email_data['password'] = $request->password;        
                 // send email with the template
-                // Mail::send('welcome_email', $email_data, function ($message) use ($email_data) {
-                //     $message->to($email_data['email'], $email_data['name'])
-                //         ->subject('Welcome to Parots')
-                //         ->from('info@parots.it', 'Welcom');
-                // });
+                Mail::send('welcome_email', $email_data, function ($message) use ($email_data) {
+                    $message->to($email_data['email'], $email_data['name'])
+                        ->subject('Welcome to Parots')
+                        ->from('info@parots.it', 'Welcom');
+                });
             return redirect()->route('user.index');
         }
         return redirect()->back()->withSuccess('Updated successfully!');

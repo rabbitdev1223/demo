@@ -2,8 +2,7 @@
 
 @section('content')
     <div class="bg-light p-5 rounded">
-        <h1>Dashboard</h1>
-        
+      
         @if (session('resent'))
             <div class="alert alert-success" role="alert">
                 A fresh verification link has been sent to your email address.
