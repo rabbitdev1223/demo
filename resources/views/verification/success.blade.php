@@ -39,7 +39,7 @@
               <h3>Email verificata!</h3>
               <p class="sub-content">Il tuo inridizzo E-mail è satto verificato ed il tuo account è ora attivo. 
                   <br> Adesso puoi collegarti ed iniziare ad usare Parots!  </p>
-                  <a class="btn btn-primary btn-lg" href="{{route('profile.show')}}"> ENTRA ORA</a>
+                  <a class="btn btn-primary btn-lg" href="{{route('profsile.show')}}"> ENTRA ORA</a>
             </div>
           </div>
         </div>
