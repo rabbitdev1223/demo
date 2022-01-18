@@ -45,7 +45,7 @@
             <div class="col-md-8 offset-md-2">
                 <h3>Benvenuto a bordo!</h3>
                 <p class="sub-content">Entro qualche minuto riceverai una Mail di verifica, clicca sul Link per poter verificare la tua Mail e poter utilizzare Parots.it <br>  </p>
-                <a class="btn btn-primary btn-lg" href="{{ route('verification.resend') }}">INVIA DI NUOVO LA MAIL</a>  
+                <a class="btn btn-primary btn-lg" href="{{ route('averification.resend') }}">INVIA DI NUOVO LA MAIL</a>  
               
               </div>
           </div>
