@@ -117,8 +117,8 @@
 	        
 	    </div>
 		<!--Toast-->
-		@component('components.toast')	
-		@endcomponent
+		<!-- @component('components.toast')	
+		@endcomponent -->
 	
 		<!----------->
 	</div>

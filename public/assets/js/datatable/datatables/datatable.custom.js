@@ -11,6 +11,66 @@ var usertable = $('#userlist').DataTable({
     ]
 });
 
+function show_notify(error,msg){
+    if(error == 0){
+        $.notify({
+            title:'Success',
+            message:msg
+         },
+         {
+            type:'primary',
+            allow_dismiss:false,
+            newest_on_top:false ,
+            mouse_over:false,
+            showProgressbar:false,
+            spacing:10,
+            timer:2000,
+            placement:{
+              from:'top',
+              align:'right'
+            },
+            offset:{
+              x:30,
+              y:30
+            },
+            delay:1000 ,
+            z_index:10000,
+            animate:{
+              enter:'animated bounce',
+              exit:'animated bounce'
+          }
+        });
+    }
+    else{
+        $.notify({
+            title:'Failed',
+            message:msg
+         },
+         {
+            type:'danger',
+            allow_dismiss:false,
+            newest_on_top:false ,
+            mouse_over:false,
+            showProgressbar:false,
+            spacing:10,
+            timer:2000,
+            placement:{
+              from:'top',
+              align:'right'
+            },
+            offset:{
+              x:30,
+              y:30
+            },
+            delay:1000 ,
+            z_index:10000,
+            animate:{
+              enter:'animated bounce',
+              exit:'animated bounce'
+          }
+        });
+    }
+}
 var mode = 0; //0:delete user;1:suspend user;2:unsuspend user;
 var modalConfirm = function(callback){
     
@@ -71,18 +131,18 @@ var modalConfirm = function(callback){
                 function(data, status){
                 //    alert("Data: " + data + "\nStatus: " + status);
                     if(data=="ok" && status=="success"){
-                        $("#successToast .toast-body").html("success to delete");
-                        new bootstrap.Toast(document.querySelector('#successToast')).show();
-                     
+                        // $("#successToast .toast-body").html("success to delete");
+                        // new bootstrap.Toast(document.querySelector('#successToast')).show();
+                        show_notify(0,"success to delete");
                         usertable
                         .row( target )
                         .remove()
                         .draw();                        
                     }
                     else{
-                        $("#failedToast .toast-body").html("failed to delete");
-                        new bootstrap.Toast(document.querySelector('#failedToast')).show();
-                     
+                        // $("#failedToast .toast-body").html("failed to delete");
+                        // new bootstrap.Toast(document.querySelector('#failedToast')).show();
+                        show_notify(1,"Failed to delete");
                     }
                 });
 
@@ -97,42 +157,17 @@ var modalConfirm = function(callback){
                 function(data, status){
                 //    alert("Data: " + data + "\nStatus: " + status);
                     if(data=="ok" && status=="success"){
-                        $("#successToast .toast-body").html("Updated successfully!");
-                        new bootstrap.Toast(document.querySelector('#successToast')).show();
+                        // $("#successToast .toast-body").html("Updated successfully!");
+                        // new bootstrap.Toast(document.querySelector('#successToast')).show();
                      
-                        // $.notify({
-                        //     title:'Success to update',
-                        //     message:'Updated Succesfully'
-                        //  },
-                        //  {
-                        //     type:'primary',
-                        //     allow_dismiss:false,
-                        //     newest_on_top:false ,
-                        //     mouse_over:false,
-                        //     showProgressbar:false,
-                        //     spacing:10,
-                        //     timer:2000,
-                        //     placement:{
-                        //       from:'top',
-                        //       align:'right'
-                        //     },
-                        //     offset:{
-                        //       x:30,
-                        //       y:30
-                        //     },
-                        //     delay:1000 ,
-                        //     z_index:10000,
-                        //     animate:{
-                        //       enter:'animated bounce',
-                        //       exit:'animated bounce'
-                        //   }
-                        // });
+                        show_notify(0,"Updated successfully!");
                         target.addClass('d-none');
                         target.next().removeClass('d-none');                        
                     }
                     else{
-                        $("#failedToast .toast-body").html("Failed to udpated");
-                        new bootstrap.Toast(document.querySelector('#successToast')).show();
+                        show_notify(1,"Failed to udpated!");
+                        // $("#failedToast .toast-body").html("Failed to udpated");
+                        // new bootstrap.Toast(document.querySelector('#successToast')).show();
                      
                     }
                 });
@@ -147,14 +182,16 @@ var modalConfirm = function(callback){
                 function(data, status){
                 //    alert("Data: " + data + "\nStatus: " + status);
                     if(data=="ok" && status=="success"){
-                        $("#successToast .toast-body").html("Updated successfully!");
-                        new bootstrap.Toast(document.querySelector('#successToast')).show();
+                        // $("#successToast .toast-body").html("Updated successfully!");
+                        // new bootstrap.Toast(document.querySelector('#successToast')).show();
+                        show_notify(0,"Updated successfully!");
                         target.addClass('d-none');
                         target.prev().removeClass('d-none');                        
                     }
                     else{
-                        $("#failedToast .toast-body").html("Failed to udpated");
-                        new bootstrap.Toast(document.querySelector('#successToast')).show();
+                        // $("#failedToast .toast-body").html("Failed to udpated");
+                        // new bootstrap.Toast(document.querySelector('#successToast')).show();
+                        show_notify(1,"Failed to udpated!");
                     }
                 });
     
@@ -188,8 +225,9 @@ var modalConfirm = function(callback){
         //    alert("Data: " + data + "\nStatus: " + status);
         
             if(status=="success"){
-                $("#successToast .toast-body").html("Updated successfully!");
-                new bootstrap.Toast(document.querySelector('#successToast')).show();
+                show_notify(0,"Updated successfully!");
+                // $("#successToast .toast-body").html("Updated successfully!");
+                // new bootstrap.Toast(document.querySelector('#successToast')).show();
                 data = JSON.parse(data);
                 
                 if (data['role'] == 1){
@@ -211,8 +249,9 @@ var modalConfirm = function(callback){
                    
                     $(evt.target).prop('checked', false);
                 }
-                $("#failedToast .toast-body").html("Failed to udpated");
-                new bootstrap.Toast(document.querySelector('#failedToast')).show();
+                // $("#failedToast .toast-body").html("Failed to udpated");
+                // new bootstrap.Toast(document.querySelector('#failedToast')).show();
+                show_notify(1,"Failed to udpated");
             }
         });
   });
