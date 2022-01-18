@@ -1,7 +1,6 @@
-@extends('admin.errors.master')
+@extends('errors.master')
 
 @section('title')Error
- {{ $title }}
 @endsection
 
 @push('css')
