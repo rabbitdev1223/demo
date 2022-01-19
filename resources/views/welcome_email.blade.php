@@ -55,7 +55,8 @@
                     <table style="width: 650px; margin: 0 auto; margin-bottom: 30px">
                       <tbody>
                         <tr>
-                          <td><a href="index.html"><img class="img-fluid" src="https://demo.parots.it/parots-email.png" alt=""></a></td>
+                          <td><a href="index.html">
+                              <img class="img-fluid" src="{ $message->embed('https://demo.parots.it/parots-email.png') }}" alt=""></a></td>
                           <td style="text-align: right; color:#999"><span>Parots.it - Gestionale in Cloud per allevatori di pappagalli</span></td>
                         </tr>
                       </tbody>
