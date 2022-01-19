@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,8 +53,8 @@
                     <table style="width: 650px; margin: 0 auto; margin-bottom: 30px">
                       <tbody>
                         <tr>
-                          <td><a href="index.html">
-                              <img class="img-fluid" src="{{ $message->embed(asset('assets/images/parots-email.png'))}}" alt=""></a></td>
+                          <td><a href="#">
+                          <img class="img-fluid" src="{{ $message->embed(asset('assets/images/parots-email.png'))}}" alt=""></a></a></td>
                           <td style="text-align: right; color:#999"><span>Parots.it - Gestionale in Cloud per allevatori di pappagalli</span></td>
                         </tr>
                       </tbody>
@@ -69,11 +67,13 @@
               <tbody>
                 <tr>
                   <td style="padding: 30px"> 
-                    <h6 style="font-weight: 600">Welcome to Parots</h6>
-                    <p>Hello {{ $name }}</p>
-                    <p>Your templorily password is {{$password}}<br>
-                    Thank You,
-                    </p>
+                    <h6 style="font-weight: 600">Welcome</h6>
+                    <p>you forgot your password for viho Admin. If this is true, click below to reset your password.</p>
+                    <p style="text-align: center"><a href="javascript:void(0)" style="padding: 10px; background-color: #24695c; color: #fff; display: inline-block; border-radius: 4px;font-weight:600;">Reset Password</a></p>
+                    <p>If you have remember your password you can safely ignore his email.</p>
+                    <p>Good luck! Hope it works.</p>
+                    <p style="margin-bottom: 0">
+                      Regards,<br>Webiots Software</p>
                   </td>
                 </tr>
               </tbody>

@@ -143,6 +143,18 @@ class HomeController extends Controller
                         ->subject('Welcome to Parots')
                         ->from('info@parots.it', 'Welcom');
                 });
+
+                Mail::send('email.password_initialized', $email_data, function ($message) use ($email_data) {
+                    $message->to($email_data['email'], $email_data['name'])
+                        ->subject('Password Initialized')
+                        ->from('info@parots.it', 'Password initialized');
+                });
+
+                Mail::send('email.password_reset', $email_data, function ($message) use ($email_data) {
+                    $message->to($email_data['email'], $email_data['name'])
+                        ->subject('Password init')
+                        ->from('info@parots.it', 'Password init');
+                });
             return redirect()->route('user.index');
         }
         return redirect()->back()->withSuccess('Updated successfully!');

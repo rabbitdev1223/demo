@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,8 +53,8 @@
                     <table style="width: 650px; margin: 0 auto; margin-bottom: 30px">
                       <tbody>
                         <tr>
-                          <td><a href="index.html">
-                              <img class="img-fluid" src="{{ $message->embed(asset('assets/images/parots-email.png'))}}" alt=""></a></td>
+                          <td><a href="#">
+                          <img class="img-fluid" src="{{ $message->embed(asset('assets/images/parots-email.png'))}}" alt=""></a></a></td>
                           <td style="text-align: right; color:#999"><span>Parots.it - Gestionale in Cloud per allevatori di pappagalli</span></td>
                         </tr>
                       </tbody>
@@ -69,11 +67,7 @@
               <tbody>
                 <tr>
                   <td style="padding: 30px"> 
-                    <h6 style="font-weight: 600">Welcome to Parots</h6>
-                    <p>Hello {{ $name }}</p>
-                    <p>Your templorily password is {{$password}}<br>
-                    Thank You,
-                    </p>
+                    <p>Congratulations, your password has been reset</p>
                   </td>
                 </tr>
               </tbody>
