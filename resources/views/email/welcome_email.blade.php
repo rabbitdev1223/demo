@@ -70,10 +70,8 @@
                 <tr>
                   <td style="padding: 30px"> 
                     <h6 style="font-weight: 600">Welcome to Parots</h6>
-                    <p>Hello {{ $name }},<br><br></p>
-                    
-                    <p>
-                    Your templorily password is {{$password}}
+                    <p>Hello {{ $name }},<br><br>
+                    Your templorily password is {{$password}}<br>
                     Thank You,
                     </p>
                   </td>
