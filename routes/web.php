@@ -36,12 +36,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
        Route::get('forgot-password/{token}', 'UserController@forgotPasswordValidate')->name('forgotPasswordValidate');
        Route::get('reset-password', 'UserController@resetPassword')->name('reset-password');
        Route::put('reset-password', 'UserController@updatePassword')->name('update-password');
+       
+       Route::post('/password_init', 'UserController@password_init')->name('password.init');
     });
     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
    
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/create_password', 'UserController@create_password')->name('create_password');
-        Route::post('/password_init', 'UserController@password_init')->name('password.init');
+        
  
     });
     

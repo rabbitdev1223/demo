@@ -60,7 +60,7 @@ class UserController extends Controller
             $email = $user->email;
             return view('auth.creat-password', compact('email'));
         }
-        return redirect()->route('login')->with('failed', 'Password reset link is expired');
+        return redirect()->route('login')->withErrors('Password reset link is expired');
     }
      /**
      * Reset password

@@ -16,6 +16,7 @@
 	                <div class="login-card">
 	                    <form class="theme-form login-form" method="post"  action="{{ route('password.init') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+							<input type="hidden" name="email" value="{{ $email | Auth::user()->email }}" />
 							<h4 class="mb-3">Create Your Password</h4>
 	                        <div class="form-group">
 	                            <label>New Password</label>
