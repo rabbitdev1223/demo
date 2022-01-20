@@ -47,7 +47,7 @@ class UserController extends Controller
             $user = Auth::user();
         }
         else{
-            $user = User::where('token', $token)->first();
+            $user = User::where('token', $request->token)->first();
         }
         if (!$user){
             return redirect()->route('login')->withErrors('Cannot find user!');
