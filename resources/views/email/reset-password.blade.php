@@ -69,7 +69,7 @@
                   <td style="padding: 30px"> 
                     <h6 style="font-weight: 600">Welcome</h6>
                     <p>you forgot your password for viho Admin. If this is true, click below to reset your password.</p>
-                    <p style="text-align: center"><a href="javascript:void(0)" style="padding: 10px; background-color: #24695c; color: #fff; display: inline-block; border-radius: 4px;font-weight:600;">Reset Password</a></p>
+                    <p style="text-align: center"><a href="{{route('forgotPasswordValidate',$user['token'])}}" style="padding: 10px; background-color: #24695c; color: #fff; display: inline-block; border-radius: 4px;font-weight:600;">Reset Password</a></p>
                     <p>If you have remember your password you can safely ignore his email.</p>
                     <p>Good luck! Hope it works.</p>
                     <p style="margin-bottom: 0">

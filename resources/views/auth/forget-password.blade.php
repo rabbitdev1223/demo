@@ -16,38 +16,7 @@
 	                <div class="login-card">
 	                    <div class="login-main">
 	                        <form class="theme-form login-form">
-	                            <h4 class="mb-3">Reset Your Password</h4>
-	                            <div class="form-group">
-	                                <label>Enter Your Mobile Number</label>
-	                                <div class="row">
-	                                    <div class="col-4 col-sm-3">
-	                                        <input class="form-control" type="text" value="+ 91" />
-	                                    </div>
-	                                    <div class="col-8 col-sm-9">
-	                                        <input class="form-control" type="tel" value="000-000-0000" />
-	                                    </div>
-	                                </div>
-	                            </div>
-	                            <div class="form-group">
-	                                <button class="btn btn-primary btn-block" type="submit">Send</button>
-	                            </div>
-	                            <div class="form-group">
-	                                <span class="reset-password-link">If don't receive OTP? <a class="btn-link text-danger" href="javascript:void(0)">Resend</a></span>
-	                            </div>
-	                            <div class="form-group">
-	                                <label>Enter OTP</label>
-	                                <div class="row">
-	                                    <div class="col">
-	                                        <input class="form-control text-center opt-text" type="text" value="00" maxlength="2" />
-	                                    </div>
-	                                    <div class="col">
-	                                        <input class="form-control text-center opt-text" type="text" value="00" maxlength="2" />
-	                                    </div>
-	                                    <div class="col">
-	                                        <input class="form-control text-center opt-text" type="text" value="00" maxlength="2" />
-	                                    </div>
-	                                </div>
-	                            </div>
+	                           
 	                            <h6>Create Your Password</h6>
 	                            <div class="form-group">
 	                                <label>New Password</label>

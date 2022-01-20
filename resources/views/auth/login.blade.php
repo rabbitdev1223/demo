@@ -44,7 +44,7 @@
                                 <input id="checkbox1" type="checkbox" />
                                 <label for="checkbox1">Remember password</label>
                             </div>
-                            <a class="link" href="/route('forget-password')">Forgot password?</a>
+                            <a class="link" href="javascript:goReset()">Forgot password?</a>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary btn-block" type="submit">Sign in</button>
@@ -63,6 +63,13 @@
 
 	
     @push('scripts')
+    <script>
+        function goReset(){
+
+            var nickname = $("input[name=nickname]").val();
+            location.href = "{{route('reset-password')}}" + "?email=" + nickname ; 
+        }
+    </script>
     @endpush
 
 @endsection

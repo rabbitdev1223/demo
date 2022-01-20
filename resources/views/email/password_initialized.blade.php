@@ -67,7 +67,7 @@
               <tbody>
                 <tr>
                   <td style="padding: 30px"> 
-                    <p>Congratulations, your password has been reset</p>
+                    <p style="text-align: center"> <h3 style="font-weight: 600">Congratulations, your password has been reset</h3></p>
                   </td>
                 </tr>
               </tbody>

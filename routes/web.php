@@ -33,6 +33,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/login', 'LoginController@show')->name('login.show');
         Route::post('/login', 'LoginController@login')->name('login.perform');
 
+       Route::get('forgot-password/{token}', 'UserController@forgotPasswordValidate')->name('forgotPasswordValidate');
+       Route::get('reset-password', 'UserController@resetPassword')->name('reset-password');
+       Route::put('reset-password', 'UserController@updatePassword')->name('update-password');
     });
     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
    
