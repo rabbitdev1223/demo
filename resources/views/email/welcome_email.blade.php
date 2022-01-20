@@ -56,7 +56,7 @@
                       <tbody>
                         <tr>
                           <td><a href="index.html">
-                              <img class="img-fluid" src="{{ $message->embed(asset('assets/images/parots-email.png'))}}" alt=""></a></td>
+                              <img class="img-fluid" src="{{ asset('assets/images/parots-email.png')}}" alt=""></a></td>
                           <td style="text-align: right; color:#999"><span>Parots.it - Gestionale in Cloud per allevatori di pappagalli</span></td>
                         </tr>
                       </tbody>

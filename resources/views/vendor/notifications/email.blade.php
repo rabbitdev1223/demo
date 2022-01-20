@@ -71,7 +71,7 @@
                   <td style="padding: 30px"> 
                     <h6 style="font-weight: 600">Email Verify</h6>
                     <p>Hello!Please click the button below to verify your email address.</p>
-                    <p style="text-align: center"><a href={{$actionUrl}} style="padding: 10px; background-color: #24695c; color: #fff; display: inline-block; border-radius: 4px;font-weight:600;">Reset Password</a></p>
+                    <p style="text-align: center"><a href={{$actionUrl}} style="padding: 10px; background-color: #24695c; color: #fff; display: inline-block; border-radius: 4px;font-weight:600;">Email Verify</a></p>
                     
                     <p style="margin-bottom: 0">
                       Regards,<br>Webiots Software</p>
