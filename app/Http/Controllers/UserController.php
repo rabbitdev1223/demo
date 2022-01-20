@@ -58,7 +58,7 @@ class UserController extends Controller
         $user = User::where('token', $token)->first();
         if ($user) {
             $email = $user->email;
-            return view('auth.create-password', compact('email'));
+            return view('auth.creat-password', compact('email'));
         }
         return redirect()->route('login')->with('failed', 'Password reset link is expired');
     }
