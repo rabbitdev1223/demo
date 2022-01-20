@@ -38,14 +38,24 @@ class UserController extends Controller
         return view('auth.creat-password');
     }
     public function password_init(Request $request){
-
+        
         $request->validate([
             'password_confirmation' => 'same:password',
             'password'=>'required']);
-        Auth::user()->login_ip = $request->ip();
-        Auth::user()->login_date = now();
-        Auth::user()->password = $request->password;
-        Auth::user()->save();
+        //authenticated then use Auth
+        if (Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            $user = User::where('token', $token)->first();
+        }
+        if (!$user){
+            return redirect()->route('login')->withErrors('Cannot find user!');
+        }
+        $user->login_ip = $request->ip();
+        $user->login_date = now();
+        $user->password = $request->password;
+        $user->save();
         return redirect()->route('index');
     }
       /**
@@ -57,8 +67,7 @@ class UserController extends Controller
     {
         $user = User::where('token', $token)->first();
         if ($user) {
-            $email = $user->email;
-            return view('auth.creat-password', compact('email'));
+            return view('auth.creat-password', compact('token'));
         }
         return redirect()->route('login')->withErrors('Password reset link is expired');
     }
