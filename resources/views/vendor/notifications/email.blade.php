@@ -65,7 +65,7 @@
                 </tr>
               </tbody>
             </table>
-            <table style="width: 650px; margin: 0 auto; background-color: #fff; border-radius: 8px">
+            <table style="width: 650px; margin: 0 auto; background-color: #fff; border-radius: 8px;text-color:black">
               <tbody>
                 <tr>
                   <td style="padding: 30px"> 
@@ -83,7 +83,7 @@
               <tbody>       
                 <tr style="text-align: center">
                   <td> 
-                    <p style="color: #999; margin-bottom: 0">www.parots.it - info@parots.it</p>
+                    <p style="color: #999; margin-bottom: 0;text-align:center">www.parots.it - info@parots.it</p>
                   </td>
                 </tr>
               </tbody>

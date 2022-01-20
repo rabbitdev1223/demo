@@ -26,7 +26,7 @@
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">
-			    <div class="col-xl-4">
+			    <div >
 	                <div class="card">
 	                    <div class="card-header pb-0">
 	                        <h4 class="card-title mb-0">User Detail</h4>
