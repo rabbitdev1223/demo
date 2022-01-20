@@ -42,21 +42,44 @@ class UserController extends Controller
         $request->validate([
             'password_confirmation' => 'same:password',
             'password'=>'required']);
+
+
         //authenticated then use Auth
         if (Auth::check()){
             $user = Auth::user();
+            if (!$user)
+                return redirect()->route('login')->withErrors('Cannot find user!');
+      
+            $user->login_ip = $request->ip();
+            $user->login_date = now();
+            $user->password = $request->password;
+            $user->save();
+            return redirect()->route('index');
         }
         else{
+            //forgot password's case
             $user = User::where('token', $request->token)->first();
+       
+            if (!$user)
+                return redirect()->route('login')->withErrors('Cannot find user!');
+      
+            $user->login_ip = $request->ip();
+            $user->login_date = now();
+            $user->password = $request->password;
+            $user->save();
+
+
+            //send email
+            $email_data['email'] = $user->email;
+            $email_data['name'] = $user->name;
+           
+            Mail::send('email.password_initialized', $email_data, function ($message) use ($email_data) {
+                    $message->to($email_data['email'], $email_data['name'])
+                        ->subject('Password Initialized')
+                        ->from('info@parots.it', 'Password initialized');
+                });
+            return redirect()->route('login')->withSuccess('Success! password has been changed');;
         }
-        if (!$user){
-            return redirect()->route('login')->withErrors('Cannot find user!');
-        }
-        $user->login_ip = $request->ip();
-        $user->login_date = now();
-        $user->password = $request->password;
-        $user->save();
-        return redirect()->route('index');
     }
       /**
      * Validate token for forgot password
@@ -104,20 +127,20 @@ class UserController extends Controller
      * @param request
      * @return response
      */
-    public function updatePassword(Request $request) {
-        $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required|min:8',
-            'confirm_password' => 'required|same:password'
-        ]);
+//     public function updatePassword(Request $request) {
+//         $this->validate($request, [
+//             'email' => 'required',
+//             'password' => 'required|min:8',
+//             'confirm_password' => 'required|same:password'
+//         ]);
 
-        $user = User::where('email', $request->email)->first();
-        if ($user) {
-            $user['token'] = '';
-            $user['password'] = $request->password;
-            $user->save();
-            return redirect()->route('login')->withSuccess('Success! password has been changed');
-        }
-        return redirect()->route('forgot-password')->with('failed', 'Failed! something went wrong');
-    }
+//         $user = User::where('email', $request->email)->first();
+//         if ($user) {
+//             $user['token'] = '';
+//             $user['password'] = $request->password;
+//             $user->save();
+//             return redirect()->route('login')->withSuccess('Success! password has been changed');
+//         }
+//         return redirect()->route('forgot-password')->with('failed', 'Failed! something went wrong');
+//     }
 }
