@@ -48,7 +48,7 @@ class UserController extends Controller
         if (Auth::check()){
             $user = Auth::user();
             if (!$user)
-                return redirect()->route('login')->withErrors('Cannot find user!');
+                return redirect()->route('login.show')->withErrors('Cannot find user!');
       
             $user->login_ip = $request->ip();
             $user->login_date = now();
@@ -61,7 +61,7 @@ class UserController extends Controller
             $user = User::where('token', $request->token)->first();
        
             if (!$user)
-                return redirect()->route('login')->withErrors('Cannot find user!');
+                return redirect()->route('login.show')->withErrors('Cannot find user!');
       
             $user->login_ip = $request->ip();
             $user->login_date = now();
@@ -78,7 +78,7 @@ class UserController extends Controller
                         ->subject('Password Initialized')
                         ->from('info@parots.it', 'Password initialized');
                 });
-            return redirect()->route('login')->withSuccess('Success! password has been changed');;
+            return redirect()->route('login.show')->withSuccess('Success! password has been changed');;
         }
     }
       /**
@@ -92,7 +92,7 @@ class UserController extends Controller
         if ($user) {
             return view('auth.creat-password', compact('token'));
         }
-        return redirect()->route('login')->withErrors('Password reset link is expired');
+        return redirect()->route('login.show')->withErrors('Password reset link is expired');
     }
      /**
      * Reset password
@@ -139,7 +139,7 @@ class UserController extends Controller
 //             $user['token'] = '';
 //             $user['password'] = $request->password;
 //             $user->save();
-//             return redirect()->route('login')->withSuccess('Success! password has been changed');
+//             return redirect()->route('login.show')->withSuccess('Success! password has been changed');
 //         }
 //         return redirect()->route('forgot-password')->with('failed', 'Failed! something went wrong');
 //     }
