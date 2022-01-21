@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -8,16 +8,17 @@ use Auth;
 use Hash;
 use Redirect;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
     public function index() 
     {
-        return view('home.index');
+        return view('admin.home.index');
     }
     public function editProfile(){
         
-        return view('auth.edit-profile')->with('current_user',Auth::user());
+        return view('admin.auth.edit-profile')->with('current_user',Auth::user());
     }
     public function updateProfile(Request $request){
 

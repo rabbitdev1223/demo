@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon" />
         <title>@yield('title')</title>
         <!-- Google font-->
-        @includeIf('auth.partials.css')
+        @includeIf('admin.auth.partials.css')
     </head>
     <body>
         <!-- Loader starts-->
@@ -25,7 +25,7 @@
         @yield('content')
         <!-- error page end //-->
         <!-- latest jquery-->
-        @includeIf('auth.partials.js')
+        @includeIf('admin.auth.partials.js')
     </body>
 </html>
 

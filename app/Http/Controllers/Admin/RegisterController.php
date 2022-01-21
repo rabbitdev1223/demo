@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
+use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
@@ -16,7 +17,7 @@ class RegisterController extends Controller
      */
     public function show()
     {
-        return view('auth.register');
+        return view('admin.auth.register');
     }
 
     /**
@@ -33,6 +34,7 @@ class RegisterController extends Controller
         $data['login_date'] = now();
         
         $user = User::create($data);
+        
         
         event(new Registered($user));
         

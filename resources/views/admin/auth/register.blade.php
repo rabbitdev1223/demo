@@ -1,4 +1,4 @@
-@extends('auth.master')
+@extends('admin.auth.master')
 
 @section('title')
     Sign Up

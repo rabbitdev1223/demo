@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -8,6 +8,7 @@ use Auth;
 use Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ResetPassword;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -17,25 +18,25 @@ class UserController extends Controller
         // dd(request()->route()->getPrefix());
         $users = User::all();
        
-        return view('users.userlist')->with('users',$users);
+        return view('admin.users.userlist')->with('users',$users);
     }
     
     public function create(){
-       return view('users.create');
+       return view('admin.users.create');
     }
 
     public function edit($id){
         $user = User::findOrFail($id);
-        return view('auth.edit-profile')->with('current_user',$user);
+        return view('admin.auth.edit-profile')->with('current_user',$user);
     }
 
     public function show($id){
         $user = User::findOrFail($id);
-        return view('users.show')->with('current_user',$user);
+        return view('admin.users.show')->with('current_user',$user);
     }
 
     public function create_password(){
-        return view('auth.creat-password');
+        return view('admin.auth.creat-password');
     }
     public function password_init(Request $request){
         
@@ -90,7 +91,7 @@ class UserController extends Controller
     {
         $user = User::where('token', $token)->first();
         if ($user) {
-            return view('auth.creat-password', compact('token'));
+            return view('admin.auth.creat-password', compact('token'));
         }
         return redirect()->route('login.show')->withErrors('Password reset link is expired');
     }

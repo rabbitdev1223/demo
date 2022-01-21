@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Breed;
 use App\Models\Parrot;
 use Auth;
+use App\Http\Controllers\Controller;
+
 class parrotController extends Controller
 {
     //
@@ -31,13 +33,13 @@ class parrotController extends Controller
         // dd(request()->route()->getPrefix());
        
         $breeds = Breed::all();
-        return view('parrot.create')->with('breeds',$breeds);
+        return view('admin.parrot.create')->with('breeds',$breeds);
     }
     //
     public function show($id){
         $breeds = Breed::all();
         $parrot = Parrot::findOrFail($id);
-        return view('parrot.show')->with('current_parrot',$parrot)
+        return view('admin.parrot.show')->with('current_parrot',$parrot)
                                     ->with('breeds',$breeds);    
     }
     public function store(Request $request){
