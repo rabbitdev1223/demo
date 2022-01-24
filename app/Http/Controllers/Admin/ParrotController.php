@@ -48,7 +48,7 @@ class parrotController extends Controller
             $request->validate([
                 'name'=>'required',
                 'color' => 'required', 
-                'date_of_birth' => 'required',
+                // 'date_of_birth' => 'required',
                 
                 ]);
         
