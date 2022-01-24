@@ -17,7 +17,7 @@ class CreateParotsTable extends Migration
             $table->id();
             $table->string('parrot_id')->unique();
             $table->string('name');
-            $table->string('date_of_birth');
+            $table->string('date_of_birth')->nullable();
             $table->foreignId('breed_id')
                     ->constrained("breeds")
                     ->onUpdate('cascade')
