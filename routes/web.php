@@ -74,7 +74,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin'], function()
             Route::prefix('parrot')->group(function (){
                 Route::get('create', 'ParrotController@create')->name('parrot.create');
                 Route::get('{id}', 'ParrotController@show')->name('parrot.show');
+                Route::get('{id}/edit', 'ParrotController@edit')->name('parrot.edit');
                 Route::post('', 'ParrotController@store')->name('parrot.save');
+                Route::get('', 'ParrotController@index')->name('parrot.index');
+
+                //for ajax api
+                Route::post('{id}/delete','ParrotController@destroy')->name('parrot.destroy');
             });
             
             Route::group(['prefix'=>'user', 'middleware' => ['role:1']], function() {

@@ -53,7 +53,7 @@
                         <a class="nav-link menu-title {{ prefixActive('parrot') }}" href="javascript:void(0)"><i data-feather="users"></i><span>Parrot</span></a>
                         <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('parrot') }};">
                             <li><a href="{{ route('parrot.create') }}" class="{{routeActive('parrot.create')}}">Add parrot</a></li>
-                            <li><a href="{{ route('user.index') }}" class="{{routeActive('user.index')}}">My parrots</a></li>
+                            <li><a href="{{ route('parrot.index') }}" class="{{routeActive('parrot.index')}}">My parrots</a></li>
                        
                         </ul>
                     </li>

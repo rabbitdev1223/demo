@@ -14,4 +14,8 @@ class Breed extends Model
      * @var string
      */
     protected $table = 'breeds';
+    public function parrots()
+    {
+        return $this->hasMany(Parrot::class);
+    }
 }

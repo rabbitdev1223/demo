@@ -8,11 +8,14 @@ use App\Models\Parrot;
 use Auth;
 use App\Http\Controllers\Controller;
 
-class parrotController extends Controller
+class ParrotController extends Controller
 {
     //
     public function index(){
 
+        $parrots = Auth::user()->parrots->load('breed');
+        
+        return view('admin.parrot.index')->with('parrots',$parrots);
     }
     public function create(){
 
@@ -35,6 +38,16 @@ class parrotController extends Controller
         $breeds = Breed::all();
         return view('admin.parrot.create')->with('breeds',$breeds);
     }
+
+    public function destroy($id){
+        
+        $parrot = Parrot::find($id);
+        if (is_null($parrot)){
+            return "failed";
+        }
+        $parrot->delete();
+        return "ok";
+    }
     //
     public function show($id){
         $breeds = Breed::all();
@@ -42,19 +55,35 @@ class parrotController extends Controller
         return view('admin.parrot.show')->with('current_parrot',$parrot)
                                     ->with('breeds',$breeds);    
     }
+
+    public function edit($id){
+        $breeds = Breed::all();
+        $parrot = Parrot::findOrFail($id);
+        
+        return view('admin.parrot.edit')->with('current_parrot',$parrot)
+                                    ->with('breeds',$breeds);    
+    }
     public function store(Request $request){
         
+        
+        if (isset($request->id)){ //edit
+            $parrot = Parrot::findOrFail($request->id);
+            
+        }
+        else{
             $parrot = new Parrot();
+            $parrot->parrot_id = strtoupper(uniqid()) . date('y');
+        }
             $request->validate([
-                'name'=>'required',
-                'color' => 'required', 
-                // 'date_of_birth' => 'required',
-                
-                ]);
+            'name'=>'required',
+            'color' => 'required', 
+            // 'date_of_birth' => 'required',
+            
+            ]);
         
         if($request->hasFile('profileImage'))
         {
-            
+            @unlink("uploads/parrots/".$parrot->photo);
             $file= $_FILES['profileImage'];
             $fileName = $_FILES['profileImage']['name'];
             $fileTmp = $_FILES['profileImage']['tmp_name'];
@@ -89,12 +118,16 @@ class parrotController extends Controller
         
         $parrot->name = $request->name;
         $parrot->date_of_birth = $request->date_of_birth;
-        $parrot->parrot_id = strtoupper(uniqid()) . date('y');
+        
         $parrot->color = $request->color;
         $parrot->breed_id = $request->breed;
         $parrot->registered_by = Auth::user()->id;
         $parrot->save();
-     
+        
+        if (isset($request->id)){ //edit
+            return redirect()->route('parrot.index')->withSuccess('Updated successfully!');
+        }
         return redirect()->route('parrot.show',$parrot->id)->withSuccess('Created successfully!');
+
     }
 }

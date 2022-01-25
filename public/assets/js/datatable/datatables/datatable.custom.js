@@ -11,6 +11,7 @@ var usertable = $('#userlist').DataTable({
     ]
 });
 
+
 function show_notify(error,msg){
     if(error == 0){
         $.notify({

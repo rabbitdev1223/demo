@@ -37,7 +37,7 @@ parrot Details
 						<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
   						<div class="d-flex justify-content-end mt-2">
 							  <a href="{{route('parrot.create')}}" class="mx-2 btn btn-warning ">Add another parrot!</a>
-							  <a href="javascript:void(0)" class="btn btn-danger mx-2 ">Go to my parrot list!</a>
+							  <a href="{{route('parrot.index')}}" class="btn btn-danger mx-2 ">Go to my parrot list!</a>
 						</div>
 					</div>
 				@endif	

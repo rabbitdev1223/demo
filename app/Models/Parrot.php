@@ -15,4 +15,12 @@ class Parrot extends Model
      * @var string
      */
     protected $table = 'parrots';
+    public function breed()
+    {
+        return $this->belongsTo(Breed::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class,'registered_by');
+    }
 }
