@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-	Parrots Management
+	{{trans('parrot.parrot_management')}}
 
 @endsection
 
@@ -16,7 +16,7 @@
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>Parrots Management</h3>
+			<h3>{{trans('parrot.parrot_management')}}</h3>
 		@endslot
 		<!-- <li class="breadcrumb-item">Tables</li>
 		<li class="breadcrumb-item">Data Tables</li>
@@ -27,8 +27,7 @@
 	    <div class="row">
 	        <!-- Ajax data source array start-->
             @if(session('success'))	
-					<div class="alert alert-primary dark alert-dismissible fade show" role="alert"> Success!
-						Your parrot has been updated succesfully!
+					<div class="alert alert-primary dark alert-dismissible fade show" role="alert"> {{trans('parrot.updated_success')}}
 						<!-- <button class="btn btn-primary" type="button" title="">Add another parrot!</button> -->
 						<!-- <button class="btn btn-info" type="button"></button> -->
 						
@@ -39,12 +38,12 @@
 	        <div class="col-sm-12">
 	            <div class="card">
 	                <div class="card-header">
-	                    <h5>Parrot List</h5>
+	                    <h5>{{trans('parrot.parrot_management')}}</h5>
 	                    
 	                </div>
 	                <div class="card-body">
 						<div >
-							<a href="{{route('parrot.create')}}"><button class="btn btn-square btn-primary btn-sm" type="button" >New Parrot</button></a>
+							<a href="{{route('parrot.create')}}"><button class="btn btn-square btn-primary btn-sm" type="button" >{{trans('parrot.new_parrot')}}</button></a>
 						</div>
 	                    <div class="table-responsive" style="margin-top:20px">
 
@@ -54,9 +53,9 @@
 	                                <tr>
 										
 	                                    <th>ID</th>
-										<th>Name</th>
-	                                    <th>Breed</th>
-										<th class="center">Action</th>
+										<th>{{trans('parrot.name')}}</th>
+	                                    <th>{{trans('parrot.breed')}}</th>
+										<th class="center">{{trans('parrot.action')}}</th>
 									
 	                                </tr>
 	                            </thead>

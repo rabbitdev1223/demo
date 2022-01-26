@@ -40,6 +40,7 @@ class UserController extends Controller
     }
     public function password_init(Request $request){
         
+       
         $request->validate([
             'password_confirmation' => 'same:password',
             'password'=>'required']);

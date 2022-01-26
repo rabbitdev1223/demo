@@ -19,7 +19,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin'], function()
      * Home Routes
      */
 
-
+    Route::post('/password_init', 'UserController@password_init')->name('password.init');
     Route::group(['middleware' => ['guest']], function() {
         /**
          * Register Routes
@@ -37,7 +37,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin'], function()
        Route::get('reset-password', 'UserController@resetPassword')->name('reset-password');
        Route::put('reset-password', 'UserController@updatePassword')->name('update-password');
        
-       Route::post('/password_init', 'UserController@password_init')->name('password.init');
+       
     });
     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
    

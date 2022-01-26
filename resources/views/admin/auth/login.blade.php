@@ -1,7 +1,7 @@
 @extends('admin.auth.master')
 
 @section('title')
- Login
+{{trans('auth.login')}}
 @endsection
 
 @push('css')
@@ -15,11 +15,11 @@
                 <div class="login-card">
                     <form class="theme-form login-form" method="post"  action="{{ route('login.perform') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <h4>Login</h4>
+                        <h4>{{trans('auth.login')}}</h4>
                         
                         @include('layouts.partials.messages')
                         <div class="form-group">
-                            <label>Email Address</label>
+                            <label>{{trans('user.email_address')}}</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="icon-email"></i></span>
                                 <input class="form-control" required="" placeholder="Nickname or Email" name="nickname" value="{{ old('nickname') }}"/>
@@ -29,7 +29,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
+                            <label>{{trans('user.password')}}</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="icon-lock"></i></span>
                                 <input class="form-control" type="password" name="password" value="{{ old('password') }}" required="" placeholder="*********" />
@@ -42,18 +42,18 @@
                         <div class="form-group">
                             <div class="checkbox">
                                 <input id="checkbox1" type="checkbox" />
-                                <label for="checkbox1">Remember password</label>
+                                <label for="checkbox1">{{trans('auth.remember_password')}}</label>
                             </div>
-                            <a class="link" href="javascript:goReset()">Forgot password?</a>
+                            <a class="link" href="javascript:goReset()">{{trans('auth.forgot_password')}}</a>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                            <button class="btn btn-primary btn-block" type="submit">{{trans('auth.sign_in')}}</button>
                         </div>
                         <div class="login-social-title">
                             <h5>Sign in with</h5>
                         </div>
                        
-                        <p>Don't have account?<a class="ms-2" href="{{ route('register.show') }}">Create Account</a></p>
+                        <p>{{trans('auth.dont_have_account')}}<a class="ms-2" href="{{ route('register.show') }}">{{trans('auth.create_account')}}</a></p>
                     </form>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-	User Detail
+{{trans('user.user_details')}}
 @endsection
 
 @push('css')
@@ -17,10 +17,10 @@
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>User Detail</h3>
+			<h3>{{trans('user.user_details')}}</h3>
 		@endslot
-		<li class="breadcrumb-item">Users</li>
-		<li class="breadcrumb-item active">User Detail</li>
+		<li class="breadcrumb-item">{{trans('user.users')}}</li>
+		<li class="breadcrumb-item active">{{trans('user.user_details')}}</li>
 	@endcomponent
 	
 	<div class="container-fluid">
@@ -29,7 +29,7 @@
 			    <div >
 	                <div class="card">
 	                    <div class="card-header pb-0">
-	                        <h4 class="card-title mb-0">User Detail</h4>
+	                        <h4 class="card-title mb-0">{{trans('user.user_details')}}</h4>
 	                        <div class="card-options">
 	                            <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
 	                        </div>
@@ -53,16 +53,16 @@
 	                                            <h3 class="mb-1 f-20 txt-primary">{{$current_user->name}}</h3>
 	                                            <p class="f-12">
 													@if($current_user->type ==1)
-														allevatore
+														{{trans('user.allevatore')}}
 													@elseif($current_user->type ==2)
-														appassionato
+													{{trans('user.appassionato')}}
 													@endif
 	                                        </div>
 	                                    </div>
 	                                </div>
 	                            </div>
 								<div class="mb-3">
-	                                <label class="form-label">Email-Address</label>
+	                                <label class="form-label">{{trans('user.email_address')}}</label>
 	                                <input class="form-control" name="email" disabled  value="{{$current_user->email}}" />
 									<!-- @if ($errors->has('email'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('email') }}</span></div>
@@ -70,14 +70,14 @@
 								</div>
 						
 	                            <div class="mb-3">
-	                                <label class="form-label">NickName</label>
+	                                <label class="form-label">{{trans('user.nickname')}}</label>
 	                                <input class="form-control" name="nickname"  value="{{old('nickname',$current_user->nickname)}}" disabled>
 	                            	@if ($errors->has('nickname'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('nickname') }}</span></div>
                                     @endif
 								</div>
 								<div class="mb-3">
-	                                <label class="form-label">Name</label>
+	                                <label class="form-label">{{trans('user.name')}}</label>
 									
 	                            	
 	                                <input class="form-control" name="name"  value="{{old('name',$current_user->name)}}" disabled>
@@ -86,7 +86,7 @@
                                     @endif
 								</div>
 								<div class="mb-3">
-	                                <label class="form-label">Surname</label>
+	                                <label class="form-label">{{trans('user.surname')}}</label>
 	                                <input class="form-control" name="surname"  value="{{old('surname',$current_user->surname)}}" disabled>
 	                            	@if ($errors->has('Surname'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('surname') }}</span></div>
@@ -110,14 +110,14 @@
 								</div>
 	                          
 								<div class="mb-3">
-	                                <label class="form-label">My Farm address</label>
+	                                <label class="form-label">{{trans('user.farm_address')}}</label>
 	                                <input class="form-control" name="farm_address"  value="{{$current_user->farm_address}}" disabled>
 	                            	@if ($errors->has('farm_address'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('farm_address') }}</span></div>
                                     @endif
 								</div>
 								<div class="mb-3">
-	                                <label class="form-label">My City</label>
+	                                <label class="form-label">{{trans('user.city')}}</label>
 	                                <input class="form-control" name="city"  value="{{$current_user->city}}" disabled>
 	                            	@if ($errors->has('city'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('city') }}</span></div>
@@ -125,7 +125,7 @@
 								</div>
 								<div class="col-sm-6 col-md-3">
 	                                <div class="mb-3">
-	                                    <label class="form-label">My Cap</label>
+	                                    <label class="form-label">{{trans('user.cap')}}</label>
 	                                    <input class="form-control" type="number" name="zipcode"  value="{{$current_user->zipcode}}" disabled>
 	                                	@if ($errors->has('zipcode'))
                                     		<div><span class="text-danger text-left">{{ $errors->first('zipcode') }}</span></div>
@@ -134,25 +134,25 @@
 	                            </div>
 								<div class="col-sm-6 col-md-3">
 	                                <div class="mb-3">
-	                                    <label class="form-label">Least Login Date</label>
+	                                    <label class="form-label">{{trans('user.least_login_date')}}</label>
 	                                    <input class="form-control"  value="{{$current_user->login_date}}" disabled>
 	                                										</div>
 	                            </div>
                                 <div class="col-sm-6 col-md-3">
 	                                <div class="mb-3">
-	                                    <label class="form-label">Login IP</label>
+	                                    <label class="form-label">{{trans('auth.login')}} IP</label>
 	                                    <input class="form-control"  value="{{$current_user->login_ip}}" disabled>
 	                                										</div>
 	                            </div>
                                 <div class="col-sm-6 col-md-3">
 	                                <div class="mb-3">
-	                                    <label class="form-label">Registerd Date</label>
+	                                    <label class="form-label">{{trans('user.registered_date')}}</label>
 	                                    <input class="form-control"  value="{{$current_user->created_at}}" disabled>
 	                                										</div>
 	                            </div>
 								<div class="mb-3">	
 									<input id="public_profile" type="checkbox"  name="public_profile" value="1" @if ($current_user->public_profile == 1) {{ 'checked' }} @endif disabled>
-									<label class="text-muted" for="public_profile" >Make my profile visible in public?</label>
+									<label class="text-muted" for="public_profile" >{{trans('user.make_profile_visible')}}</label>
 								</div>	
 	                           
 	       

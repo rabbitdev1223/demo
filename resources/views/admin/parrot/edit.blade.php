@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-	Edit parrot
+{{trans('parrot.edit_parrot')}}
 @endsection
 
 @push('css')
@@ -19,10 +19,10 @@
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>Edit Parrot</h3>
+			<h3>{{trans('parrot.edit_parrot')}}</h3>
 		@endslot
 		<li class="breadcrumb-item">Parrots</li>
-		<li class="breadcrumb-item active">Edit Parrot</li>
+		<li class="breadcrumb-item active">{{trans('parrot.edit_parrot')}}</li>
 	@endcomponent
 	
 	<div class="container-fluid">
@@ -30,14 +30,14 @@
 	        <div class="row">
 			
 			@if ($errors->any())
-			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">Failed to update new parrot!
+			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">{{trans('parrot.failed_to_update_parrot')}}
                       <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
                     </div>
 			@endif
 	            <div class="">
 	                <div class="card">
 	                    <div class="card-header pb-0">
-	                        <h4 class="card-title mb-0">Edit parrot</h4>
+	                        <h4 class="card-title mb-0">{{trans('parrot.edit_parrot')}}</h4>
 	                        <div class="card-options">
 	                            <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
 	                        </div>
@@ -62,14 +62,14 @@
 	                                </div>
 	                            </div>
 								<div class="mb-3">
-	                                <label class="form-label">Name</label>
-	                                <input class="form-control" name="name" placeholder = "Friendly name of the parrot" value="{{old('name',$current_parrot->name)}}" />
+	                                <label class="form-label">{{trans('parrot.name')}}</label>
+	                                <input class="form-control" name="name" placeholder = "{{trans('parrot.friendly_name_of_parrot')}}" value="{{old('name',$current_parrot->name)}}" />
 									@if ($errors->has('name'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('name') }}</span></div>
                                     @endif
 								</div>
 								<div class="mb-3">
-	                                <label class="form-label">Date of Birth</label>
+	                                <label class="form-label">{{trans('parrot.date_of_birth')}}</label>
 	                                {{old('date_of_birth',$current_parrot->date_of_birth)}}
                                     <input class="datepicker-here form-control digits" 
                                         type="text" data-language="en" name="date_of_birth" 
@@ -85,16 +85,16 @@
                                         <option value='{{ $breed->id }}'  @if ($current_parrot->breed->id == $breed->id) {{ 'selected' }} @endif>{{ $breed->name }}</option>
                                         @endforeach
                                     </select>
-                                    <small class="form-text text-muted" style="display:block" >Is your breed not on the list? Contact us at info@parrots.it</small>
+                                    <small class="form-text text-muted" style="display:block" >{{trans('parrot.not_on_list_contact')}}</small>
 								</div>
 
                                 <div class="mb-3">
-	                                <label class="form-label">Color</label>
-	                                <input class="form-control" name="color" type="text" placeholder="color" value="{{old('color',$current_parrot->color)}}" >
+	                                <label class="form-label">{{trans('parrot.color')}}</label>
+	                                <input class="form-control" name="color" type="text" placeholder="{{trans('parrot.color')}}" value="{{old('color',$current_parrot->color)}}" >
 	                            	
 								</div>
 	                            <div class="form-footer">
-	                                <button class="btn btn-primary btn-block">Save</button>
+	                                <button class="btn btn-primary btn-block">{{trans('parrot.save')}}</button>
 	                            </div>
 	                        </form>
 	                    </div>

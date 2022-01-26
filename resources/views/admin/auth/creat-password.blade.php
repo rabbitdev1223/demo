@@ -1,7 +1,7 @@
 @extends('admin.auth.master')
 
 @section('title')
-	Create Password
+	{{trans('auth.create_password')}}
 @endsection
 
 @push('css')
@@ -17,9 +17,9 @@
 	                    <form class="theme-form login-form" method="post"  action="{{ route('password.init') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 							<input type="hidden" name="token" value="{{ isset($token)?$token: ''}}" />
-							<h4 class="mb-3">Create Your Password</h4>
+							<h4 class="mb-3">{{trans('auth.create_your_password')}}</h4>
 	                        <div class="form-group">
-	                            <label>New Password</label>
+	                            <label>{{trans('auth.new_password')}}</label>
 	                            <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-lock"></i></span>
 	                                <input class="form-control" type="password" name="password" required=""  />
@@ -30,7 +30,7 @@
                                     	@endif
 	                        </div>
 	                        <div class="form-group">
-	                            <label>Password Confirm</label>
+	                            <label>{{trans('auth.password_confirm')}}</label>
 	                            <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-lock"></i></span>
 	                                <input class="form-control" type="password" name="password_confirmation" required="" placeholder="" />
@@ -40,7 +40,7 @@
                                     	@endif
 	                        </div>
 	                        <div class="form-group">
-	                            <button class="btn btn-primary btn-block" type="submit">Done</button>
+	                            <button class="btn btn-primary btn-block" type="submit">{{trans('auth.done')}}</button>
 	                        </div>
 	                    </form>
 	                </div>

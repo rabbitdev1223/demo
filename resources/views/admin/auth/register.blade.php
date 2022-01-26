@@ -44,7 +44,7 @@
                                     @endif
 	                        </div>
 	                        <div class="form-group">
-	                            <label>Email Address</label>
+	                            <label>{{trans('user.email_address')}}</label>
 	                            <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-email"></i></span>
 	                                <input class="form-control" type="email" required="" name="email"  value="{{ old('email')}}" />
@@ -55,7 +55,7 @@
                                     @endif
 	                        </div>
 	                        <div class="form-group">
-	                            <label>Password</label>
+	                            <label>{{trans('user.password')}}</label>
 	                            <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-lock"></i></span>
 	                                <input class="form-control" type="password" name="password" required=""  placeholder="*********" value="{{ old('password')}}" />
@@ -68,7 +68,7 @@
 	                        </div>
                     
                             <div class="form-group ">
-                                <label >Confirm Password</label>
+                                <label >{{trans('auth.password_confirm')}}</label>
                                 <div class="input-group">
 	                                <span class="input-group-text"><i class="icon-lock"></i></span>
 	                                <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm Password" value="11111111" required="required">
@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="form-group">
-	                            <label>Nickname</label>
+	                            <label>{{trans('user.nickname')}}</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="icon-user"></i></span>
                                     <input class="form-control" type="text" required="" name="nickname" placeholder="Nick Name" value="{{ old('nickname')}}" />
@@ -97,7 +97,7 @@
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
-	                            <button class="btn btn-primary btn-block" type="submit">Create Account</button>
+	                            <button class="btn btn-primary btn-block" type="submit">{{trans('auth.create_account')}}</button>
 	                        </div>
 	                        <div class="login-social-title">
 	                            <h5>signup with</h5>
@@ -118,7 +118,7 @@
 	                                </li>
 	                            </ul>
 	                        </div> -->
-	                        <p>Already have an account?<a class="ms-2" href="{{ route('login.show') }}">Sign in</a></p>
+	                        <p>Already have an account?<a class="ms-2" href="{{ route('login.show') }}">{{trans('auth.sign_in')}}</a></p>
 	                    </form>
 	                </div>
 	            </div>

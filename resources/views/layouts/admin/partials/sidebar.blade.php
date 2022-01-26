@@ -11,9 +11,9 @@
         <p class="mb-0 font-roboto">@if(Auth::user()->role == 1)
                                                 {{''}}	
                                                 @elseif(Auth::user()->type ==1)
-														allevatore
+														{{trans('user.allevatore')}}
 													@elseif(Auth::user()->type ==2)
-														appassionato
+                                                        {{trans('user.appassionato')}}
 													@endif</p>
         <!-- <ul>
             <li>
@@ -41,19 +41,19 @@
                     
                     @if(Auth::user()->role==1)
                     <li class="dropdown">
-                        <a class="nav-link menu-title {{ prefixActive('user') }}" href="javascript:void(0)"><i data-feather="users"></i><span>User</span></a>
+                        <a class="nav-link menu-title {{ prefixActive('user') }}" href="javascript:void(0)"><i data-feather="users"></i><span>{{trans('user.users')}}</span></a>
                         <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('user') }};">
-                            <li><a href="{{ route('user.create') }}" class="{{routeActive('user.create')}}">Add User</a></li>
-                            <li><a href="{{ route('user.index') }}" class="{{routeActive('user.index')}}">User List</a></li>
+                            <li><a href="{{ route('user.create') }}" class="{{routeActive('user.create')}}">{{trans('user.add_user')}}</a></li>
+                            <li><a href="{{ route('user.index') }}" class="{{routeActive('user.index')}}">{{trans('user.user_list')}}</a></li>
                        
                         </ul>
                     </li>
                     @endif
                     <li class="dropdown">
-                        <a class="nav-link menu-title {{ prefixActive('parrot') }}" href="javascript:void(0)"><i data-feather="users"></i><span>Parrot</span></a>
+                        <a class="nav-link menu-title {{ prefixActive('parrot') }}" href="javascript:void(0)"><i data-feather="users"></i><span>{{trans('parrot.parrot')}}</span></a>
                         <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('parrot') }};">
-                            <li><a href="{{ route('parrot.create') }}" class="{{routeActive('parrot.create')}}">Add parrot</a></li>
-                            <li><a href="{{ route('parrot.index') }}" class="{{routeActive('parrot.index')}}">My parrots</a></li>
+                            <li><a href="{{ route('parrot.create') }}" class="{{routeActive('parrot.create')}}">{{trans('parrot.add_parrot')}}</a></li>
+                            <li><a href="{{ route('parrot.index') }}" class="{{routeActive('parrot.index')}}">{{trans('parrot.my_parrots')}}</a></li>
                        
                         </ul>
                     </li>

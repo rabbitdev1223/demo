@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-	User Management
+{{trans('user.user_list')}}
 
 @endsection
 
@@ -16,7 +16,7 @@
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>User Management</h3>
+			<h3>{{trans('user.user_list')}}</h3>
 		@endslot
 		<!-- <li class="breadcrumb-item">Tables</li>
 		<li class="breadcrumb-item">Data Tables</li>
@@ -29,12 +29,12 @@
 	        <div class="col-sm-12">
 	            <div class="card">
 	                <div class="card-header">
-	                    <h5>User List</h5>
+	                    <h5>{{trans('user.user_list')}}</h5>
 	                    
 	                </div>
 	                <div class="card-body">
 						<div >
-							<a href="{{route('user.create')}}"><button class="btn btn-square btn-primary btn-sm" type="button" >New User</button></a>
+							<a href="{{route('user.create')}}"><button class="btn btn-square btn-primary btn-sm" type="button" >{{trans('user.new_user')}}</button></a>
 						</div>
 	                    <div class="table-responsive" style="margin-top:20px">
 
@@ -43,12 +43,12 @@
 	                            <thead>
 	                                <tr>
 										
-	                                    <th>Name</th>
-										<th>Surname</th>
-	                                    <th>Email</th>
-										<th>Role</th>
-										<th>Suspend/Unsuspend</th>
-										<th class="center">Action</th>
+	                                    <th>{{trans('user.name')}}</th>
+										<th>{{trans('user.surname')}}</th>
+	                                    <th>{{trans('user.email')}}</th>
+										<th>{{trans('user.role')}}</th>
+										<th>{{trans('user.suspend')}}/{{trans('user.unsuspend')}}</th>
+										<th class="center">{{trans('user.action')}}</th>
 										
 	                                </tr>
 	                            </thead>
@@ -73,11 +73,11 @@
 										</td>
 										<td>
 											@if (is_null($user['suspended_at']))
-												<button type="button" class="btn btn-danger btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>Suspend</button>
-												<button type="button" class="btn btn-primary  d-none btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>Unsuspend</button>
+												<button type="button" class="btn btn-danger btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>{{trans('user.suspend')}}</button>
+												<button type="button" class="btn btn-primary  d-none btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>{{trans('user.unsuspend')}}</button>
 											@else
-												<button type="button" class="btn btn-danger  d-none btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>Suspend</button>
-												<button type="button" class="btn btn-primary btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>Unsuspend</button>
+												<button type="button" class="btn btn-danger  d-none btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>{{trans('user.suspend')}}</button>
+												<button type="button" class="btn btn-primary btn-sm" @if(Auth::user()->id == $user->id) disabled @endif>{{trans('user.unsuspend')}}</button>
 											@endif
 										</td>
 										<td class=""  >
@@ -101,11 +101,11 @@
 					<div class="modal-dialog ">
 						<div class="modal-content">
 						<div class="modal-header">
-							<h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+							<h4 class="modal-title" id="myModalLabel">{{trans('user.are_you_sure')}}</h4>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" id="modal-btn-si">Yes</button>
-							<button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
+							<button type="button" class="btn btn-default" id="modal-btn-si">{{trans('parrot.yes')}}</button>
+							<button type="button" class="btn btn-primary" id="modal-btn-no">{{trans('parrot.no')}}</button>
 						</div>
 						</div>
 					</div>
