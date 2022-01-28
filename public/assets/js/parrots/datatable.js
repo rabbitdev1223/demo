@@ -80,12 +80,18 @@ var modalConfirm = function(callback){
     
     //when click delete button
     $('#parrotlist').on('click', 'i.fa-trash', function(e){
-        $('#myModalLabel').html("Do you really want to delete this parrot?")
+
+        target = $(e.target).parents('tr');
+        if (target.attr('data-couple') == 1){
+            $('#myModalLabel').html("You're trying to delete a parrot in a couple, Are you sure ?")
+        }
+        else
+          $('#myModalLabel').html("Do you really want to delete this parrot?")
+
+        
         $("#mi-modal").modal('show');
         mode = 0;
-        target = $(e.target).parents('tr');
-        console.log('=====');
-        console.log(target);
+       
     })
     
     $("#modal-btn-si").on("click", function(){

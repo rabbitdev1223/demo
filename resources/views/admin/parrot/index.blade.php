@@ -61,12 +61,12 @@
 	                            </thead>
 	                            <tbody>
 								@foreach ($parrots as $parrot)
-									<tr data-id={{$parrot->id}}>
+									<tr data-id={{$parrot->id}}  data-couple="{{$parrot['is_couple']}}">
 										
 	                                    <td>{{ $parrot['parrot_id'] }}</td>
 										<td>{{ $parrot['name'] }}</td>
 	                                    <td>{{ $parrot['breed']['name'] }}</td>
-                                        <td class=""  >
+                                        <td class="" data-couple="{{$parrot['is_couple']}}" >
 											
 											<a href="{{route('parrot.show',$parrot->id)}}"><i class="fa fa-eye" ></i></a>&nbsp;
 											 <a href="{{route('parrot.edit',$parrot->id)}}"><i class="fa fa-pencil"></i></a>&nbsp;
