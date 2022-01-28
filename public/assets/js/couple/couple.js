@@ -7,8 +7,15 @@ $(document).ready(function(){
     $('input[name=birth_date_of_couple]').datepicker({
       language: 'en',
       dateFormat: 'mm/dd/yyyy',
-     maxDate: new Date() // Now can select only dates, which goes after today
+        maxDate: new Date() // Now can select only dates, which goes after today
     })
+
+    $('input[name=expected_date_of_birth]').datepicker({
+        language: 'en',
+        dateFormat: 'mm/dd/yyyy',
+          minDate: new Date() // Now can select only dates, which goes after today
+      })
+    
     
     $('#couple_made_today').click(function() {
         if ($(this).is(':checked')) {
