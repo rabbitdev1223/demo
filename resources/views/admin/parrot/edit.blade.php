@@ -88,6 +88,16 @@
                                     <small class="form-text text-muted" style="display:block" >{{trans('parrot.not_on_list_contact')}}</small>
 								</div>
 
+								<div class="mb-3">
+	                                <label class="form-label">{{trans('parrot.gender')}}</label>
+	                                <select class="form-control btn-square" name="gender" style="display:block" @if ($current_parrot->is_couple == true) {{ 'disabled' }} @endif</select>)>
+										<option value='0' @if ($current_parrot->gender == 0) {{ 'selected' }} @endif>{{trans('parrot.i_donot_know')}}</option>
+										<option value='1' @if ($current_parrot->gender == 1) {{ 'selected' }} @endif>{{trans('parrot.male')}}</option>
+                                        <option value='2' @if ($current_parrot->gender == 2) {{ 'selected' }} @endif>{{trans('parrot.female')}}</option>
+                                       	 
+                                    </select>
+								</div>
+
                                 <div class="mb-3">
 	                                <label class="form-label">{{trans('parrot.color')}}</label>
 	                                <input class="form-control" name="color" type="text" placeholder="{{trans('parrot.color')}}" value="{{old('color',$current_parrot->color)}}" >

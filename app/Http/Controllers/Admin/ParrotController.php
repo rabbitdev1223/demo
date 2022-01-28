@@ -42,6 +42,7 @@ class ParrotController extends Controller
     public function destroy($id){
         
         $parrot = Parrot::find($id);
+       
         if (is_null($parrot)){
             return "failed";
         }
@@ -59,9 +60,12 @@ class ParrotController extends Controller
     public function edit($id){
         $breeds = Breed::all();
         $parrot = Parrot::findOrFail($id);
-        
+        //store couple
+        // $is_couple = $parrot->male_couple || $parrot->female_couple;
+
         return view('admin.parrot.edit')->with('current_parrot',$parrot)
-                                    ->with('breeds',$breeds);    
+                                    ->with('breeds',$breeds);
+                                    
     }
     public function store(Request $request){
         
@@ -121,6 +125,10 @@ class ParrotController extends Controller
         
         $parrot->color = $request->color;
         $parrot->breed_id = $request->breed;
+
+        $is_couple = $parrot->male_couple || $parrot->female_couple;
+        if (!$is_couple)
+            $parrot->gender = $request->gender;
         $parrot->registered_by = Auth::user()->id;
         $parrot->save();
         

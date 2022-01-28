@@ -58,6 +58,14 @@
                         </ul>
                     </li>
                     <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('couple') }}" href="javascript:void(0)"><i data-feather="users"></i><span>{{trans('couple.couple')}}</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('couple') }};">
+                            <li><a href="{{ route('couple.create') }}" class="{{routeActive('couple.create')}}">{{trans('couple.add_couple')}}</a></li>
+                            <li><a href="{{ route('couple.index') }}" class="{{routeActive('couple.index')}}">{{trans('couple.my_couple')}}</a></li>
+                       
+                        </ul>
+                    </li>
+                    <li class="dropdown">
                         <a class="nav-link menu-title {{ routeActive('profile.show') }}" href="{{ route('profile.show') }}"><i data-feather="users"></i><span>My Profile</span></a>
                         
                     </li>

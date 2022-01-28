@@ -81,6 +81,18 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin'], function()
                 //for ajax api
                 Route::post('{id}/delete','ParrotController@destroy')->name('parrot.destroy');
             });
+
+            //for parots functionalities
+            Route::prefix('couple')->group(function (){
+                Route::get('create', 'CoupleController@create')->name('couple.create');
+                Route::get('{id}', 'CoupleController@show')->name('couple.show');
+                Route::get('{id}/edit', 'CoupleController@edit')->name('couple.edit');
+                Route::post('', 'CoupleController@store')->name('couple.save');
+                Route::get('', 'CoupleController@index')->name('couple.index');
+
+                //for ajax api
+                Route::post('{id}/delete','CoupleController@destroy')->name('couple.destroy');
+            });
             
             Route::group(['prefix'=>'user', 'middleware' => ['role:1']], function() {
                 //super admin

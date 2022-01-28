@@ -38,6 +38,8 @@ return [
     'unique_id'=>'Unique ID',
     'add_parrot'=>'Add Parrot',
     'my_parrots'=>'My Parrots',
-
-
+    'male'=>"Male",
+    'female'=>"Female",
+    'gender'=>"Gender",
+    'i_donot_know'=>"I don't know",
 ];
