@@ -20,7 +20,7 @@
 	    <div class="row">
 	        <!-- Ajax data source array start-->
             @if(session('success'))	
-					<div class="alert alert-primary dark alert-dismissible fade show" role="alert"> {{trans('parrot.updated_success')}}
+					<div class="alert alert-primary dark alert-dismissible fade show" role="alert"> {{trans('couple.updated_success')}}
 					
 						
 						<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>

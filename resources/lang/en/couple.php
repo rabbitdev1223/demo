@@ -17,6 +17,7 @@ return [
     'add_couple' => 'Add Couple',
     'my_couple' => 'My Couple',
     'new_couple' => 'New Couple',
+    'edit_couple' => 'Edit Couple',
     'male_parrot' => 'Male parrot',
     'female_parrot' => 'Female parrot',
     "couple_made_today" => 'The Couple is made Today',
@@ -30,4 +31,6 @@ return [
     'add_another_couple'=>'Add another couple!',
     'goto_couple_list'=>'Go to My couple list',
     'birth_date_of_couple'=>"Birth Date",
+    'updated_success'=>"Success!Your couple has been updated succesfully!",
+    'success_to_add_couple'=>'Success! Your couple has been added to your Dashboard!',
 ];

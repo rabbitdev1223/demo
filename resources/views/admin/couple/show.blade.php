@@ -17,7 +17,7 @@
 	    <div class="edit-profile">
 	        <div class="row">
 				@if(session('success'))	
-					<div class="alert alert-primary dark alert-dismissible fade show" role="alert">{{trans('couple.success_to_add_parrot')}}
+					<div class="alert alert-primary dark alert-dismissible fade show" role="alert">{{trans('couple.success_to_add_couple')}}
 						<!-- <button class="btn btn-primary" type="button" title="">Add another parrot!</button> -->
 						<!-- <button class="btn btn-info" type="button"></button> -->
 						
@@ -31,7 +31,7 @@
 	            <div class="">
 	                <div class="card">
 	                    <div class="card-header pb-0">
-	                        <h4 class="card-title mb-0">{{trans('couple.new_couple')}}</h4>
+	                        <h4 class="card-title mb-0">{{trans('couple.couple_details')}}</h4>
 	                        <div class="card-options">
 	                            <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
 	                        </div>
@@ -69,7 +69,7 @@
                                 
 								<div class="mb-3">
 	                                <label class="form-label">{{trans('couple.note')}}</label>
-	                                <input class="form-control" name="note" type="text" value="{{$current_couple['old']}}" disabled >
+	                                <input class="form-control" name="note" type="text" value="{{$current_couple['note']}}" disabled >
 	                            	
 								</div>
 

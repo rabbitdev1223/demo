@@ -65,23 +65,25 @@ class CoupleController extends Controller
     public function show($id){
         
         $parrots = Auth::user()->parrots;
-        $couple = Couple::findOrFail($id)->load(['male','female']);
-        return view('admin.couple.show')->with('current_couple',$couple)
+        $current_couple = Couple::findOrFail($id)->load(['male','female']);
+        return view('admin.couple.show')->with('current_couple',$current_couple)
                                         ->with('parrots',$parrots);    
     }
 
     public function edit($id){
-        $breeds = Breed::all();
-        $parrot = Parrot::findOrFail($id);
+        $parrots = Auth::user()->parrots;
+        $current_couple = Couple::findOrFail($id)->load(['male','female']);
         
-        return view('admin.parrot.edit')->with('current_parrot',$parrot)
-                                    ->with('breeds',$breeds);    
+      
+
+        return view('admin.couple.edit')->with('parrots',$parrots)
+                                    ->with('current_couple',$current_couple);    
     }
     public function store(Request $request){
         
         
         if (isset($request->id)){ //edit
-            $parrot = Parrot::findOrFail($request->id);
+            $couple = Couple::findOrFail($request->id);
             
         }
         else{
@@ -94,8 +96,7 @@ class CoupleController extends Controller
        
         ]);
         
-        $couple = new Couple();
-        
+               
         $male_parrot = Parrot::find($request->male_id);
         //check gender is male
         if ($male_parrot==null || $male_parrot->gender != 1){
@@ -114,7 +115,6 @@ class CoupleController extends Controller
         $couple->birth_date_of_couple = $request->birth_date_of_couple;
         $couple->expected_date_of_birth = $request->expected_date_of_birth;
         $couple->note = $request->note;
-        $couple->couple_id = strtoupper(uniqid()) . date('y');
         $couple->save();
         
         if (isset($request->id)){ //edit
