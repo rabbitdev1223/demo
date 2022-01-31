@@ -17,20 +17,14 @@
   }
 </script>
 @section('content')
-	@component('components.breadcrumb')
-		@slot('breadcrumb_title')
-			<h3>{{trans('parrot.new_parrot')}}</h3>
-		@endslot
-		<li class="breadcrumb-item">Parrots</li>
-		<li class="breadcrumb-item active">{{trans('parrot.new_parrot')}}</li>
-	@endcomponent
+	
 	
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">
 			
 			@if ($errors->any())
-			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">{{trans('parrot.new_parrot')}}
+			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">{{trans('parrot.failed_to_create_parrot')}}
                       <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
                     </div>
 			@endif
@@ -96,7 +90,9 @@
                                 <div class="mb-3">
 	                                <label class="form-label">{{trans('parrot.color')}}</label>
 	                                <input class="form-control" name="color" type="text" placeholder="{{trans('parrot.color')}}" value="{{old('color')}}" >
-	                            	
+									@if ($errors->has('color'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('color') }}</span></div>
+                                    @endif
 								</div>
 	                            <div class="form-footer">
 	                                <button class="btn btn-primary btn-block">{{trans('parrot.save')}}</button>

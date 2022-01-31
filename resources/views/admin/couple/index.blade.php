@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-	{{trans('parrot.parrot_management')}}
+	{{trans('couple.couple_management')}}
 
 @endsection
 
@@ -14,22 +14,14 @@
 @endpush
 
 @section('content')
-	@component('components.breadcrumb')
-		@slot('breadcrumb_title')
-			<h3>{{trans('parrot.parrot_management')}}</h3>
-		@endslot
-		<!-- <li class="breadcrumb-item">Tables</li>
-		<li class="breadcrumb-item">Data Tables</li>
-		<li class="breadcrumb-item active">AJAX</li> -->
-	@endcomponent
+
 	
 	<div class="container-fluid">
 	    <div class="row">
 	        <!-- Ajax data source array start-->
             @if(session('success'))	
 					<div class="alert alert-primary dark alert-dismissible fade show" role="alert"> {{trans('parrot.updated_success')}}
-						<!-- <button class="btn btn-primary" type="button" title="">Add another parrot!</button> -->
-						<!-- <button class="btn btn-info" type="button"></button> -->
+					
 						
 						<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
   						
@@ -38,38 +30,40 @@
 	        <div class="col-sm-12">
 	            <div class="card">
 	                <div class="card-header">
-	                    <h5>{{trans('parrot.parrot_management')}}</h5>
+	                    <h5>{{trans('couple.couple_management')}}</h5>
 	                    
 	                </div>
 	                <div class="card-body">
 						<div >
-							<a href="{{route('parrot.create')}}"><button class="btn btn-square btn-primary btn-sm" type="button" >{{trans('parrot.new_parrot')}}</button></a>
+							<a href="{{route('couple.create')}}"><button class="btn btn-square btn-primary btn-sm" type="button" >{{trans('couple.new_couple')}}</button></a>
 						</div>
 	                    <div class="table-responsive" style="margin-top:20px">
 
 						
-	                        <table class="display datatables" id="parrotlist">
+	                        <table class="display datatables" id="couplelist">
 	                            <thead>
 	                                <tr>
 										
 	                                    <th>ID</th>
-										<th>{{trans('parrot.name')}}</th>
-	                                    <th>{{trans('parrot.breed')}}</th>
+										<th>{{trans('couple.male_parrot')}}</th>
+	                                    <th>{{trans('couple.female_parrot')}}</th>
+										<th>{{trans('couple.birth_date_of_couple')}}</th>
 										<th class="center">{{trans('parrot.action')}}</th>
 									
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-								@foreach ($parrots as $parrot)
-									<tr data-id={{$parrot->id}}>
+								@foreach ($couples as $couple)
+									<tr data-id={{$couple->id}}>
 										
-	                                    <td>{{ $parrot['parrot_id'] }}</td>
-										<td>{{ $parrot['name'] }}</td>
-	                                    <td>{{ $parrot['breed']['name'] }}</td>
+	                                    <td>{{ $couple['couple_id'] }}</td>
+										<td>{{ $couple['male']['name'] }}</td>
+	                                    <td>{{ $couple['female']['name'] }}</td>
+										<td>{{ $couple['birth_date_of_couple'] }}</td>
                                         <td class=""  >
 											
-											<a href="{{route('parrot.show',$parrot->id)}}"><i class="fa fa-eye" ></i></a>&nbsp;
-											 <a href="{{route('parrot.edit',$parrot->id)}}"><i class="fa fa-pencil"></i></a>&nbsp;
+											<a href="{{route('couple.show',$couple->id)}}"><i class="fa fa-eye" ></i></a>&nbsp;
+											 <a href="{{route('couple.edit',$couple->id)}}"><i class="fa fa-pencil"></i></a>&nbsp;
 											 <a href="#"><i class="fa fa-trash" role='button'></i></a>
 											
 											</td>
@@ -87,11 +81,11 @@
 					<div class="modal-dialog ">
 						<div class="modal-content">
 						<div class="modal-header">
-							<h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+							<h4 class="modal-title" id="myModalLabel">{{trans('user.are_you_sure')}}</h4>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" id="modal-btn-si">Yes</button>
-							<button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
+							<button type="button" class="btn btn-default" id="modal-btn-si">{{trans('parrot.yes')}}</button>
+							<button type="button" class="btn btn-primary" id="modal-btn-no">{{trans('parrot.no')}}</button>
 						</div>
 						</div>
 					</div>
@@ -115,7 +109,7 @@
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 	<script src="{{ asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
 	<script src="{{ asset('assets/js/notify/notify-script.js')}}"></script>
-	<script src="{{ asset('assets/js/parrots/datatable.js') }}"></script>
+	<script src="{{ asset('assets/js/couple/couple.js') }}"></script>
 
 	@endpush
 

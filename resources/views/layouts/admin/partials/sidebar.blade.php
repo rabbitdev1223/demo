@@ -15,20 +15,7 @@
 													@elseif(Auth::user()->type ==2)
                                                         {{trans('user.appassionato')}}
 													@endif</p>
-        <!-- <ul>
-            <li>
-                <span><span class="counter">19.8</span>k</span>
-                <p>Follow</p>
-            </li>
-            <li>
-                <span>2 year</span>
-                <p>Experince</p>
-            </li>
-            <li>
-                <span><span class="counter">95.2</span>k</span>
-                <p>Follower</p>
-            </li>
-        </ul> -->
+     
     </div>
     <nav>
     <div class="main-navbar">

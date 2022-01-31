@@ -7,9 +7,10 @@ $.ajaxSetup({
 
 var parrottable = $('#parrotlist').DataTable({
     'aoColumns': [
-        { "width": "20%" },
-        { "width": "35%" },
-        { "width": "35%" },
+        { "width": "15%" },
+        { "width": "30%" },
+        { "width": "15%" },
+        { "width": "30%" },
         { "width": "10%" },
                
     ]

@@ -14,9 +14,17 @@ class CoupleController extends Controller
     //
     public function index(){
 
-        $parrots = Auth::user()->parrots->load('breed');
+       // \DB::enableQueryLog(); // Enable query log
+
+// Your Eloquent query executed by using get()
+
+
+        $couples = Couple::whereHas('male', function($q)  {
+            $q->where('registered_by', Auth::user()->id);
+        })->get();
         
-        return view('admin.parrot.index')->with('parrots',$parrots);
+      //  dd(\DB::getQueryLog()); 
+        return view('admin.couple.index')->with('couples',$couples);
     }
     public function create(){
 
@@ -44,21 +52,22 @@ class CoupleController extends Controller
 
     public function destroy($id){
         
-        $parrot = Parrot::find($id);
+        $couple = Couple::find($id);
        
 
-        if (is_null($parrot)){
+        if (is_null($couple)){
             return "failed";
         }
-        $parrot->delete();
+        $couple->delete();
         return "ok";
     }
     //
     public function show($id){
-        $breeds = Breed::all();
-        $parrot = Parrot::findOrFail($id);
-        return view('admin.parrot.show')->with('current_parrot',$parrot)
-                                    ->with('breeds',$breeds);    
+        
+        $parrots = Auth::user()->parrots;
+        $couple = Couple::findOrFail($id)->load(['male','female']);
+        return view('admin.couple.show')->with('current_couple',$couple)
+                                        ->with('parrots',$parrots);    
     }
 
     public function edit($id){
@@ -109,10 +118,9 @@ class CoupleController extends Controller
         $couple->save();
         
         if (isset($request->id)){ //edit
-            return redirect()->route('parrot.index')->withSuccess('Updated successfully!');
+            return redirect()->route('couple.index')->withSuccess('Updated successfully!');
         }
-        return redirect()->route('couple.create');
-        // return redirect()->route('parrot.show',$parrot->id)->withSuccess('Created successfully!');
+        return redirect()->route('couple.show',$couple->id)->withSuccess('Created successfully!');
 
     }
 }

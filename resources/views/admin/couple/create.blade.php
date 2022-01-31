@@ -11,14 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 @section('content')
-	@component('components.breadcrumb')
-		@slot('breadcrumb_title')
-			<h3>{{trans('couple.new_couple')}}</h3>
-		@endslot
-		<li class="breadcrumb-item">{{trans('couple.couple')}}</li>
-		<li class="breadcrumb-item active">{{trans('couple.new_couple')}}</li>
-	@endcomponent
-	
+
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">

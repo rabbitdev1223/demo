@@ -14,15 +14,7 @@
 @endpush
 
 @section('content')
-	@component('components.breadcrumb')
-		@slot('breadcrumb_title')
-			<h3>{{trans('user.user_list')}}</h3>
-		@endslot
-		<!-- <li class="breadcrumb-item">Tables</li>
-		<li class="breadcrumb-item">Data Tables</li>
-		<li class="breadcrumb-item active">AJAX</li> -->
-	@endcomponent
-	
+
 	<div class="container-fluid">
 	    <div class="row">
 	        <!-- Ajax data source array start-->

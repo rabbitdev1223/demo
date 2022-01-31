@@ -15,14 +15,7 @@
   }
 </script>
 @section('content')
-	@component('components.breadcrumb')
-		@slot('breadcrumb_title')
-			<h3>{{trans('user.new_user')}}</h3>
-		@endslot
-		<li class="breadcrumb-item">{{trans('user.users')}}</li>
-		<li class="breadcrumb-item active">{{trans('user.new_user')}}</li>
-	@endcomponent
-	
+
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">

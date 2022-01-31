@@ -25,4 +25,9 @@ return [
     "failed_to_create_couple"=>"Failed to create couple!",
     'male_incorrect'=>'Male is incorrect!',
     'female_incorrect'=>'Female is incorrect!',
+    'couple_details'=>'Couple Details',
+    'couple_management'=>'Couple Management',
+    'add_another_couple'=>'Add another couple!',
+    'goto_couple_list'=>'Go to My couple list',
+    'birth_date_of_couple'=>"Birth Date",
 ];

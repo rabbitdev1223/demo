@@ -14,15 +14,7 @@
 @endpush
 
 @section('content')
-	@component('components.breadcrumb')
-		@slot('breadcrumb_title')
-			<h3>{{trans('parrot.parrot_management')}}</h3>
-		@endslot
-		<!-- <li class="breadcrumb-item">Tables</li>
-		<li class="breadcrumb-item">Data Tables</li>
-		<li class="breadcrumb-item active">AJAX</li> -->
-	@endcomponent
-	
+
 	<div class="container-fluid">
 	    <div class="row">
 	        <!-- Ajax data source array start-->
@@ -54,7 +46,8 @@
 										
 	                                    <th>ID</th>
 										<th>{{trans('parrot.name')}}</th>
-	                                    <th>{{trans('parrot.breed')}}</th>
+	                                    <th>{{trans('parrot.gender')}}</th>
+										<th>{{trans('parrot.breed')}}</th>
 										<th class="center">{{trans('parrot.action')}}</th>
 									
 	                                </tr>
@@ -65,6 +58,7 @@
 										
 	                                    <td>{{ $parrot['parrot_id'] }}</td>
 										<td>{{ $parrot['name'] }}</td>
+										<td>{{$parrot['gender']==1?trans('parrot.male'):trans('parrot.female')}}</td>
 	                                    <td>{{ $parrot['breed']['name'] }}</td>
                                         <td class="" data-couple="{{$parrot['is_couple']}}" >
 											

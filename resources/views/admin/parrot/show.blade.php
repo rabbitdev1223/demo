@@ -17,13 +17,7 @@
   }
 </script>
 @section('content')
-	@component('components.breadcrumb')
-		@slot('breadcrumb_title')
-			<h3>{{trans('parrot.parrot_details')}}</h3>
-		@endslot
-		<li class="breadcrumb-item">parrots</li>
-		<li class="breadcrumb-item active">{{trans('parrot.parrot_details')}}</li>
-	@endcomponent
+
 	
 	<div class="container-fluid">
 	    <div class="edit-profile">
