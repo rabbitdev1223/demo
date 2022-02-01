@@ -16,18 +16,19 @@
 </script>
 @section('content')
 
-	
+@component('components.breadcrumb')
+		@slot('breadcrumb_title')
+			<h3>{{trans('user.user_details')}}</h3>
+		@endslot
+		<li class="breadcrumb-item">{{trans('user.users')}}</li>
+		<li class="breadcrumb-item active">{{trans('user.user_details')}}</li>
+	@endcomponent
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">
 			    <div >
 	                <div class="card">
-	                    <div class="card-header pb-0">
-	                        <h4 class="card-title mb-0">{{trans('user.user_details')}}</h4>
-	                        <div class="card-options">
-	                            <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
-	                        </div>
-	                    </div>
+	                  
 	                    <div class="card-body">
 	                        <form class="theme-form profile-form" method="post" enctype="multipart/form-data" action="{{ route('profile.update') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />  

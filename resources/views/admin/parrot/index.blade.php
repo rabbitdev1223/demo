@@ -14,7 +14,13 @@
 @endpush
 
 @section('content')
-
+@component('components.breadcrumb')
+		@slot('breadcrumb_title')
+			<h3>{{trans('parrot.my_parrots')}}</h3>
+		@endslot
+		<li class="breadcrumb-item">{{trans('parrot.parrot')}}</li>
+		<li class="breadcrumb-item active">{{trans('parrot.my_parrots')}}</li>
+	@endcomponent
 	<div class="container-fluid">
 	    <div class="row">
 	        <!-- Ajax data source array start-->
@@ -29,10 +35,7 @@
 				@endif	
 	        <div class="col-sm-12">
 	            <div class="card">
-	                <div class="card-header">
-	                    <h5>{{trans('parrot.parrot_management')}}</h5>
-	                    
-	                </div>
+	              
 	                <div class="card-body">
 						<div >
 							<a href="{{route('parrot.create')}}"><button class="btn btn-square btn-primary btn-sm" type="button" >{{trans('parrot.new_parrot')}}</button></a>

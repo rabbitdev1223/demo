@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Parrot;
+use App\Models\Couple;
 use Auth;
 use Hash;
 use Redirect;
@@ -14,7 +16,14 @@ class HomeController extends Controller
 {
     public function index() 
     {
-        return view('admin.home.index');
+        $parrot_count = count(Auth::user()->parrots);
+        $couple_count =  count(Couple::whereHas('male', function($q)  {
+            $q->where('registered_by', Auth::user()->id);
+        })->get());
+
+        
+        return view('admin.home.index')->with('couple_count',$couple_count)
+                                        ->with('parrot_count',$parrot_count);
     }
     public function editProfile(){
         

@@ -14,7 +14,13 @@
 @endpush
 
 @section('content')
-
+@component('components.breadcrumb')
+		@slot('breadcrumb_title')
+			<h3>{{trans('couple.couple_management')}}</h3>
+		@endslot
+		<li class="breadcrumb-item">{{trans('couple.couple')}}</li>
+		<li class="breadcrumb-item active">{{trans('couple.couple_management')}}</li>
+	@endcomponent
 	
 	<div class="container-fluid">
 	    <div class="row">
@@ -29,10 +35,7 @@
 				@endif	
 	        <div class="col-sm-12">
 	            <div class="card">
-	                <div class="card-header">
-	                    <h5>{{trans('couple.couple_management')}}</h5>
-	                    
-	                </div>
+	               
 	                <div class="card-body">
 						<div >
 							<a href="{{route('couple.create')}}"><button class="btn btn-square btn-primary btn-sm" type="button" >{{trans('couple.new_couple')}}</button></a>

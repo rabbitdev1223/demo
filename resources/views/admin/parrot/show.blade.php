@@ -18,7 +18,13 @@
 </script>
 @section('content')
 
-	
+@component('components.breadcrumb')
+		@slot('breadcrumb_title')
+			<h3>{{trans('parrot.parrot_details')}}</h3>
+		@endslot
+		<li class="breadcrumb-item">{{trans('parrot.parrot')}}</li>
+		<li class="breadcrumb-item active">{{trans('parrot.parrot_details')}}</li>
+	@endcomponent
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">
@@ -36,12 +42,7 @@
 				@endif	
 	            <div class="">
 	                <div class="card">
-	                    <div class="card-header pb-0">
-	                        <h4 class="card-title mb-0">{{trans('parrot.parrot_details')}}</h4>
-	                        <div class="card-options">
-	                            <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
-	                        </div>
-	                    </div>
+	                    
 	                    <div class="card-body">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />    
 							<div class="row mb-2">

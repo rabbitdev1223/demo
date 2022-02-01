@@ -15,15 +15,19 @@
 
 @section('content')
 
+@component('components.breadcrumb')
+		@slot('breadcrumb_title')
+			<h3>{{trans('user.user_list')}}</h3>
+		@endslot
+		<li class="breadcrumb-item">{{trans('user.users')}}</li>
+		<li class="breadcrumb-item active">{{trans('user.user_list')}}</li>
+	@endcomponent
 	<div class="container-fluid">
 	    <div class="row">
 	        <!-- Ajax data source array start-->
 	        <div class="col-sm-12">
 	            <div class="card">
-	                <div class="card-header">
-	                    <h5>{{trans('user.user_list')}}</h5>
-	                    
-	                </div>
+	           
 	                <div class="card-body">
 						<div >
 							<a href="{{route('user.create')}}"><button class="btn btn-square btn-primary btn-sm" type="button" >{{trans('user.new_user')}}</button></a>

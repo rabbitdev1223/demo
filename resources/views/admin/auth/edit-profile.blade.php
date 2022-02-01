@@ -33,12 +33,7 @@
 			@endif
 	            <div class="">
 	                <div class="card">
-	                    <div class="card-header pb-0">
-	                        <h4 class="card-title mb-0">{{trans('user.user_profile')}}</h4>
-	                        <div class="card-options">
-	                            <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
-	                        </div>
-	                    </div>
+	                    
 	                    <div class="card-body">
 	                        <form class="theme-form profile-form" method="post" enctype="multipart/form-data" action="{{ route('profile.update') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />  
