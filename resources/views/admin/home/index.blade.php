@@ -39,7 +39,7 @@
                             <div class="media static-top-widget">
                                 <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
                                 <div class="media-body">
-                                    <span class="m-0">@if ($couple_count == 1) {{'Coppie'}} @else {{'coppia'}} @endif </span>
+                                    <span class="m-0">@if ($couple_count == 1) {{'Coppia'}} @else {{'coppie'}} @endif </span>
                                     <h4 class="mb-0 counter">{{$couple_count}}</h4>
                                     <i class="icon-bg" data-feather="shopping-bag"></i>
                                 </div>
@@ -86,9 +86,6 @@
         <script src="{{asset('assets/js/counter/jquery.counterup.min.js')}}"></script>
         <script src="{{asset('assets/js/counter/counter-custom.js')}}"></script>
         <script src="{{asset('assets/js/custom-card/custom-card.js')}}"></script>
-        <script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-        <script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-        <script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
         <script src="{{asset('assets/js/owlcarousel/owl.carousel.js')}}"></script>
         <script src="{{asset('assets/js/general-widget.js')}}"></script>
         <script src="{{asset('assets/js/height-equal.js')}}"></script>
