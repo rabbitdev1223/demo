@@ -110,15 +110,26 @@
 								</div>
 	                          
 								<div class="mb-3">
+	                                <label class="form-label">RNA</label>
+	                                <input class="form-control" name="rna" placeholder="RNA" maxlength="4" 
+										onkeypress="return /[a-z]/i.test(event.key)"  
+										style="text-transform: uppercase"
+										value="{{old('rna',$current_user->RNA)}}">
+	                            	@if ($errors->has('rna'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('rna') }}</span></div>
+                                    @endif
+								</div>
+
+								<div class="mb-3">
 	                                <label class="form-label">{{trans('user.my_farm_address')}}</label>
-	                                <input class="form-control" name="farm_address" placeholder="{{trans('user.my_farm_address')}}"  value="{{$current_user->farm_address}}">
+	                                <input class="form-control" name="farm_address" placeholder="{{trans('user.my_farm_address')}}"  value="{{old('farm_address',$current_user->farm_address)}}">
 	                            	@if ($errors->has('farm_address'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('farm_address') }}</span></div>
                                     @endif
 								</div>
 								<div class="mb-3">
 	                                <label class="form-label">{{trans('user.my_city')}}</label>
-	                                <input class="form-control" name="city" placeholder="{{trans('user.my_city')}}"  value="{{$current_user->city}}">
+	                                <input class="form-control" name="city" placeholder="{{trans('user.my_city')}}"  value="{{old('city',$current_user->city)}}">
 	                            	@if ($errors->has('city'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('city') }}</span></div>
                                     @endif
@@ -143,14 +154,14 @@
 								@endif
 								<div class="mb-3">
 	                                <label class="form-label">{{trans('user.password')}}</label>
-	                                <input class="form-control" type="password" name="password"  >
+	                                <input class="form-control" type="password" name="password"  value="" >
 	                            	@if ($errors->has('password'))
                                     		<div><span class="text-danger text-left">{{ $errors->first('password') }}</span></div>
                                     	@endif
 								</div>
 								<div class="mb-3">
 	                                <label class="form-label">{{trans('auth.password_confirm')}}</label>
-	                                <input class="form-control" type="password" name="password_confirmation">
+	                                <input class="form-control" type="password" name="password_confirmation" value="" >
 	                            	@if ($errors->has('password_confirmation'))
                                     		<div><span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span></div>
                                     	@endif

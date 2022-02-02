@@ -88,6 +88,13 @@
                                        	 
                                     </select>
 								</div>
+								<div class="mb-3">	
+									<label class="form-label">{{'RNA'}}</label>	
+									<input class="form-control" name="rna"  value="{{$current_parrot->RNA}}" disabled >
+	                            	@if ($errors->has('rna'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('rna') }}</span></div>
+                                    @endif
+								</div>	
 
                                 <div class="mb-3">
 	                                <label class="form-label">{{trans('parrot.color')}}</label>

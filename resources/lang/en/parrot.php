@@ -42,4 +42,5 @@ return [
     'female'=>"Female",
     'gender'=>"Gender",
     'i_donot_know'=>"I don't know",
+    'associate_rna'=>"Associate parrot with my RNA",
 ];

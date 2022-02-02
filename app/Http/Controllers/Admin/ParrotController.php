@@ -122,7 +122,10 @@ class ParrotController extends Controller
         
         $parrot->name = $request->name;
         $parrot->date_of_birth = $request->date_of_birth;
-        
+
+        if ($request->rna!='')
+            $parrot->RNA = strtoupper($request->rna);
+ 
         $parrot->color = $request->color;
         $parrot->breed_id = $request->breed;
 

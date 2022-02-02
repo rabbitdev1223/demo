@@ -41,6 +41,7 @@ class HomeController extends Controller
                 'surname' => 'required',
                 'type' => 'gt:0',
                 'password_confirmation' => 'same:password',
+                'rna'=>'sometimes|nullable|alpha|size:4|unique:users',
                 'password'=>'required']);
             $user->email = $request->email;
         }
@@ -55,6 +56,7 @@ class HomeController extends Controller
                 
                 'surname' => 'required',
                 'type' => 'gt:0',
+                'rna'=>'sometimes|nullable|alpha|size:4|unique:users,rna,' . $auth_id,
                 'password_confirmation' => 'same:password',
 
             ]);
@@ -128,6 +130,7 @@ class HomeController extends Controller
         $user->surname = $request->surname;
         $user->age = $request->age;
         $user->type = $request->type;   
+           
         $user->farm_address = $request->farm_address;
         $user->city = $request->city;     
         $user->zipcode = $request->zipcode;
@@ -135,7 +138,16 @@ class HomeController extends Controller
         
         if (isset($request->public_profile))
             $user->public_profile = $request->public_profile;  
-       
+        
+        //update the old RNA of parrots to new RNA of user
+     
+        if ($user->RNA!=''){
+            Parrot::where('RNA', $user->RNA)
+            ->update([
+                'RNA' => strtoupper($request->rna)
+                ]);
+        }
+        $user->RNA = strtoupper($request->rna);
             
         $user->save();
 

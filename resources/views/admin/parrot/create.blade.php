@@ -93,6 +93,16 @@
                                        	 
                                     </select>
 								</div>
+  								
+								<div class="mb-3">	
+									<input id="associate_rna" type="checkbox"  name="associate_rna" value="1"  @if (Auth::user()->RNA == null || Auth::user()->RNA == "") {{'disabled'}} @endif  >
+									<label class="text-muted" for="associate_rna" >{{trans('parrot.associate_rna')}}</label>
+									<input class="form-control" name="rna" placeholder="RNA"  value="{{old('rna')}}" 
+									style="text-transform: uppercase" onkeypress="return /[a-z]/i.test(event.key)" maxlength="4">
+	                            	@if ($errors->has('rna'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('rna') }}</span></div>
+                                    @endif
+								</div>	
 
                                 <div class="mb-3">
 	                                <label class="form-label">{{trans('parrot.color')}}</label>
@@ -120,7 +130,20 @@
     <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script> -->
-
+	<script>
+        $(document).ready(function() {
+           
+			$('#associate_rna').click(function() {
+				if ($(this).is(':checked')) {
+				// $('input[name=birth_date_of_couple]').datepicker('setDate','12/12/2022');
+					$('input[name=rna]').val("<?php echo Auth::user()->RNA ?>");
+					$('input[name=rna]').attr('readonly',true);
+				}
+				else
+					$('input[name=rna]').attr('readonly',false);
+			});
+        });
+    </script>
 	@endpush
 
 @endsection

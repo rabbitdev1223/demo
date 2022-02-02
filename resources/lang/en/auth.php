@@ -29,5 +29,5 @@ return [
     "sign_in"=>"Sign In",
     "dont_have_account"=>"Don't have account?",
     "create_account"=>'Create Account',  
-    "im_a"=>"I\'m A",  
+    "im_a"=>"I'm A",  
 ];

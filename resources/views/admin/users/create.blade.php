@@ -100,7 +100,16 @@
 										
 									</select>
 								</div>
-	                          
+  
+								<div class="mb-3">
+	                                <label class="form-label">RNA</label>
+	                                <input class="form-control" name="rna" placeholder="RNA"  value="{{old('rna')}}" 
+									style="text-transform: uppercase" onkeypress="return /[a-z]/i.test(event.key)" maxlength="4">
+	                            	@if ($errors->has('rna'))
+                                    	<div><span class="text-danger text-left">{{ $errors->first('rna') }}</span></div>
+                                    @endif
+								</div>
+
 								<div class="mb-3">
 	                                <label class="form-label">{{trans('user.farm_address')}}</label>
 	                                <input class="form-control" name="farm_address" placeholder="{{trans('user.farm_address')}}" value="{{old('farm_address')}}"  >
