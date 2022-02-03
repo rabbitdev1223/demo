@@ -13,7 +13,7 @@
 <script>
 	function onErrorImage(e){
 		e.onerror=null;
-		e.src="{{asset('assets/images/user/7.jpg')}}";
+		e.src="{{asset('assets/images/no-photo.jpg)}}";
   }
 </script>
 @section('content')
@@ -57,20 +57,20 @@
 	                                    </div>
 	                                </div>
 	                            </div>
-								<div class="mb-3">
+								<div class="mb-3 col-6">
 	                                <label class="form-label">{{trans('parrot.name')}}</label>
 	                                <input class="form-control" name="name" placeholder = "Friendly name of the parrot" value="{{$current_parrot->name}}" disabled />
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-6" >
 	                                <label class="form-label">{{trans('parrot.unique_id')}}</label>
 	                                <input class="form-control" name="unique_id" value="{{$current_parrot->parrot_id}}" disabled />
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-6">
 	                                <label class="form-label">{{trans('parrot.date_of_birth')}}</label>
 	                                <input class="datepicker-here form-control digits" type="text" data-language="en" name="date_of_birth"  value="{{$current_parrot->date_of_birth}}" disabled> 
                                     
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-6">
 									<label class="form-label">{{trans('parrot.breed')}} </label>
 									<select class="form-control btn-square" name="breed" disabled style="display:block">
                                         @foreach($breeds as $breed)
@@ -79,7 +79,7 @@
                                     </select>
 								</div>
   								
-								<div class="mb-3">
+								<div class="mb-3 col-6">
 	                                <label class="form-label">{{trans('parrot.gender')}}</label>
 	                                <select class="form-control btn-square" name="gender" style="display:block" disabled>
 										<option value='0' @if ($current_parrot->gender == 0) {{ 'selected' }} @endif>{{trans('parrot.i_donot_know')}}</option>
@@ -88,7 +88,7 @@
                                        	 
                                     </select>
 								</div>
-								<div class="mb-3">	
+								<div class="mb-3 col-6">	
 									<label class="form-label">{{'RNA'}}</label>	
 									<input class="form-control" name="rna"  value="{{$current_parrot->RNA}}" disabled >
 	                            	@if ($errors->has('rna'))
@@ -96,7 +96,7 @@
                                     @endif
 								</div>	
 
-                                <div class="mb-3">
+                                <div class="mb-3 col-6">
 	                                <label class="form-label">{{trans('parrot.color')}}</label>
 	                                <input class="form-control" name="color" type="text" placeholder="color" value="{{$current_parrot->color}}" disabled >
 	                            	

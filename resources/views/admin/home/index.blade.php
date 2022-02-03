@@ -20,32 +20,42 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-primary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="database"></i></div>
-                                <div class="media-body">
-                                    <span class="m-0">@if ($parrot_count == 1) {{'pappagallo'}} @else {{'pappagalli'}} @endif </span>
-                                    <h4 class="mb-0 counter">{{$parrot_count}}</h4>
-                                    <i class="icon-bg" data-feather="database"></i>
+                    <a href="{{route('parrot.index')}}">
+                        <div class="card o-hidden border-0">
+                            <div class="bg-primary b-r-4 card-body">
+                        
+                                <div class="media static-top-widget">
+                                    <div class="align-self-center text-center"><i data-feather="database"></i></div>
+                                
+                                    <div class="media-body">
+                                    
+                                            <span class="m-0">@if ($parrot_count == 1) {{'pappagallo'}} @else {{'pappagalli'}} @endif </span>
+                                            <h4 class="mb-0 counter">{{$parrot_count}}</h4>
+                                            <i class="icon-bg" data-feather="database"></i>
+                                        
+                                    </div>
+                                
                                 </div>
+                        
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
-                                <div class="media-body">
-                                    <span class="m-0">@if ($couple_count == 1) {{'Coppia'}} @else {{'coppie'}} @endif </span>
-                                    <h4 class="mb-0 counter">{{$couple_count}}</h4>
-                                    <i class="icon-bg" data-feather="shopping-bag"></i>
+                    <a href="{{route('couple.index')}}">
+                        <div class="card o-hidden border-0">
+                            <div class="bg-secondary b-r-4 card-body">
+                                <div class="media static-top-widget">
+                                    <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
+                                    <div class="media-body">
+                                        <span class="m-0">@if ($couple_count == 1) {{'Coppia'}} @else {{'coppie'}} @endif </span>
+                                        <h4 class="mb-0 counter">{{$couple_count}}</h4>
+                                        <i class="icon-bg" data-feather="shopping-bag"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <!-- <div class="col-sm-6 col-xl-3 col-lg-6">
                     <div class="card o-hidden border-0">

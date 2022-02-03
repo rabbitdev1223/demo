@@ -33,34 +33,36 @@
 	                    <div class="card-body">
 	                        <form class="theme-form profile-form" method="post" enctype="multipart/form-data" action="{{ route('couple.save') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />    
-								<div class="mb-3">
-									<label class="form-label">{{trans('couple.male_parrot')}} </label>
-									<select class="form-control btn-square" name="male_id" style="display:block">
-                                        @foreach($parrots as $parrot)
-											@if ($parrot->gender == 1 && $parrot->male_couple == null)
-											<option value='{{ $parrot->id }}'>{{ $parrot->parrot_id . " - " . $parrot->name }}</option>
-											@endif
-										@endforeach
-                                    </select>
-									@if ($errors->has('male_id'))
-                                    	<div><span class="text-danger text-left">{{ $errors->first('male_id') }}</span></div>
-                                    @endif
+								<div class="mb-3 row">
+									<div class="col-6">
+										<label class="form-label">{{trans('couple.male_parrot')}} </label>
+										<select class="form-control btn-square" name="male_id" style="display:block">
+											@foreach($parrots as $parrot)
+												@if ($parrot->gender == 1 && $parrot->male_couple == null)
+												<option value='{{ $parrot->id }}'>{{ $parrot->parrot_id . " - " . $parrot->name }}</option>
+												@endif
+											@endforeach
+										</select>
+										@if ($errors->has('male_id'))
+											<div><span class="text-danger text-left">{{ $errors->first('male_id') }}</span></div>
+										@endif
+									</div>
+									<div class="col-6">
+										<label class="form-label">{{trans('couple.female_parrot')}} </label>
+										<select class="form-control btn-square" name="female_id" style="display:block">
+											@foreach($parrots as $parrot)
+												@if ($parrot->gender == 2 && $parrot->female_couple == null)
+												<option value='{{ $parrot->id }}'>{{ $parrot->parrot_id . " - " . $parrot->name }}</option>
+												@endif
+											@endforeach
+										</select>
+										@if ($errors->has('female_id'))
+											<div><span class="text-danger text-left">{{ $errors->first('female_id') }}</span></div>
+										@endif
+									</div>
 								</div>
-								<div class="mb-3">
-									<label class="form-label">{{trans('couple.female_parrot')}} </label>
-									<select class="form-control btn-square" name="female_id" style="display:block">
-                                        @foreach($parrots as $parrot)
-											@if ($parrot->gender == 2 && $parrot->female_couple == null)
-											<option value='{{ $parrot->id }}'>{{ $parrot->parrot_id . " - " . $parrot->name }}</option>
-											@endif
-										@endforeach
-                                    </select>
-									@if ($errors->has('female_id'))
-                                    	<div><span class="text-danger text-left">{{ $errors->first('female_id') }}</span></div>
-                                    @endif
-								</div>
-
-								<div class="mb-3">	
+								
+								<div class="mb-3 col-6">	
 									<input id="couple_made_today" type="checkbox"  name="couple_made_today" value="1" >
 									<label class="text-muted" for="couple_made_today" >{{trans('couple.couple_made_today')}}</label>
 									<input class="datepicker-here form-control digits" type="text" data-language="en" name="birth_date_of_couple" readonly style="background:white">
@@ -68,7 +70,7 @@
                                     	<div><span class="text-danger text-left">{{ $errors->first('birth_date_of_couple') }}</span></div>
                                     @endif
 								</div>	
-								<div class="mb-3">	
+								<div class="mb-3 col-6">	
 									
 									<label class="text-muted" for="expected_date_of_birth" >{{trans('couple.expected_date_of_birth')}}</label>
 									<input class="datepicker-here form-control digits" type="text" data-language="en" name="expected_date_of_birth" readonly style="background:white">

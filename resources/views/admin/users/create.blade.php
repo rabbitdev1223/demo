@@ -11,7 +11,7 @@
 <script>
 	function onErrorImage(e){
 		e.onerror=null;
-		e.src="{{asset('assets/images/user/7.jpg')}}";
+		e.src="{{asset('assets/images/no-photo.jpg')}}";
   }
 </script>
 @section('content')
@@ -42,12 +42,14 @@
 	                        <form class="theme-form profile-form" method="post" enctype="multipart/form-data" action="{{ route('profile.update') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />    
 							<div class="row mb-2">
-	                                <div class="profile-title">
-	                                    <div class="media">
+	                                <div class="profile-title" >
+	                                    <div class="media" style="position:relative">
 											<img class="img-70 rounded-circle" alt="" 
 												src = ""
 												onerror="onErrorImage(this)"
 												id="profileDisplay" onClick="triggerClick()" />
+												<a href="javascript:triggerClick()"><i class="fa fa-pencil circle-icon"
+											></i></a>
 											@if ($errors->has('profile'))
                                     			<div><span class="text-danger text-left">{{ $errors->first('profile') }}</span></div>
                                     		@endif
@@ -104,7 +106,11 @@
 								<div class="mb-3">
 	                                <label class="form-label">RNA</label>
 	                                <input class="form-control" name="rna" placeholder="RNA"  value="{{old('rna')}}" 
-									style="text-transform: uppercase" onkeypress="return /[a-z]/i.test(event.key)" maxlength="4">
+									style="text-transform: uppercase" onkeypress="return /[a-z0-9]/i.test(event.key)" 
+									maxlength="4"
+									pattern='regex:/[a-zA-Z]/'
+										title="{{trans('auth.rna_oneletter_atleast')}}"
+										>
 	                            	@if ($errors->has('rna'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('rna') }}</span></div>
                                     @endif

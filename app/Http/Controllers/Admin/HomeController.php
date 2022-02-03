@@ -41,7 +41,8 @@ class HomeController extends Controller
                 'surname' => 'required',
                 'type' => 'gt:0',
                 'password_confirmation' => 'same:password',
-                'rna'=>'sometimes|nullable|alpha|size:4|unique:users',
+                'rna'=>['sometimes','nullable','alpha_num','size:4','unique:users',
+                        'regex:/[a-zA-Z]/'],
                 'password'=>'required']);
             $user->email = $request->email;
         }
@@ -56,7 +57,8 @@ class HomeController extends Controller
                 
                 'surname' => 'required',
                 'type' => 'gt:0',
-                'rna'=>'sometimes|nullable|alpha|size:4|unique:users,rna,' . $auth_id,
+                'rna'=>['sometimes','nullable','alpha_num','size:4','unique:users,rna,' . $auth_id,
+                        'regex:/[a-zA-Z]/'],
                 'password_confirmation' => 'same:password',
 
             ]);

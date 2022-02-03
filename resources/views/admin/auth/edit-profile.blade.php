@@ -8,7 +8,12 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mycss.css') }}">
 
 @endpush
-
+<script>
+	function onErrorImage(e){
+		e.onerror=null;
+		e.src="{{asset('assets/images/no-photo.jpg')}}";
+  }
+</script>
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
@@ -40,11 +45,13 @@
 							<input type="hidden" name="id" value="{{ $current_user->id }}" />  
 							<div class="row mb-2">
 	                                <div class="profile-title">
-	                                    <div class="media">
+	                                    <div class="media" style="position: relative;">
 											<img class="img-70 rounded-circle" alt="" 
 												src="{{asset('uploads/' . $current_user->profile) }}" 
 												onerror="onErrorImage(this)"
 												id="profileDisplay" onClick="triggerClick()" />
+												<a href="javascript:triggerClick()"><i class="fa fa-pencil circle-icon"
+											></i></a>
 											@if ($errors->has('profile'))
                                     			<div><span class="text-danger text-left">{{ $errors->first('profile') }}</span></div>
                                     		@endif
@@ -112,7 +119,9 @@
 								<div class="mb-3">
 	                                <label class="form-label">RNA</label>
 	                                <input class="form-control" name="rna" placeholder="RNA" maxlength="4" 
-										onkeypress="return /[a-z]/i.test(event.key)"  
+										onkeypress="return /[a-z0-9]/i.test(event.key)"  
+										pattern='regex:/[a-zA-Z]/'
+										title="{{trans('auth.rna_oneletter_atleast')}}"
 										style="text-transform: uppercase"
 										value="{{old('rna',$current_user->RNA)}}">
 	                            	@if ($errors->has('rna'))

@@ -23,7 +23,7 @@
     <script>
     function onErrorImage(e){
       e.onerror=null;
-      e.src="{{asset('assets/images/user/7.jpg')}}";
+      e.src="{{asset('assets/images/no-photo.jpg')}}";
     }
   </script>
   </head>
