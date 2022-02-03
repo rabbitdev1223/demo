@@ -13,7 +13,7 @@
 <script>
 	function onErrorImage(e){
 		e.onerror=null;
-		e.src="{{asset('assets/images/no-photo.jpg)}}";
+		e.src="{{asset('assets/images/no-photo.jpg')}}";
   }
 </script>
 @section('content')
