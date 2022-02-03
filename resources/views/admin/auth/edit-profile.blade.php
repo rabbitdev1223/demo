@@ -5,7 +5,7 @@
 @endsection
 
 @push('css')
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mycss.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mycss1.css') }}">
 
 @endpush
 <script>
@@ -193,7 +193,7 @@
 	</div>
 	
 	@push('scripts')
-	<script src="{{ asset('assets/js/parots/profile.js') }}"></script>
+	<script src="{{ asset('assets/js/parrots/profile.js') }}"></script>
 	@endpush
 
 @endsection
