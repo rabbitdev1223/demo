@@ -49,10 +49,10 @@
                         <div class="form-group">
                             <button class="btn btn-primary btn-block" type="submit">{{trans('auth.sign_in')}}</button>
                         </div>
-                        <div class="login-social-title">
+                        <!-- <div class="login-social-title">
                             <h5>Sign in with</h5>
                         </div>
-                       
+                        -->
                         <p>{{trans('auth.dont_have_account')}}<a class="ms-2" href="{{ route('register.show') }}">{{trans('auth.create_account')}}</a></p>
                     </form>
                 </div>

@@ -14,11 +14,25 @@
     border: 4px solid #24695c ;
   }
   i.circle-icon{
-    background: #ffc0c0;
+    
+    background-color: rgba(225, 225, 225, 0.82);
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
     padding: 7px;
     position:absolute;
     left:80px;top:63px;
+    transition: 0.5s;
+  }
+
+  i.circle-icon:hover{
+    
+    background: #24695c  !important;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 7px;
+    position:absolute;
+    left:80px;top:63px;
+    color:white;
   }

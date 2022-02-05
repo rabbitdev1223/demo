@@ -5,7 +5,7 @@
 @endsection
 
 @push('css')
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mycss1.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mycss.css') }}">
 
 @endpush
 <script>
