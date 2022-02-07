@@ -48,4 +48,8 @@ return [
     'registered_date'=>'Registered Date',
     'action'=>'Action', 
     'are_you_sure'=>'Are you sure?', 
+
+    'password_confirm' => 'Password Confirm',
+    "my_profile" => 'My Profile',
+    
 ];

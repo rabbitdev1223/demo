@@ -120,7 +120,7 @@
           </ul>
         </li> -->
         <li class="onhover-dropdown p-0">
-          <a href="{{route('logout.perform')}}"><button class="btn btn-primary-light" type="button"><i data-feather="log-out"></i>Log out</button></a>
+          <a href="{{route('logout.perform')}}"><button class="btn btn-primary-light" type="button"><i data-feather="log-out"></i>{{trans('auth.logout')}}</button></a>
         </li>
       </ul>
     </div>

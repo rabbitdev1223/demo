@@ -118,9 +118,9 @@ class CoupleController extends Controller
         $couple->save();
         
         if (isset($request->id)){ //edit
-            return redirect()->route('couple.index')->withSuccess('Updated successfully!');
+            return redirect()->route('couple.index')->withSuccess(trans('couple.updated_success'));
         }
-        return redirect()->route('couple.show',$couple->id)->withSuccess('Created successfully!');
+        return redirect()->route('couple.show',$couple->id)->withSuccess(trans('couple.success_to_add_couple'));
 
     }
 }

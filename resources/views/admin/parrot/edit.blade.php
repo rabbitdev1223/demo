@@ -73,7 +73,7 @@
 	                                <label class="form-label">{{trans('parrot.date_of_birth')}}</label>
 	                                
                                     <input class="datepicker-here form-control digits" 
-                                        type="text" data-language="en" name="date_of_birth" 
+                                        type="text" data-language="it" name="date_of_birth" 
                                         value="" readonly style="background:white">
                                     @if ($errors->has('date_of_birth'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('date_of_birth') }}</span></div>

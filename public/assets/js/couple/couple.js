@@ -2,8 +2,8 @@ $(document).ready(function(){
 
 
 
-    $('select[name=male_id]').select2();
-    $('select[name=female_id]').select2();
+    $('select[name=male_id]').select2({lang:'it'});
+    $('select[name=female_id]').select2({lang:'it'});
     $('input[name=birth_date_of_couple]').datepicker({
       language: 'en',
       dateFormat: 'mm/dd/yyyy',
@@ -47,7 +47,30 @@ var coupletable = $('#couplelist').DataTable({
       
       { "width": "10%" },
              
-  ]
+  ],
+  language:{
+    "sEmptyTable":     "Nessun dato presente nella tabella",
+    "sInfo":           "Vista da _START_ a _END_ di _TOTAL_ elementi",
+    "sInfoEmpty":      "Vista da 0 a 0 di 0 elementi",
+    "sInfoFiltered":   "(filtrati da _MAX_ elementi totali)",
+    "sInfoPostFix":    "",
+    "sInfoThousands":  ",",
+    "sLengthMenu":     "Visualizza _MENU_ elementi",
+    "sLoadingRecords": "Caricamento...",
+    "sProcessing":     "Elaborazione...",
+    "sSearch":         "Cerca:",
+    "sZeroRecords":    "La ricerca non ha portato alcun risultato.",
+    "oPaginate": {
+      "sFirst":      "Inizio",
+      "sPrevious":   "Precedente",
+      "sNext":       "Successivo",
+      "sLast":       "Fine"
+    },
+    "oAria": {
+      "sSortAscending":  ": attiva per ordinare la colonna in ordine crescente",
+      "sSortDescending": ": attiva per ordinare la colonna in ordine decrescente"
+    }
+  }
 });
 
 function show_notify(error,msg){

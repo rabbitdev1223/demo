@@ -49,4 +49,6 @@ return [
     'action'=>'Azioni', 
     'are_you_sure'=>'Sei sicuro?',
 
+    'password_confirm' => 'Conferma password',
+    "my_profile" => 'Il mio profilo',
 ];

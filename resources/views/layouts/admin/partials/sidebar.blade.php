@@ -53,7 +53,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link menu-title {{ routeActive('profile.show') }}" href="{{ route('profile.show') }}"><i data-feather="users"></i><span>My Profile</span></a>
+                        <a class="nav-link menu-title {{ routeActive('profile.show') }}" href="{{ route('profile.show') }}"><i data-feather="users"></i><span>{{trans('user.my_profile')}}</span></a>
                         
                     </li>
                 </ul>

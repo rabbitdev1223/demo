@@ -11,7 +11,9 @@ function triggerClick(e) {
     }
   }
 $(document).ready(function(){
-  $('select[name=breed]').select2();
+  $('select[name=breed]').select2(
+    {language: "it"}
+  );
   $('input[name=date_of_birth]').datepicker({
     language: 'en',
     maxDate: new Date() // Now can select only dates, which goes after today

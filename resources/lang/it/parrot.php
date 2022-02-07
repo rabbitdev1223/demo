@@ -39,4 +39,10 @@ return [
     'add_parrot'=>'Aggiungi pappagallo',
     'my_parrots'=>'I miei pappagalli',
 
+    'male'=>"maschio",
+    'female'=>"Femmina",
+    'gender'=>"Sesso",
+    'i_donot_know'=>"Non lo so ancora",
+    'associate_rna'=>"Associa pappagallo al mio RNA",
+
 ];
