@@ -33,8 +33,8 @@
 	                    <div class="card-body">
 	                        <form class="theme-form profile-form" method="post" enctype="multipart/form-data" action="{{ route('couple.save') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />    
-								<div class="mb-3 row">
-									<div class="col-6">
+								<div class="row">
+									<div class="col-sm-6 mb-3 ">
 										<label class="form-label">{{trans('couple.male_parrot')}} </label>
 										<select class="form-control btn-square" name="male_id" style="display:block">
 											@foreach($parrots as $parrot)
@@ -47,7 +47,7 @@
 											<div><span class="text-danger text-left">{{ $errors->first('male_id') }}</span></div>
 										@endif
 									</div>
-									<div class="col-6">
+									<div class="col-sm-6 mb-3 ">
 										<label class="form-label">{{trans('couple.female_parrot')}} </label>
 										<select class="form-control btn-square" name="female_id" style="display:block">
 											@foreach($parrots as $parrot)
@@ -99,7 +99,37 @@
 	
 	@push('scripts')
 	<script>
-		
+		$(document).ready(function(){
+
+				$('select[name=male_id]').select2({lang:'it'});
+				$('select[name=female_id]').select2({lang:'it'});
+				$('input[name=birth_date_of_couple]').datepicker({
+				language: 'en',
+				dateFormat: 'mm/dd/yyyy',
+					maxDate: new Date() // Now can select only dates, which goes after today
+				})
+
+				$('input[name=expected_date_of_birth]').datepicker({
+					language: 'en',
+					dateFormat: 'mm/dd/yyyy',
+					minDate: new Date() // Now can select only dates, which goes after today
+				})
+
+
+				$('#couple_made_today').click(function() {
+					if ($(this).is(':checked')) {
+						// $('input[name=birth_date_of_couple]').datepicker('setDate','12/12/2022');
+						var now = new Date();
+						var dateString = moment(now).format('MM/DD/YYYY');
+
+						$('input[name=birth_date_of_couple]').val(dateString);
+						
+						
+					}
+				});
+
+			});
+
 	</script>
 	<script src="{{ asset('assets/js/couple/moment.js') }}"></script>
 	<script src="{{ asset('assets/js/couple/couple.js') }}"></script>

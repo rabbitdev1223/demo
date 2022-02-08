@@ -101,10 +101,8 @@
 											
 										</select>
 									</div>
-								</div>
-
-								<div class="mb-3 row">
-									<div class="col-6">	
+								
+									<div class="col-sm-6 mb-3">	
 										<input id="associate_rna" type="checkbox"
 										name="associate_rna" value="1" @if (Auth::user()->RNA == null || Auth::user()->RNA == "") {{'disabled'}} @endif >
 										<label class="text-muted" for="associate_rna" >{{trans('parrot.associate_rna')}}</label>
@@ -118,10 +116,12 @@
 											<div><span class="text-danger text-left">{{ $errors->first('rna') }}</span></div>
 										@endif
 									</div>
-									<div class="col-6">
+									<div class="col-sm-6 mb-3">
 										<label class="form-label">{{trans('parrot.color')}}</label>
 										<input class="form-control" name="color" type="text" placeholder="{{trans('parrot.color')}}" value="{{old('color',$current_parrot->color)}}" >
-										
+										@if ($errors->has('color'))
+											<div><span class="text-danger text-left">{{ $errors->first('color') }}</span></div>
+										@endif
 									</div>
 								</div>	
 								

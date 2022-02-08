@@ -32,4 +32,5 @@ return [
     "im_a"=>"I'm A",
     
     'logout'=>'Logout',
+    'rna_oneletter_atleast'=>"RNA should contain one letter at least.",
 ];

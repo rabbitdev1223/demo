@@ -40,40 +40,41 @@
 	                    <div class="card-body">
 	                        <form class="theme-form profile-form" >
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />    
-								<div class="mb-3">
+							<div class="row">
+								<div class="mb-3 col-sm-6">
 									<label class="form-label">{{trans('parrot.unique_id')}} </label>
 									<input class="form-control" type="text" data-language="en" value="{{$current_couple['couple_id']}}"  disabled >
 								
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 									<label class="form-label">{{trans('couple.male_parrot')}} </label>
 									<input class="form-control" type="text" data-language="en" value="{{$current_couple['male']['name']}}"  disabled >
 								
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 									<label class="form-label">{{trans('couple.female_parrot')}} </label>
 									<input class="form-control" type="text" data-language="en" value="{{$current_couple['female']['name']}}"  disabled >
 								
 								
 								</div>
 
-								<div class="mb-3">	
+								<div class="mb-3 col-sm-6">	
 									<label class="text-muted" for="couple_made_today" >{{trans('couple.couple_made_today')}}</label>
 									<input class=" form-control" value="{{$current_couple['birth_date_of_couple']}}" type="text" data-language="en" name="birth_date_of_couple" disabled>
                                     
 								</div>	
-								<div class="mb-3">	
+								<div class="mb-3 col-sm-6">	
 									
 									<label class="text-muted" for="expected_date_of_birth" >{{trans('couple.expected_date_of_birth')}}</label>
 									<input class=" form-control" value="{{$current_couple['expected_date_of_birth']}}" type="text" data-language="en" name="birth_date_of_couple" disabled>
 								</div>
                                 
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('couple.note')}}</label>
 	                                <input class="form-control" name="note" type="text" value="{{$current_couple['note']}}" disabled >
 	                            	
 								</div>
-
+							</div>
 	                        
 	                        </form>
 	                    </div>

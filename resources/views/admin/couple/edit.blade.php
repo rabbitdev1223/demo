@@ -34,8 +34,8 @@
 	                        <form class="theme-form profile-form" method="post" enctype="multipart/form-data" action="{{ route('couple.save') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />    
 							<input type="hidden" name="id" value="{{ $current_couple->id }}" />
-								<div class="mb-3 row">
-									<div class="col-6">
+								<div class="row">
+									<div class="mb-3 col-sm-6">
 										<label class="form-label">{{trans('couple.male_parrot')}} </label>
 										<select class="form-control btn-square" name="male_id" style="display:block">
 											@foreach($parrots as $parrot)
@@ -51,7 +51,7 @@
 										@endif
 									</div>
 
-									<div class="col-6">
+									<div class="mb-3 col-sm-6">
 										<label class="form-label">{{trans('couple.female_parrot')}} </label>
 										<select class="form-control btn-square" name="female_id" style="display:block">
 											@foreach($parrots as $parrot)
@@ -66,36 +66,36 @@
 											<div><span class="text-danger text-left">{{ $errors->first('female_id') }}</span></div>
 										@endif
 									</div>
-								</div>
 								
-								<div class="mb-3 col-6">	
-									<input id="couple_made_today" type="checkbox"  name="couple_made_today" value="1" >
-									<label class="text-muted" for="couple_made_today" >{{trans('couple.couple_made_today')}}</label>
-									<input class="datepicker-here form-control digits" type="text" data-language="en"
-										value="{{old('birth_date_of_couple',$current_couple->birth_date_of_couple)}}" name="birth_date_of_couple" readonly style="background:white">
-                                    @if ($errors->has('birth_date_of_couple'))
-                                    	<div><span class="text-danger text-left">{{ $errors->first('birth_date_of_couple') }}</span></div>
-                                    @endif
-								</div>	
-								<div class="mb-3 col-6">	
+								
+									<div class="mb-3 col-sm-6">	
+										<input id="couple_made_today" type="checkbox"  name="couple_made_today" value="1" >
+										<label class="text-muted" for="couple_made_today" >{{trans('couple.couple_made_today')}}</label>
+										<input class="datepicker-here form-control digits" type="text" data-language="en"
+											value="{{old('birth_date_of_couple',$current_couple->birth_date_of_couple)}}" name="birth_date_of_couple" readonly style="background:white">
+										@if ($errors->has('birth_date_of_couple'))
+											<div><span class="text-danger text-left">{{ $errors->first('birth_date_of_couple') }}</span></div>
+										@endif
+									</div>	
+									<div class="mb-3 col-sm-6">	
+										
+										<label class="text-muted" for="expected_date_of_birth" >{{trans('couple.expected_date_of_birth')}}</label>
+										<input class="datepicker-here form-control digits" value="{{old('expected_date_of_birth',$current_couple->expected_date_of_birth)}}"
+											type="text" data-language="en" name="expected_date_of_birth" readonly style="background:white">
+										@if ($errors->has('expected_date_of_birth'))
+											<div><span class="text-danger text-left">{{ $errors->first('expected_date_of_birth') }}</span></div>
+										@endif
+									</div>
 									
-									<label class="text-muted" for="expected_date_of_birth" >{{trans('couple.expected_date_of_birth')}}</label>
-									<input class="datepicker-here form-control digits" value="{{old('expected_date_of_birth',$current_couple->expected_date_of_birth)}}"
-										type="text" data-language="en" name="expected_date_of_birth" readonly style="background:white">
-                                    @if ($errors->has('expected_date_of_birth'))
-                                    	<div><span class="text-danger text-left">{{ $errors->first('expected_date_of_birth') }}</span></div>
-                                    @endif
+									<div class="mb-3 col-sm-6">
+										<label class="form-label">{{trans('couple.note')}}</label>
+										<input class="form-control" name="note" type="text" placeholder="{{trans('couple.note')}}" value="{{old('note',$current_couple->note)}}" >
+										
+									</div>
 								</div>
-                                
-								<div class="mb-3">
-	                                <label class="form-label">{{trans('couple.note')}}</label>
-	                                <input class="form-control" name="note" type="text" placeholder="{{trans('couple.note')}}" value="{{old('note',$current_couple->note)}}" >
-	                            	
-								</div>
-
-	                            <div class="form-footer">
-	                                <button class="btn btn-primary btn-block">{{trans('parrot.save')}}</button>
-	                            </div>
+									<div class="form-footer">
+										<button class="btn btn-primary btn-block">{{trans('parrot.save')}}</button>
+									</div>
 	                        </form>
 	                    </div>
 	                </div>
@@ -106,7 +106,39 @@
 	</div>
 	
 	@push('scripts')
-	
+	<script>
+		$(document).ready(function(){
+
+				$('select[name=male_id]').select2({lang:'it'});
+				$('select[name=female_id]').select2({lang:'it'});
+				$('input[name=birth_date_of_couple]').datepicker({
+				language: 'en',
+				dateFormat: 'mm/dd/yyyy',
+					maxDate: new Date() // Now can select only dates, which goes after today
+				})
+
+				$('input[name=expected_date_of_birth]').datepicker({
+					language: 'en',
+					dateFormat: 'mm/dd/yyyy',
+					minDate: new Date() // Now can select only dates, which goes after today
+				})
+
+
+				$('#couple_made_today').click(function() {
+					if ($(this).is(':checked')) {
+						// $('input[name=birth_date_of_couple]').datepicker('setDate','12/12/2022');
+						var now = new Date();
+						var dateString = moment(now).format('MM/DD/YYYY');
+
+						$('input[name=birth_date_of_couple]').val(dateString);
+						
+						
+					}
+				});
+
+			});
+
+	</script>
 	<script src="{{ asset('assets/js/couple/moment.js') }}"></script>
 	<script src="{{ asset('assets/js/couple/couple.js') }}"></script>
     <!-- Plugins JS start-->

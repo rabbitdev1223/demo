@@ -68,7 +68,8 @@
 	                                    </div>
 	                                </div>
 	                            </div>
-								<div class="mb-3">
+							<div class="row">
+								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('user.email_address')}}</label>
 	                                <input class="form-control" name="email" disabled  value="{{$current_user->email}}" />
 									<!-- @if ($errors->has('email'))
@@ -76,14 +77,14 @@
                                     @endif -->
 								</div>
 						
-	                            <div class="mb-3">
+	                            <div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('user.nickname')}}</label>
 	                                <input class="form-control" name="nickname" placeholder="{{trans('user.nickname')}}"  value="{{old('nickname',$current_user->nickname)}}">
 	                            	@if ($errors->has('nickname'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('nickname') }}</span></div>
                                     @endif
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('user.name')}}</label>
 									
 	                            	
@@ -92,21 +93,21 @@
                                     	<div><span class="text-danger text-left">{{ $errors->first('name') }}</span></div>
                                     @endif
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('user.surname')}}</label>
 	                                <input class="form-control" name="surname" placeholder="{{trans('user.surname')}}"  value="{{old('surname',$current_user->surname)}}">
 	                            	@if ($errors->has('surname'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('surname') }}</span></div>
                                     @endif
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('user.age')}}</label>
 	                                <input class="form-control" name="age" type="number" placeholder="{{trans('user.age')}}"  value={{old('age',$current_user->age)}}>
 	                            	@if ($errors->has('age'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('age') }}</span></div>
                                     @endif
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 								
 									<label class="form-label">{{trans('auth.im_a')}}</label>
 									<select class="form-control btn-square" name="type">
@@ -116,11 +117,11 @@
 									</select>
 								</div>
 	                          
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">RNA</label>
 	                                <input class="form-control" name="rna" placeholder="RNA" maxlength="4" 
 										onkeypress="return /[a-z0-9]/i.test(event.key)"  
-										pattern='regex:/[a-zA-Z]/'
+										pattern='[a-zA-Z0-9]{4}'
 										title="{{trans('auth.rna_oneletter_atleast')}}"
 										style="text-transform: uppercase"
 										value="{{old('rna',$current_user->RNA)}}">
@@ -129,31 +130,30 @@
                                     @endif
 								</div>
 
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('user.my_farm_address')}}</label>
 	                                <input class="form-control" name="farm_address" placeholder="{{trans('user.my_farm_address')}}"  value="{{old('farm_address',$current_user->farm_address)}}">
 	                            	@if ($errors->has('farm_address'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('farm_address') }}</span></div>
                                     @endif
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('user.my_city')}}</label>
 	                                <input class="form-control" name="city" placeholder="{{trans('user.my_city')}}"  value="{{old('city',$current_user->city)}}">
 	                            	@if ($errors->has('city'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('city') }}</span></div>
                                     @endif
 								</div>
-								<div class="col-sm-6 col-md-3">
-	                                <div class="mb-3">
+								<div class="mb-3 col-sm-6">
 	                                    <label class="form-label">{{trans('user.my_cap')}}</label>
 	                                    <input class="form-control" type="number" name="zipcode" placeholder="{{trans('user.zip_code')}}"  value="{{$current_user->zipcode}}">
 	                                	@if ($errors->has('zipcode'))
                                     		<div><span class="text-danger text-left">{{ $errors->first('zipcode') }}</span></div>
                                     	@endif
-									</div>
+									
 	                            </div>
 								@if (Auth::user()->role != 1)
-								<div class="mb-3">
+								<div class="mb-3 col-12">
 	                                <label class="form-label">{{trans('user.current_password')}}</label>
 	                                <input class="form-control" type="password" name="current_password" value = "" >
 	                            	@if ($errors->has('current_password'))
@@ -161,28 +161,29 @@
                                     	@endif
 								</div>
 								@endif
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('user.password')}}</label>
 	                                <input class="form-control" type="password" name="password"  value="" >
 	                            	@if ($errors->has('password'))
                                     		<div><span class="text-danger text-left">{{ $errors->first('password') }}</span></div>
                                     	@endif
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('auth.password_confirm')}}</label>
 	                                <input class="form-control" type="password" name="password_confirmation" value="" >
 	                            	@if ($errors->has('password_confirmation'))
                                     		<div><span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span></div>
                                     	@endif
 								</div>
-								<div class="mb-3">	
+								<div class="mb-3 col-sm-6">	
 									<input id="public_profile" type="checkbox"  name="public_profile" value="1" @if ($current_user->public_profile == 1) {{ 'checked' }} @endif>
 									<label class="text-muted" for="public_profile" >{{trans('user.make_profile_visible')}}</label>
 								</div>	
-	                           
-	                            <div class="form-footer">
+							</div>   
+
+	                        <div class="form-footer">
 	                                <button class="btn btn-primary btn-block">{{trans('parrot.save')}}</button>
-	                            </div>
+	                        </div>
 	                        </form>
 	                    </div>
 	                </div>

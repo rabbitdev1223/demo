@@ -1,75 +1,7 @@
-$(document).ready(function(){
 
-
-
-    $('select[name=male_id]').select2({lang:'it'});
-    $('select[name=female_id]').select2({lang:'it'});
-    $('input[name=birth_date_of_couple]').datepicker({
-      language: 'en',
-      dateFormat: 'mm/dd/yyyy',
-        maxDate: new Date() // Now can select only dates, which goes after today
-    })
-
-    $('input[name=expected_date_of_birth]').datepicker({
-        language: 'en',
-        dateFormat: 'mm/dd/yyyy',
-          minDate: new Date() // Now can select only dates, which goes after today
-      })
-    
-    
-    $('#couple_made_today').click(function() {
-        if ($(this).is(':checked')) {
-            // $('input[name=birth_date_of_couple]').datepicker('setDate','12/12/2022');
-            var now = new Date();
-            var dateString = moment(now).format('MM/DD/YYYY');
-
-            $('input[name=birth_date_of_couple]').val(dateString);
-            
-            
-        }
-      });
-    
-  });
-
-  
 $.ajaxSetup({
   headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
-
-var coupletable = $('#couplelist').DataTable({
-  'aoColumns': [
-      { "width": "15%" },
-      { "width": "30%" },
-      { "width": "30%" },
-      { "width": "15%" },
-      
-      { "width": "10%" },
-             
-  ],
-  language:{
-    "sEmptyTable":     "Nessun dato presente nella tabella",
-    "sInfo":           "Vista da _START_ a _END_ di _TOTAL_ elementi",
-    "sInfoEmpty":      "Vista da 0 a 0 di 0 elementi",
-    "sInfoFiltered":   "(filtrati da _MAX_ elementi totali)",
-    "sInfoPostFix":    "",
-    "sInfoThousands":  ",",
-    "sLengthMenu":     "Visualizza _MENU_ elementi",
-    "sLoadingRecords": "Caricamento...",
-    "sProcessing":     "Elaborazione...",
-    "sSearch":         "Cerca:",
-    "sZeroRecords":    "La ricerca non ha portato alcun risultato.",
-    "oPaginate": {
-      "sFirst":      "Inizio",
-      "sPrevious":   "Precedente",
-      "sNext":       "Successivo",
-      "sLast":       "Fine"
-    },
-    "oAria": {
-      "sSortAscending":  ": attiva per ordinare la colonna in ordine crescente",
-      "sSortDescending": ": attiva per ordinare la colonna in ordine decrescente"
-    }
   }
 });
 

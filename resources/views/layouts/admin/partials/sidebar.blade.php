@@ -6,7 +6,7 @@
         </a> -->
         <img class="img-90 rounded-circle"
             onerror="onErrorImage(this)" 
-            src="{{asset('uploads/' . Auth::user()->profile) }}" alt="" />
+            src="{{asset('uploads/' . Auth::user()->profile?Auth::user()->profile:'') }}" alt="" />
         <a href="user-profile"> <h6 class="mt-3 f-14 f-w-600">{{Auth::user()->name}}</h6></a>
         <p class="mb-0 font-roboto">@if(Auth::user()->role == 1)
                                                 {{''}}	

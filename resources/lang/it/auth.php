@@ -30,5 +30,6 @@ return [
     "dont_have_account"=>"Non hai un account?",
     "create_account"=>'Crea account',  
     "im_a"=>"Mi reputo un",  
-    'rna_oneletter_atleast'=>"RNA should contain one letter at least.",
+    'logout'=>'Logout',
+    'rna_oneletter_atleast'=>"il tuo RNA dovrebbe includere almeno una lettera.",
 ];

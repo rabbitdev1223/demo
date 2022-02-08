@@ -112,6 +112,43 @@
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 	<script src="{{ asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
 	<script src="{{ asset('assets/js/notify/notify-script.js')}}"></script>
+	
+	<script>	
+		var coupletable = $('#couplelist').DataTable({
+		'aoColumns': [
+			{ "width": "15%" },
+			{ "width": "30%" },
+			{ "width": "30%" },
+			{ "width": "15%" },
+			
+			{ "width": "10%" },
+					
+		],
+		language:{
+			"sEmptyTable":     "Nessun dato presente nella tabella",
+			"sInfo":           "Vista da _START_ a _END_ di _TOTAL_ elementi",
+			"sInfoEmpty":      "Vista da 0 a 0 di 0 elementi",
+			"sInfoFiltered":   "(filtrati da _MAX_ elementi totali)",
+			"sInfoPostFix":    "",
+			"sInfoThousands":  ",",
+			"sLengthMenu":     "Visualizza _MENU_ elementi",
+			"sLoadingRecords": "Caricamento...",
+			"sProcessing":     "Elaborazione...",
+			"sSearch":         "Cerca:",
+			"sZeroRecords":    "La ricerca non ha portato alcun risultato.",
+			"oPaginate": {
+			"sFirst":      "Inizio",
+			"sPrevious":   "Precedente",
+			"sNext":       "Successivo",
+			"sLast":       "Fine"
+			},
+			"oAria": {
+			"sSortAscending":  ": attiva per ordinare la colonna in ordine crescente",
+			"sSortDescending": ": attiva per ordinare la colonna in ordine decrescente"
+			}
+		}
+		});
+	</script>
 	<script src="{{ asset('assets/js/couple/couple.js') }}"></script>
 
 	@endpush
