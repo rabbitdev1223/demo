@@ -10,13 +10,3 @@ function triggerClick(e) {
       reader.readAsDataURL(e.files[0]);
     }
   }
-$(document).ready(function(){
-  $('select[name=breed]').select2(
-    {language: "it"}
-  );
-  $('input[name=date_of_birth]').datepicker({
-    language: 'en',
-    maxDate: new Date() // Now can select only dates, which goes after today
-  })
- 
-});

@@ -72,7 +72,7 @@
 								</div>
 								<div class="mb-3">
 	                                <label class="form-label">{{trans('parrot.date_of_birth')}}</label>
-	                                <input class="datepicker-here form-control digits" type="text" data-language="it" name="date_of_birth" readonly style="background:white">
+	                                <input class="datepicker-here form-control digits" type="text" data-language="en" name="date_of_birth" readonly style="background:white">
                                     @if ($errors->has('date_of_birth'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('date_of_birth') }}</span></div>
                                     @endif
@@ -148,6 +148,15 @@
 				else
 					$('input[name=rna]').attr('readonly',false);
 			});
+
+			$('select[name=breed]').select2(
+				{language: "it"}
+			);
+			$('input[name=date_of_birth]').datepicker({
+				language: 'en',
+				maxDate: new Date() // Now can select only dates, which goes after today
+			})
+			
         });
     </script>
 	@endpush
