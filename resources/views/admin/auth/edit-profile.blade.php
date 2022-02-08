@@ -47,7 +47,7 @@
 	                                <div class="profile-title">
 	                                    <div class="media" style="position: relative;">
 											<img class="img-70 rounded-circle" alt="" 
-												src="{{asset('uploads/' . $current_user->profile) }}" 
+												src="{{asset('uploads/' . $current_user->profile?$current_user->profile:'') }}" 
 												onerror="onErrorImage(this)"
 												id="profileDisplay" onClick="triggerClick()" />
 												<a href="javascript:triggerClick()"><i class="fa fa-pencil circle-icon"

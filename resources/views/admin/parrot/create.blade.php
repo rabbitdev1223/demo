@@ -102,7 +102,7 @@
 									<input class="form-control" name="rna" placeholder="RNA"  value="{{old('rna')}}" 
 									style="text-transform: uppercase" onkeypress="return /[a-z0-9]/i.test(event.key)" 
 									maxlength="4"
-									pattern='regex:/[a-zA-Z]/'
+									pattern='[a-zA-Z0-9]{4}'
 										title="{{trans('auth.rna_oneletter_atleast')}}"
 									>
 	                            	@if ($errors->has('rna'))

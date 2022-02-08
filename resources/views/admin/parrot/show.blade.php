@@ -49,7 +49,7 @@
 	                                <div class="profile-title">
 	                                    <div class="media">
 											<img class="img-70 rounded-circle" alt="" 
-											src="{{asset('uploads/parrots/' . $current_parrot->photo) }}"
+											src="{{asset('uploads/parrots/' . $current_parrot->photo?$current_parrot->photo:'') }}"
 												onerror="onErrorImage(this)"
 												id="profileDisplay" />
 										

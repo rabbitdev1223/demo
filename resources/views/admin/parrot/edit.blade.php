@@ -49,7 +49,9 @@
 	                                <div class="profile-title">
 	                                    <div class="media" style="position: relative;"> 
 											<img class="img-70 rounded-circle" alt="" 
-                                                src="{{asset('uploads/parrots/' . $current_parrot->photo) }}"
+                                              
+													src="{{asset('uploads/parrots/' . $current_parrot->photo?$current_parrot->photo:'') }}"
+											
 												onerror="onErrorImage(this)"
 												id="profileDisplay" onClick="triggerClick()" />
 												<a href="javascript:triggerClick()"><i class="fa fa-pencil circle-icon"
@@ -62,63 +64,68 @@
 	                                    </div>
 	                                </div>
 	                            </div>
-								<div class="mb-3">
-	                                <label class="form-label">{{trans('parrot.name')}}</label>
-	                                <input class="form-control" name="name" placeholder = "{{trans('parrot.friendly_name_of_parrot')}}" value="{{old('name',$current_parrot->name)}}" />
-									@if ($errors->has('name'))
-                                    	<div><span class="text-danger text-left">{{ $errors->first('name') }}</span></div>
-                                    @endif
-								</div>
-								<div class="mb-3">
-	                                <label class="form-label">{{trans('parrot.date_of_birth')}}</label>
-	                                
-                                    <input class="datepicker-here form-control digits" 
-                                        type="text" data-language="en" name="date_of_birth" 
-                                        value="" readonly style="background:white">
-                                    @if ($errors->has('date_of_birth'))
-                                    	<div><span class="text-danger text-left">{{ $errors->first('date_of_birth') }}</span></div>
-                                    @endif
-								</div>
-								<div class="mb-3">
-									<label class="form-label">Razza </label>
-									<select class="form-control btn-square" name="breed" style="display:block">
-                                        @foreach($breeds as $breed)
-                                        <option value='{{ $breed->id }}'  @if ($current_parrot->breed->id == $breed->id) {{ 'selected' }} @endif>{{ $breed->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <small class="form-text text-muted" style="display:block" >{{trans('parrot.not_on_list_contact')}}</small>
+								<div class="row">
+									<div class="col-sm-6 mb-3 ">
+										<label class="form-label">{{trans('parrot.name')}}</label>
+										<input class="form-control" name="name" placeholder = "{{trans('parrot.friendly_name_of_parrot')}}" value="{{old('name',$current_parrot->name)}}" />
+										@if ($errors->has('name'))
+											<div><span class="text-danger text-left">{{ $errors->first('name') }}</span></div>
+										@endif
+									</div>
+									<div class="col-sm-6 mb-3 ">
+										<label class="form-label">{{trans('parrot.date_of_birth')}}</label>
+										
+										<input class="datepicker-here form-control digits" 
+											type="text" data-language="en" name="date_of_birth" 
+											value="" readonly style="background:white">
+										@if ($errors->has('date_of_birth'))
+											<div><span class="text-danger text-left">{{ $errors->first('date_of_birth') }}</span></div>
+										@endif
+									</div>
+								
+									<div class="col-sm-6 mb-3 ">
+										<label class="form-label" for="breed">Razza </label>
+										<select class="form-control btn-square" name="breed" style="display:block">
+											@foreach($breeds as $breed)
+											<option value='{{ $breed->id }}'  @if ($current_parrot->breed->id == $breed->id) {{ 'selected' }} @endif>{{ $breed->name }}</option>
+											@endforeach
+										</select>
+										<small class="form-text text-muted" style="display:block" >{{trans('parrot.not_on_list_contact')}}</small>
+									</div>
+									<div class="col-sm-6 mb-3 ">
+										<label class="form-label">{{trans('parrot.gender')}}</label>
+										<select class="form-control btn-square" name="gender" style="display:block" @if ($current_parrot->is_couple == true) {{ 'disabled' }} @endif</select>)>
+											<option value='0' @if ($current_parrot->gender == 0) {{ 'selected' }} @endif>{{trans('parrot.i_donot_know')}}</option>
+											<option value='1' @if ($current_parrot->gender == 1) {{ 'selected' }} @endif>{{trans('parrot.male')}}</option>
+											<option value='2' @if ($current_parrot->gender == 2) {{ 'selected' }} @endif>{{trans('parrot.female')}}</option>
+											
+										</select>
+									</div>
 								</div>
 
-								<div class="mb-3">
-	                                <label class="form-label">{{trans('parrot.gender')}}</label>
-	                                <select class="form-control btn-square" name="gender" style="display:block" @if ($current_parrot->is_couple == true) {{ 'disabled' }} @endif</select>)>
-										<option value='0' @if ($current_parrot->gender == 0) {{ 'selected' }} @endif>{{trans('parrot.i_donot_know')}}</option>
-										<option value='1' @if ($current_parrot->gender == 1) {{ 'selected' }} @endif>{{trans('parrot.male')}}</option>
-                                        <option value='2' @if ($current_parrot->gender == 2) {{ 'selected' }} @endif>{{trans('parrot.female')}}</option>
-                                       	 
-                                    </select>
-								</div>
-  								
-								<div class="mb-3">	
-									<input id="associate_rna" type="checkbox"
-									  name="associate_rna" value="1" @if (Auth::user()->RNA == null || Auth::user()->RNA == "") {{'disabled'}} @endif >
-									<label class="text-muted" for="associate_rna" >{{trans('parrot.associate_rna')}}</label>
-									<input class="form-control" name="rna" placeholder="RNA"  value="{{old('rna',$current_parrot->RNA)}}" 
-									style="text-transform: uppercase" onkeypress="return /[a-z0-9]/i.test(event.key)" 
-									maxlength="4"
-									pattern='regex:/[a-zA-Z]/'
-										title="{{trans('auth.rna_oneletter_atleast')}}"
-									>
-	                            	@if ($errors->has('rna'))
-                                    	<div><span class="text-danger text-left">{{ $errors->first('rna') }}</span></div>
-                                    @endif
+								<div class="mb-3 row">
+									<div class="col-6">	
+										<input id="associate_rna" type="checkbox"
+										name="associate_rna" value="1" @if (Auth::user()->RNA == null || Auth::user()->RNA == "") {{'disabled'}} @endif >
+										<label class="text-muted" for="associate_rna" >{{trans('parrot.associate_rna')}}</label>
+										<input class="form-control" name="rna" placeholder="RNA"  value="{{old('rna',$current_parrot->RNA)}}" 
+										style="text-transform: uppercase" onkeypress="return /[a-z0-9]/i.test(event.key)" 
+										maxlength="4"
+										pattern='[a-zA-Z0-9]{4}'
+											title="{{trans('auth.rna_oneletter_atleast')}}"
+										>
+										@if ($errors->has('rna'))
+											<div><span class="text-danger text-left">{{ $errors->first('rna') }}</span></div>
+										@endif
+									</div>
+									<div class="col-6">
+										<label class="form-label">{{trans('parrot.color')}}</label>
+										<input class="form-control" name="color" type="text" placeholder="{{trans('parrot.color')}}" value="{{old('color',$current_parrot->color)}}" >
+										
+									</div>
 								</div>	
 								
-                                <div class="mb-3">
-	                                <label class="form-label">{{trans('parrot.color')}}</label>
-	                                <input class="form-control" name="color" type="text" placeholder="{{trans('parrot.color')}}" value="{{old('color',$current_parrot->color)}}" >
-	                            	
-								</div>
+                              
 	                            <div class="form-footer">
 	                                <button class="btn btn-primary btn-block">{{trans('parrot.save')}}</button>
 	                            </div>

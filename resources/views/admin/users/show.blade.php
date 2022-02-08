@@ -37,7 +37,7 @@
 	                                <div class="profile-title">
 	                                    <div class="media">
 											<img class="img-70 rounded-circle" alt="" 
-												src="{{asset('uploads/' . $current_user->profile) }}" 
+												src="{{asset('uploads/' . $current_user->profile?$current_user->profile:'') }}" 
 												onerror="onErrorImage(this)"
 												id="profileDisplay"  />
 											@if ($errors->has('profile'))
