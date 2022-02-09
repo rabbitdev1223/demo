@@ -110,13 +110,13 @@ class ParrotController extends Controller
                         move_uploaded_file($_FILES['profileImage']['tmp_name'],$fileDestination);
                       
                     }else{
-                        return redirect()->back()->withErrors(['profileImage' => ['Size is limited to 2MB !']]);
+                        return redirect()->back()->withErrors(['profileImage' => [trans('parrot.size_limit_2mb')]]);
                     }
                 }else{
                     echo "You have an error uploading photo file!";
                 }
             }else{
-                return redirect()->back()->withErrors(['profileImage' => ['Only png and jpg file are allowed!']]);
+                return redirect()->back()->withErrors(['profileImage' => [trans('parrot.allow_png_jpg')]]);
             }
         }
         
@@ -136,9 +136,9 @@ class ParrotController extends Controller
         $parrot->save();
         
         if (isset($request->id)){ //edit
-            return redirect()->route('parrot.index')->withSuccess('Updated successfully!');
+            return redirect()->route('parrot.index')->withSuccess(trans('parrot.updated_success'));
         }
-        return redirect()->route('parrot.show',$parrot->id)->withSuccess('Created successfully!');
+        return redirect()->route('parrot.show',$parrot->id)->withSuccess(trans('parrot.success_to_add_parrot'));
 
     }
 }

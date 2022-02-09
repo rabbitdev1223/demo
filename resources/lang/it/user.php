@@ -51,4 +51,7 @@ return [
 
     'password_confirm' => 'Conferma password',
     "my_profile" => 'Il mio profilo',
+
+    'success_to_send_password_reset_link' => 'Success! password reset link has been sent to your email',
+    'issue_email_provider'=> "Failed! there is some issue with email provider",
 ];

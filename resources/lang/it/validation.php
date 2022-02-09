@@ -13,18 +13,17 @@ return [
     |
     */
 
-   
-    'password' => 'The password is incorrect.',
-    'required' => 'The :attribute field is required.',
-    'same' => 'The :attribute and :other must match.',
+    'password' => 'la password è errata.',
+    'required' => 'il campo :attribute è richiesto.',
+    'same' => 'i campi :attribute e :other devono combaciare.',
     'size' => [
-        'numeric' => 'The :attribute must be :size.',
-        'file' => 'The :attribute must be :size kilobytes.',
-        'string' => 'The :attribute must be :size characters.',
-        'array' => 'The :attribute must contain :size items.',
+        'numeric' => 'Il :attribute dovrebbe essere :size.',
+        'file' => 'Il :attribute deve essere :size kilobytes.',
+        'string' => 'Il :attribute deve essere :size caratteri.',
+        'array' => 'Il :attribute deve contenere :size items.',
     ],
     'string' => 'The :attribute must be a string.',
-    'unique' => 'The :attribute has already been taken.',
+    'unique' => 'Il :attribute già è utilizzato.',
     
     /*
     |--------------------------------------------------------------------------
@@ -36,5 +35,19 @@ return [
     | of "email". This simply helps us make our message more expressive.
     |
     */
-
+    'attributes' => [
+        'password' => 'Password',
+        'name'=>'Nome',
+        'color'=>'Colore',
+        'password_confirmation'=>'Conferma password',
+        'birth_date_of_couple'=>'Birth Date',
+        'male_parrot' => "Pappagallo maschio",
+        'female_parrot' => "Pappagallo femmina",
+        "couple_made_today" => "I pappagalli sono stati messi insieme oggi",
+        'expected_date_of_birth'=>"Data stimata di nascita",
+        'breed' => 'Razza',
+        'parrot' => 'Pappagallo',
+        "surname" => 'Cognome',
+        
+    ]
 ];

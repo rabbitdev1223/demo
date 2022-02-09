@@ -43,4 +43,7 @@ return [
     'gender'=>"Gender",
     'i_donot_know'=>"I don't know",
     'associate_rna'=>"Associate parrot with my RNA",
+
+    'size_limit_2mb'=>'Size is limited to 2MB !',
+    'allow_png_jpg'=> "Only png and jpg file are allowed!",
 ];

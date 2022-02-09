@@ -50,7 +50,7 @@ class UserController extends Controller
         if (Auth::check()){
             $user = Auth::user();
             if (!$user)
-                return redirect()->route('login.show')->withErrors('Cannot find user!');
+                return redirect()->route('login.show')->withErrors(trans('user.not_find_user'));
       
             $user->login_ip = $request->ip();
             $user->login_date = now();
@@ -63,7 +63,7 @@ class UserController extends Controller
             $user = User::where('token', $request->token)->first();
        
             if (!$user)
-                return redirect()->route('login.show')->withErrors('Cannot find user!');
+                return redirect()->route('login.show')->withErrors(trans('user.not_find_user'));
       
             $user->login_ip = $request->ip();
             $user->login_date = now();
@@ -80,7 +80,7 @@ class UserController extends Controller
                         ->subject('Password Initialized')
                         ->from('info@parots.it', 'Password initialized');
                 });
-            return redirect()->route('login.show')->withSuccess('Success! password has been changed');;
+            return redirect()->route('login.show')->withSuccess(trans('user.success_password_changed'));
         }
     }
       /**
@@ -94,7 +94,7 @@ class UserController extends Controller
         if ($user) {
             return view('admin.auth.creat-password', compact('token'));
         }
-        return redirect()->route('login.show')->withErrors('Password reset link is expired');
+        return redirect()->route('login.show')->withErrors(trans('user.password_link_expired'));
     }
      /**
      * Reset password
@@ -109,7 +109,7 @@ class UserController extends Controller
 
         $user = User::where('email', $request->email)->first();
         if (!$user) {
-            return back()->withErrors('Failed! email is not registered.');
+            return back()->withErrors(trans('user.failed_email_not_registered'));
         }
 
         $token = Str::random(60);
@@ -120,9 +120,9 @@ class UserController extends Controller
         Mail::to($request->email)->send(new ResetPassword($user->name, $token));
 
         if(Mail::failures() != 0) {
-            return back()->withSuccess('Success! password reset link has been sent to your email');
+            return back()->withSuccess(trans('user.success_to_send_password_reset_link'));
         }
-        return back()->withErrors('Failed! there is some issue with email provider');
+        return back()->withErrors(trans('user.issue_email_provider'));
     }
 /**
      * Change password
