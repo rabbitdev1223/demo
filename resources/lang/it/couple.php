@@ -35,6 +35,9 @@ return [
     'birth_date_of_couple'=>"Birth Date",
     'updated_success'=>"Coppia creata con successo!",
     'success_to_add_couple'=>"Coppia aggiunta con successo",
+
+    "really_delete"=>"Vuoi eliminare questa coppia? ",
     
-    "really_delete"=>"Do you really want to delete this couple?",
+    "success_to_delete"=>"success to delete",
+    "failed_to_delete"=>"Failed to delete",
 ];

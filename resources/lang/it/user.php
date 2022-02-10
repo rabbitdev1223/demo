@@ -52,10 +52,14 @@ return [
     'password_confirm' => 'Conferma password',
     "my_profile" => 'Il mio profilo',
 
-    'success_to_send_password_reset_link' => 'Success! password reset link has been sent to your email',
-    'issue_email_provider'=> "Failed! there is some issue with email provider",
-    "failed_email_not_registered"=>"Failed! email is not registered.",
-    'password_link_expired'=> 'Password reset link is expired',
-    'success_password_changed'=>"Success! password has been changed",
-    'not_find_user'=> "Cannot find user",
+    'success_to_send_password_reset_link' => 'Operazione completata, ti abbiamo appena inviato una mail per il recupero password',
+    'issue_email_provider'=> "Errore, c'è un problema con l'invio di mail",
+    "failed_email_not_registered"=>"Errore, questa mail non è riconosciuta.",
+    'password_link_expired'=> 'Link scaduto',
+    'success_password_changed'=>"Operazione completata, la password è stata aggiornata",
+    'not_find_user'=> "Utente non trovato",
+
+    "really_unsuspend_user"=>"Do you really want to unsuspend this user?",
+    "really_suspend_user"=>"Do you really want to suspend this user?",
+    "really_delete_user"=>"Do you really want to delete this user?",
 ];

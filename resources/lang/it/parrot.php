@@ -45,7 +45,9 @@ return [
     'i_donot_know'=>"Non lo so ancora",
     'associate_rna'=>"Associa pappagallo al mio RNA",
 
-    'size_limit_2mb'=>'Size is limited to 2MB !',
-    'allow_png_jpg'=> "Only png and jpg file are allowed!",
-
+    'size_limit_2mb'=>'Puoi caricare immagini di massimo 2MB !',
+    'allow_png_jpg'=> "puoi caricare solo immagini .JPG e .PNG",
+    
+    'really_delete_in_couple' => "You're trying to delete a parrot in a couple, Are you sure ?",
+    'really_delete_parrot' => "Do you really want to delete this parrot?",
 ];
