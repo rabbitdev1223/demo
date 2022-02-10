@@ -33,4 +33,8 @@ return [
     'birth_date_of_couple'=>"Birth Date",
     'updated_success'=>"Success!Your couple has been updated succesfully!",
     'success_to_add_couple'=>'Success! Your couple has been added to your Dashboard!',
+    
+    "really_delete"=>"Do you really want to delete this couple?",
+    "success_to_delete"=>"success to delete",
+    "failed_to_delete"=>"Failed to delete",
 ];

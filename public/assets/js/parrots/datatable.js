@@ -107,10 +107,10 @@ var modalConfirm = function(callback){
 
         target = $(e.target).parents('tr');
         if (target.attr('data-couple') == 1){
-            $('#myModalLabel').html("You're trying to delete a parrot in a couple, Are you sure ?")
+            $('#myModalLabel').html(window.lang.really_delete_in_couple)
         }
         else
-          $('#myModalLabel').html("Do you really want to delete this parrot?")
+          $('#myModalLabel').html(window.lang.really_delete_parrot)
 
         
         $("#mi-modal").modal('show');
@@ -144,7 +144,7 @@ var modalConfirm = function(callback){
                     if(data=="ok" && status=="success"){
                         // $("#successToast .toast-body").html("success to delete");
                         // new bootstrap.Toast(document.querySelector('#successToast')).show();
-                        show_notify(0,"success to delete");
+                        show_notify(0,window.couple.success_to_delete);
                         parrottable
                         .row( target )
                         .remove()
@@ -153,7 +153,7 @@ var modalConfirm = function(callback){
                     else{
                         // $("#failedToast .toast-body").html("failed to delete");
                         // new bootstrap.Toast(document.querySelector('#failedToast')).show();
-                        show_notify(1,"Failed to delete");
+                        show_notify(1,window.failed_to_delete);
                     }
                 });
 

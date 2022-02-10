@@ -66,6 +66,7 @@ function show_notify(error,msg){
   }
 }
 var mode = 0; //0:delete user;1:suspend user;2:unsuspend user;
+
 var modalConfirm = function(callback){
   
   //when click delete button
@@ -73,8 +74,7 @@ var modalConfirm = function(callback){
 
       target = $(e.target).parents('tr');
       
-      $('#myModalLabel').html("Do you really want to delete this couple?")
-
+      $('#myModalLabel').html(window.lang.my_couple);
       
       $("#mi-modal").modal('show');
       mode = 0;

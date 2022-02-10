@@ -84,11 +84,11 @@
 					<div class="modal-dialog ">
 						<div class="modal-content">
 						<div class="modal-header">
-							<h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+							<h4 class="modal-title" id="myModalLabel">{{trans('user.are_you_sure')}}</h4>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" id="modal-btn-si">Yes</button>
-							<button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
+							<button type="button" class="btn btn-default" id="modal-btn-si">{{trans('parrot.yes')}}</button>
+							<button type="button" class="btn btn-primary" id="modal-btn-no">{{trans('parrot.no')}}</button>
 						</div>
 						</div>
 					</div>
@@ -106,8 +106,16 @@
 		<!----------->
 	</div>
 	
-
+	
 	@push('scripts')
+	<script>
+		window.lang ={
+			"really_delete_in_couple": "<?php echo trans('parrot.really_delete_in_couple')?>",
+			"really_delete_parrot": "<?php echo trans('parrot.really_delete_parrot')?>",
+			"success_to_delete": "<?php echo trans('couple.success_to_delete')?>",
+			"failed_to_delete": "<?php echo trans('couple.failed_to_delete')?>"
+		}
+	</script>
 	<!-- <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script> -->
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 	<script src="{{ asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>

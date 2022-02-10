@@ -45,4 +45,7 @@ return [
     'i_donot_know'=>"Non lo so ancora",
     'associate_rna'=>"Associa pappagallo al mio RNA",
 
+    'size_limit_2mb'=>'Size is limited to 2MB !',
+    'allow_png_jpg'=> "Only png and jpg file are allowed!",
+
 ];

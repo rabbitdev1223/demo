@@ -54,4 +54,8 @@ return [
 
     'success_to_send_password_reset_link' => 'Success! password reset link has been sent to your email',
     'issue_email_provider'=> "Failed! there is some issue with email provider",
+    "failed_email_not_registered"=>"Failed! email is not registered.",
+    'password_link_expired'=> 'Password reset link is expired',
+    'success_password_changed'=>"Success! password has been changed",
+    'not_find_user'=> "Cannot find user",
 ];

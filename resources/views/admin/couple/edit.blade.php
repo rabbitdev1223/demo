@@ -109,8 +109,8 @@
 	<script>
 		$(document).ready(function(){
 
-				$('select[name=male_id]').select2({lang:'it'});
-				$('select[name=female_id]').select2({lang:'it'});
+				$('select[name=male_id]').select2({language:'it'});
+				$('select[name=female_id]').select2({language:'it'});
 				$('input[name=birth_date_of_couple]').datepicker({
 				language: 'en',
 				dateFormat: 'mm/dd/yyyy',

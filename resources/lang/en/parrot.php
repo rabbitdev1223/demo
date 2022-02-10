@@ -46,4 +46,6 @@ return [
 
     'size_limit_2mb'=>'Size is limited to 2MB !',
     'allow_png_jpg'=> "Only png and jpg file are allowed!",
+    'really_delete_in_couple' => "You're trying to delete a parrot in a couple, Are you sure ?",
+    'really_delete_parrot' => "Do you really want to delete this parrot?",
 ];

@@ -121,6 +121,15 @@
 	
 
 	@push('scripts')
+	<script>
+		window.lang ={
+			"really_unsuspend_user": "<?php echo trans('user.really_unsuspend_user')?>",
+			"really_suspend_user": "<?php echo trans('user.really_suspend_user')?>",
+			"really_delete_user": "<?php echo trans('user.really_delete_user')?>",
+			"success_to_delete": "<?php echo trans('couple.success_to_delete')?>",
+			"failed_to_delete": "<?php echo trans('couple.failed_to_delete')?>"
+		}
+	</script>
 	<!-- <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script> -->
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 	<script src="{{ asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>

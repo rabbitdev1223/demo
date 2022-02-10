@@ -58,4 +58,8 @@ return [
     'password_link_expired'=> 'Password reset link is expired',
     'success_password_changed'=>"Success! password has been changed",
     'not_find_user'=> "Cannot find user",
+    
+    "really_unsuspend_user"=>"Do you really want to unsuspend this user?",
+    "really_suspend_user"=>"Do you really want to suspend this user?",
+    "really_delete_user"=>"Do you really want to delete this user?",
 ];

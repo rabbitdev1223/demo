@@ -173,5 +173,5 @@
 	@push('scripts')
 	<script src="{{ asset('assets/js/parrots/profile.js') }}"></script>
 	@endpush
-
+  	
 @endsection

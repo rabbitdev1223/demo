@@ -149,6 +149,13 @@
 		}
 		});
 	</script>
+	<script>
+		window.lang ={
+			"my_couple": "<?php echo trans('couple.really_delete')?>",
+			"success_to_delete": "<?php echo trans('couple.success_to_delete')?>",
+			"failed_to_delete": "<?php echo trans('couple.failed_to_delete')?>"
+		}
+	</script>
 	<script src="{{ asset('assets/js/couple/couple.js') }}"></script>
 
 	@endpush
