@@ -23,7 +23,7 @@ return [
     'new_password' => 'Nuova Password',
     'password_confirm' => 'Conferma password',
     'done' => 'Salva',
-    'login'=>'Login',
+    'login'=>'Entra',
     "remember_password"=>'Ricordami',
     "forgot_password"=>'Password dimenticata?',
     "sign_in"=>"Registrati",

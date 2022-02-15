@@ -38,6 +38,6 @@ return [
 
     "really_delete"=>"Vuoi eliminare questa coppia? ",
     
-    "success_to_delete"=>"success to delete",
-    "failed_to_delete"=>"Failed to delete",
+    "success_to_delete"=>"Eliminazione effettuata con successo",
+    "failed_to_delete"=>"Errore",
 ];

@@ -48,6 +48,6 @@ return [
     'size_limit_2mb'=>'Puoi caricare immagini di massimo 2MB !',
     'allow_png_jpg'=> "puoi caricare solo immagini .JPG e .PNG",
     
-    'really_delete_in_couple' => "You're trying to delete a parrot in a couple, Are you sure ?",
-    'really_delete_parrot' => "Do you really want to delete this parrot?",
+    'really_delete_in_couple' => "Stai eliminando un Pappagallo presente in una coppia, sei sicuro ?",
+    'really_delete_parrot' => "Sei sicuro di voler eliminare questo pappagallo?",
 ];

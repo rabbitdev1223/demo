@@ -59,7 +59,7 @@ return [
     'success_password_changed'=>"Operazione completata, la password è stata aggiornata",
     'not_find_user'=> "Utente non trovato",
 
-    "really_unsuspend_user"=>"Do you really want to unsuspend this user?",
-    "really_suspend_user"=>"Do you really want to suspend this user?",
-    "really_delete_user"=>"Do you really want to delete this user?",
+    "really_unsuspend_user"=>"Sei sicuro di voler sospendere l'utente?",
+    "really_suspend_user"=>"Sei sicuro di voler sospendere l'utente?",
+    "really_delete_user"=>"Sei sicuro di voler eliminare l'utente?",
 ];

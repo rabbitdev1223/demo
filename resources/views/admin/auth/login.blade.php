@@ -47,7 +47,7 @@
                             <a class="link" href="javascript:goReset()">{{trans('auth.forgot_password')}}</a>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary btn-block" type="submit">{{trans('auth.sign_in')}}</button>
+                            <button class="btn btn-primary btn-block" type="submit">{{trans('auth.login')}}</button>
                         </div>
                         <!-- <div class="login-social-title">
                             <h5>Sign in with</h5>

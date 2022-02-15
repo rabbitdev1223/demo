@@ -69,5 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function parrots(){
         return $this->hasMany(Parrot::class,'registered_by');
     }
-    
+    public function cages(){
+        return $this->hasMany(Cage::class,'registered_by');
+    }
 }

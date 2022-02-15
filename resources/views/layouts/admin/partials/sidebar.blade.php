@@ -53,6 +53,15 @@
                         </ul>
                     </li>
                     <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('cage') }}" href="javascript:void(0)"><i data-feather="users"></i><span>{{trans('cage.cage')}}</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('cage') }};">
+                            <li><a href="{{ route('cage.create') }}" class="{{routeActive('cage.create')}}">{{trans('cage.add_cage')}}</a></li>
+                            <li><a href="{{ route('cage.index') }}" class="{{routeActive('cage.index')}}">{{trans('cage.my_cage')}}</a></li>
+                       
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
                         <a class="nav-link menu-title {{ routeActive('profile.show') }}" href="{{ route('profile.show') }}"><i data-feather="users"></i><span>{{trans('user.my_profile')}}</span></a>
                         
                     </li>

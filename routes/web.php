@@ -94,6 +94,17 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin'], function()
                 Route::post('{id}/delete','CoupleController@destroy')->name('couple.destroy');
             });
             
+            //for cage functionalities
+            Route::prefix('cage')->group(function (){
+                Route::get('create', 'CageController@create')->name('cage.create');
+                Route::get('{id}', 'CageController@show')->name('cage.show');
+                Route::get('{id}/edit', 'CageController@edit')->name('cage.edit');
+                Route::post('', 'CageController@store')->name('cage.save');
+                Route::get('', 'CageController@index')->name('cage.index');
+
+                //for ajax api
+                Route::post('{id}/delete','CageController@destroy')->name('cage.destroy');
+            });
             Route::group(['prefix'=>'user', 'middleware' => ['role:1']], function() {
                 //super admin
                 Route::get('', 'UserController@index')->name('user.index');
