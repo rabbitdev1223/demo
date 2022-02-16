@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-	{{trans('cage.new_cage')}}	
+	{{trans('cage.cage_details')}}	
 @endsection
 
 @push('css')
@@ -14,20 +14,27 @@
 
 @component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>{{trans('cage.new_cage')}}</h3>
+			<h3>{{trans('cage.cage_details')}}</h3>
 		@endslot
 		<li class="breadcrumb-item">{{trans('cage.cage')}}</li>
-		<li class="breadcrumb-item active">{{trans('cage.add_cage')}}</li>
+		<li class="breadcrumb-item active">{{trans('cage.cage_details')}}</li>
 	@endcomponent
 	<div class="container-fluid">
 	    <div class="edit-profile">
 	        <div class="row">
 			
-			@if ($errors->any())
-			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">{{trans('couple.failed_to_create_couple')}}
-                      <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
-                    </div>
-			@endif
+			@if(session('success'))	
+					<div class="alert alert-primary dark alert-dismissible fade show" role="alert">{{trans('cage.success_to_add_cage')}}
+						<!-- <button class="btn btn-primary" type="button" title="">Add another parrot!</button> -->
+						<!-- <button class="btn btn-info" type="button"></button> -->
+						
+						<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
+  						<div class="d-flex justify-content-end mt-2">
+							  <a href="{{route('cage.create')}}" class="mx-2 btn btn-warning ">{{trans('cage.add_another_cage')}}</a>
+							  <a href="{{route('cage.index')}}" class="btn btn-danger mx-2 ">{{trans('cage.goto_cage_list')}}</a>
+						</div>
+					</div>
+				@endif
 	            <div class="">
 	                <div class="card">
 	                    <div class="card-body">
@@ -97,8 +104,10 @@
 										<textarea class="form-control" name="note" rows="5" maxlength=1000 disabled value="{{$current_cage['note']}}"></textarea>
 									</div>
 									<div class="mb-3">	
-										<input  type="checkbox"  name="possibility_add_parrot" value="1" @if ($current_cage->possibility_add_parrot == 1) {{ 'checked' }} @endif disabled>
-										<label class="text-muted" for="possibility_add_parrot" >Aggiungi pappagalli al termine della creazione</label>
+										<div class="checkbox checkbox-solid-primary">
+											<input  type="checkbox"  name="possibility_add_parrot" value="1" @if ($current_cage->possibility_add_parrot == 1) {{ 'checked' }} @endif disabled>
+											<label class="text-muted" for="possibility_add_parrot" >Aggiungi pappagalli al termine della creazione</label>
+										</div>
 									</div>	
 								</div>
 	                        </form>

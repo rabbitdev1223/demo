@@ -104,6 +104,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin'], function()
 
                 //for ajax api
                 Route::post('{id}/delete','CageController@destroy')->name('cage.destroy');
+                //add parrot to cage
+                Route::get('{id}/add-parrot','CageController@addParrotPage')->name('cage.addParrotPage');
+                Route::post('{id}/add-parrot','CageController@addParrot')->name('cage.addParrot');
             });
             Route::group(['prefix'=>'user', 'middleware' => ['role:1']], function() {
                 //super admin
@@ -112,6 +115,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin'], function()
                 Route::get('{id}/show', 'UserController@show')->name('user.show');
                 Route::get('create', 'UserController@create')->name('user.create');
             });
+            
         });
     });
 

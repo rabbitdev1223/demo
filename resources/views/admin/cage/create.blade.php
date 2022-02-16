@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-	{{trans('cage.new_cage')}}	
+	{{trans('cage.add_cage')}}	
 @endsection
 
 @push('css')
@@ -14,7 +14,7 @@
 
 @component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>{{trans('cage.new_cage')}}</h3>
+			<h3>{{trans('cage.add_cage')}}</h3>
 		@endslot
 		<li class="breadcrumb-item">{{trans('cage.cage')}}</li>
 		<li class="breadcrumb-item active">{{trans('cage.add_cage')}}</li>
@@ -24,9 +24,9 @@
 	        <div class="row">
 			
 			@if ($errors->any())
-			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">{{trans('couple.failed_to_create_couple')}}
-                      <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
-                    </div>
+			<div class="alert alert-danger dark alert-dismissible fade show" role="alert">{{trans('cage.failed_to_create_cage')}}
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" data-bs-original-title="" title=""></button>
+			</div>
 			@endif
 	            <div class="">
 	                <div class="card">
@@ -85,9 +85,12 @@
 									<label class="form-label">{{trans('couple.note')}}</label>
 									<textarea class="form-control" name="note" rows="3" maxlength=1000></textarea>
 								</div>
+							
 								<div class="mb-3">	
-									<input  type="checkbox"  name="possibility_add_parrot" value="1" >
-									<label class="text-muted" for="possibility_add_parrot" >Aggiungi pappagalli al termine della creazione</label>
+									<div class="checkbox checkbox-solid-primary">
+										<input id="possibility_add_parrot" type="checkbox" value="1"   name="possibility_add_parrot">
+										<label for="possibility_add_parrot">Aggiungi pappagalli al termine della creazione</label>
+									</div>
 								</div>	
 	                            <div class="form-footer">
 	                                <button class="btn btn-primary btn-block">{{trans('parrot.save')}}</button>
@@ -103,37 +106,7 @@
 	
 	@push('scripts')
 	<script>
-		$(document).ready(function(){
-
-				$('select[name=male_id]').select2({lang:'it'});
-				$('select[name=female_id]').select2({lang:'it'});
-				$('input[name=birth_date_of_couple]').datepicker({
-				language: 'en',
-				dateFormat: 'mm/dd/yyyy',
-					maxDate: new Date() // Now can select only dates, which goes after today
-				})
-
-				$('input[name=expected_date_of_birth]').datepicker({
-					language: 'en',
-					dateFormat: 'mm/dd/yyyy',
-					minDate: new Date() // Now can select only dates, which goes after today
-				})
-
-
-				$('#couple_made_today').click(function() {
-					if ($(this).is(':checked')) {
-						// $('input[name=birth_date_of_couple]').datepicker('setDate','12/12/2022');
-						var now = new Date();
-						var dateString = moment(now).format('MM/DD/YYYY');
-
-						$('input[name=birth_date_of_couple]').val(dateString);
-						
-						
-					}
-				});
-
-			});
-
+		
 	</script>
 	<script src="{{ asset('assets/js/cage/cage.js') }}"></script>
 

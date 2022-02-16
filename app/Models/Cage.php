@@ -13,4 +13,9 @@ class Cage extends Model
     public function owner(){
         return $this->belongsTo(User::class,'registered_by');
     }
+
+    public function parrots()
+    {
+        return $this->hasMany(Parrot::class);
+    }
 }

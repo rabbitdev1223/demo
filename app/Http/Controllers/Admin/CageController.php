@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Cage;
 use Auth;
+use DB;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -21,9 +22,31 @@ class CageController extends Controller
          return view('admin.cage.index',compact('cages'));
      }
 
-     public function show($id){
-        $cage = Cage::findOrFail($id);
+     public function show($cageId){
+        $cage = Cage::where('cage_id',$cageId)->first();
+
+        if (!$cage){
+            return abort(404);
+        }
         return view('admin.cage.show')->with('current_cage',$cage);    
+    }
+
+    public function destroy($cageId){
+        
+        $cage = Cage::where('cage_id',$cageId)->first();
+
+        if (is_null($cage)){
+            return "failed";
+        }
+        $cage->delete();
+        return "ok";
+    }
+
+    public function edit($cageId){
+
+        $current_cage = Cage::where('cage_id',$cageId)->first();
+
+        return view('admin.cage.edit',compact('current_cage'));    
     }
      public function store(Request $request){
         
@@ -37,6 +60,9 @@ class CageController extends Controller
         }
             $request->validate([
             'name'=>'required',
+            'width'=>'required',
+            'height'=>'required',
+            'depth'=>'required',
             'max_parrot' => 'required', 
             // 'date_of_birth' => 'required',
             
@@ -89,9 +115,48 @@ class CageController extends Controller
         $cage->save();
         
         if (isset($request->id)){ //edit
-            return redirect()->route('cage.index')->withSuccess(trans('parrot.updated_success'));
+            return redirect()->route('cage.index')->withSuccess(trans('cage.updated_success'));
         }
-        return redirect()->route('cage.show',$cage->id)->withSuccess(trans('parrot.success_to_add_parrot'));
+        return redirect()->route('cage.show',$cage->cage_id)->withSuccess(trans('cage.success_to_add_cage'));
 
+    }
+
+    public function addParrotPage($cageId){
+
+        $current_cage = Cage::where('cage_id',$cageId)->first();
+
+        if (!$current_cage){
+            return abort(404);
+        }
+
+        $parrots = Auth::user()->parrots()->whereDoesntHave('cage')->get();
+        return view('admin.cage.addParrot',compact('parrots','current_cage'));
+
+    }
+
+    public function addParrot($cageId,Request $request){
+        
+        $current_cage = Cage::where('cage_id',$cageId)->first();
+        
+        if (!$current_cage){
+            $ret['error'] = 2;
+            $ret['message'] = "no cage!";
+            return json_encode($ret);
+        }
+
+        $parrots = explode(',',$request->parrots);
+        
+        if (count($parrots) > $current_cage->max_parrot){
+            $ret['error'] = 1;
+            $ret['message'] = "max parrot!";
+            return json_encode($ret);
+        }
+        DB::table('parrots')
+            ->whereIn('id', $parrots)
+            ->update(['cage_id' => $current_cage->id]);
+
+        $ret['error'] = 0;
+        $ret['message'] = "success!";
+        return json_encode($ret);
     }
 }

@@ -53,8 +53,7 @@ class CoupleController extends Controller
     public function destroy($id){
         
         $couple = Couple::find($id);
-       
-
+    
         if (is_null($couple)){
             return "failed";
         }
@@ -73,8 +72,6 @@ class CoupleController extends Controller
     public function edit($id){
         $parrots = Auth::user()->parrots;
         $current_couple = Couple::findOrFail($id)->load(['male','female']);
-        
-      
 
         return view('admin.couple.edit')->with('parrots',$parrots)
                                     ->with('current_couple',$current_couple);    

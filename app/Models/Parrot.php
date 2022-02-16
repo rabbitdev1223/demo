@@ -39,4 +39,8 @@ class Parrot extends Model
         //check if it is in a couple
         return $this->male_couple || $this->female_couple;
     }
+
+    public function cage(){
+        return $this->belongsTo(Cage::class,'cage_id');
+    }
 }

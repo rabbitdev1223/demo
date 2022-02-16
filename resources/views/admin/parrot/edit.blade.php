@@ -49,9 +49,13 @@
 	                                <div class="profile-title">
 	                                    <div class="media" style="position: relative;"> 
 											<img class="img-70 rounded-circle" alt="" 
-                                              
+												
+												@if ($current_parrot->photo)
 													src="{{asset('uploads/parrots/' . $current_parrot->photo?$current_parrot->photo:'') }}"
-											
+												@else
+													src=""
+												@endif
+												
 												onerror="onErrorImage(this)"
 												id="profileDisplay" onClick="triggerClick()" />
 												<a href="javascript:triggerClick()"><i class="fa fa-pencil circle-icon"
