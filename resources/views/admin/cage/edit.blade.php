@@ -39,7 +39,7 @@
 	                                    <div class="media" style="position: relative;">
 											<img class="img-70 rounded-circle" alt="" 
 												@if ($current_cage->photo)
-													src="{{asset('uploads/cages/' . $current_cage->photo?$current_cage->photo:'') }}"
+													src="{{asset('uploads/cages/' . $current_cage->photo) }}"
 												@else
 													src=""
 												@endif

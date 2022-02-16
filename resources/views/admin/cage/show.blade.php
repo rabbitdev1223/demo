@@ -101,7 +101,7 @@
 								
 									<div class="mb-3 col-sm-6">
 										<label class="form-label">{{trans('couple.note')}}</label>
-										<textarea class="form-control" name="note" rows="5" maxlength=1000 disabled value="{{$current_cage['note']}}"></textarea>
+										<textarea class="form-control" name="note" rows="5" maxlength=1000 disabled >{{$current_cage['note']}}</textarea>
 									</div>
 									<div class="mb-3">	
 										<div class="checkbox checkbox-solid-primary">
