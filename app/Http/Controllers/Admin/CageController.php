@@ -13,7 +13,8 @@ class CageController extends Controller
 {
     //
     public function create(){
-        return view('admin.cage.create');
+        $cageFriendlyName = "gabbia " . count(Auth::user()->cages);
+        return view('admin.cage.create',compact('cageFriendlyName'));
     }
     public function index(){
          

@@ -55,36 +55,47 @@
 	                                    </div>
 	                                </div>
 	                            </div>
-								<div class="mb-3">
+								<div class="mb-3 col-6">
 	                                <label class="form-label">{{trans('parrot.name')}}</label>
 	                                <input class="form-control" name="name" maxlength=30 placeholder = "{{trans('cage.friendly_name_of_cage')}}" value="{{old('name',$current_cage->name)}}" />
 									@if ($errors->has('name'))
                                     	<div><span class="text-danger text-left">{{ $errors->first('name') }}</span></div>
                                     @endif
 								</div>
-								    
-								<div class="mb-3">
-	                            	<label class="form-label">Dimensioni</label>
 
-								    <div class="input-group mb-3 ms-3"><span class="input-group-text">cm</span>
-										<input class="form-control " name="width" type="number"  min=1 value="{{old('width',$current_cage->width)}}" >
-										<span class="input-group-text">&nbsp;larghezza</span>
-									</div>
-									<div class="input-group mb-3 ms-3"><span class="input-group-text">cm</span>
-	                                	<input class="form-control" name="height" type="number" min=1 value="{{old('height',$current_cage->height)}}" >
-										<span class="input-group-text">&nbsp;&nbsp;&nbsp;{{'altezza'}}&nbsp;&nbsp;&nbsp; </span>
-									</div>
-									<div class="input-group mb-3 ms-3"><span class="input-group-text">cm</span>
-	                                
-										<input class="form-control " name="depth" type="number"  min=1 value="{{old('depth',$current_cage->depth)}}" >									
-										<span class="input-group-text">profondità</span>
-									</div>
-								</div>
-
-								<div class="mb-3">
+								
+								<div class="mb-3 col-6">
 	                            	<label class="form-label">Quanti pappagalli può contenere la gabbia?</label>
 									<input class="form-control " name="max_parrot" type="number"  value="{{old('max_parrot',$current_cage->max_parrot)}}" min=1 >
 								</div>
+								    
+								<div class="mb-3">
+	                            	<label class="form-label">Dimensioni</label>
+									<div style="border:4px solid #24695c;padding :5px; border-radius:4px " >
+										<div class="row">
+											<div class="col-sm-6">
+												<div class="input-group mb-3 "><span class="input-group-text">cm</span>
+													<input class="form-control " name="width" type="number"  min=1 value="{{old('width',$current_cage->width)}}" >
+													<span class="input-group-text">&nbsp;larghezza</span>
+												</div>
+											</div>
+											<div class="col-sm-6">
+												<div class="input-group mb-3 "><span class="input-group-text">cm</span>
+													<input class="form-control" name="height" type="number" min=1 value="{{old('height',$current_cage->height)}}" >
+													<span class="input-group-text">&nbsp;&nbsp;&nbsp;{{'altezza'}}&nbsp;&nbsp;&nbsp; </span>
+												</div>
+											</div>
+											<div class="col-sm-6">
+												<div class="input-group"><span class="input-group-text">cm</span>
+												
+													<input class="form-control " name="depth" type="number"  min=1 value="{{old('depth',$current_cage->depth)}}" >									
+													<span class="input-group-text">profondità</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
 								
 								<div class="mb-3">
 									<label class="form-label">{{trans('couple.note')}}</label>

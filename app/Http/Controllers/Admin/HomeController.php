@@ -42,7 +42,7 @@ class HomeController extends Controller
                 'type' => 'gt:0',
                 'password_confirmation' => 'same:password',
                 'rna'=>['sometimes','nullable','alpha_num','size:4','unique:users',
-                        'regex:/[a-zA-Z]/'],
+                        'regex:/[a-zA-Z0-9]/'],
                 'password'=>'required']);
             $user->email = $request->email;
         }
