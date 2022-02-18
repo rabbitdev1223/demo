@@ -71,8 +71,7 @@
                                 
 								<div class="mb-3 col-sm-6">
 	                                <label class="form-label">{{trans('couple.note')}}</label>
-	                                <input class="form-control" name="note" type="text" value="{{$current_couple['note']}}" disabled >
-	                            	
+	                            	<textarea class="form-control" name="note" rows="3" maxlength=1000 disabled>{{$current_couple['note']}}</textarea>
 								</div>
 							</div>
 	                        

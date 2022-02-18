@@ -82,8 +82,8 @@
                                 
 								<div class="mb-3">
 	                                <label class="form-label">{{trans('couple.note')}}</label>
-	                                <input class="form-control" name="note" type="text" placeholder="{{trans('couple.note')}}" value="{{old('note')}}" >
-	                            	
+	                                <!-- <input class="form-control" name="note" type="text" placeholder="{{trans('couple.note')}}" value="{{old('note')}}" > -->
+	                            	<textarea class="form-control" name="note" rows="3" maxlength=1000>{{old('note')}}</textarea>
 								</div>
 
 	                            <div class="form-footer">

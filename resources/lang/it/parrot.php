@@ -39,7 +39,7 @@ return [
     'add_parrot'=>'Aggiungi pappagallo',
     'my_parrots'=>'I miei pappagalli',
 
-    'male'=>"maschio",
+    'male'=>"Maschio",
     'female'=>"Femmina",
     'gender'=>"Sesso",
     'i_donot_know'=>"Non lo so ancora",

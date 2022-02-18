@@ -89,8 +89,7 @@
 									
 									<div class="mb-3 col-sm-6">
 										<label class="form-label">{{trans('couple.note')}}</label>
-										<input class="form-control" name="note" type="text" placeholder="{{trans('couple.note')}}" value="{{old('note',$current_couple->note)}}" >
-										
+										<textarea class="form-control" name="note" rows="3" maxlength=1000>{{old('note',$current_couple->note)}}</textarea>
 									</div>
 								</div>
 									<div class="form-footer">

@@ -118,6 +118,7 @@ class CageController extends Controller
         if (isset($request->id)){ //edit
             return redirect()->route('cage.index')->withSuccess(trans('cage.updated_success'));
         }
+        return redirect()->route('cage.addParrotPage',$cage->cage_id);
         return redirect()->route('cage.show',$cage->cage_id)->withSuccess(trans('cage.success_to_add_cage'));
 
     }
