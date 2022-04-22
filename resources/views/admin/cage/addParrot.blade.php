@@ -68,7 +68,7 @@
 								</tbody>
 	                        </table>
 	                    </div>
-						<div>
+						<div class="mt-3">
 							<button class="btn btn-square btn-primary btn-sm" type="button" id="addParrot" >
 								{{trans('cage.add_cage')}}
 							</button>
@@ -124,20 +124,26 @@
 				console.log(response);
 				
 				if(response.error==0 && status=="success"){
+
 					// $("#successToast .toast-body").html("success to delete");
 					// new bootstrap.Toast(document.querySelector('#successToast')).show();
-					show_notify(0,window.lang.success_to_delete);
-					parrottable.draw();
+					
+					
+					show_notify(0,"Success to add parrot");
+					window.location.href = "<?php echo route('cage.show',$current_cage->cage_id)?>";
+					// parrottable.draw();
 					// parrottable
 					// .row( target )
 					// .remove()
 					// .draw();
-					                        
+					// window.location.href =                         
 				}
 				else{
+					show_notify(1,"Errore, il numero di pappagalli supera il limite della gabbia");
+
 					// $("#failedToast .toast-body").html("failed to delete");
 					// new bootstrap.Toast(document.querySelector('#failedToast')).show();
-					show_notify(1,window.lang.failed_to_delete);
+					// show_notify(1,window.lang.failed_to_delete);
 				}
 			});
 		});
